@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+android:layout_margin="5dp">
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_gravity="end|center_horizontal"
+              android:id="@+id/txt_item_code"
+              android:textColor="@android:color/black"
+              android:textSize="16sp"
+              android:gravity="end|center"
+              android:layout_marginEnd="4dp"
+              android:text="R104678"
+              android:visibility="gone"
+              android:padding="3dp"/>
+    <RelativeLayout
+            android:id="@+id/lay_delivery_data" android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    >
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:layout_alignParentStart="true"
+              android:layout_centerInParent="true"
+              android:id="@+id/txt_qty"
+              android:layout_marginStart="4dp"
+              android:textColor="@android:color/black"
+              android:textSize="16sp"
+              android:gravity="start|center"
+              android:text="1 Item"
+              android:padding="3dp"/>
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:layout_marginEnd="4dp"
+                      android:layout_marginTop="2dp"
+        android:orientation="vertical">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+
+                      android:textSize="14sp"
+                      android:gravity="start|center"
+                      android:text="Scheduled Date:"
+                      android:paddingEnd="3dp"
+                      android:paddingTop="3dp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+android:id="@+id/txt_deliverydate"
+                      android:textSize="16sp"
+                      android:textColor="@android:color/black"
+                      android:gravity="end"
+                      android:text="10-12-1018"
+                      android:paddingEnd="3dp"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+    <LinearLayout
+            android:id="@+id/lay_stock_data"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical"
+    >
+        <RelativeLayout
+             android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="7dp">
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:layout_alignParentStart="true"
+                      android:layout_centerInParent="true"
+                      android:layout_toStartOf="@+id/txt_item_no"
+                      android:id="@+id/txt_branch_name"
+                      android:textColor="@android:color/black"
+                      android:textSize="16sp"
+                      android:gravity="start|center"
+                      android:layout_marginEnd="4dp"
+                      android:text="Unit-SAHA"
+                      android:padding="3dp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:layout_alignParentEnd="true"
+                      android:layout_centerInParent="true"
+                      android:layout_marginEnd="7dp"
+                      android:id="@+id/txt_on_order"
+
+                      android:textSize="14sp"
+                      android:gravity="end|center"
+                      android:text="2(On Order)"
+                      android:padding="3dp"/>
+        </RelativeLayout>
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+android:layout_gravity="center_horizontal"
+android:orientation="horizontal"
+              android:layout_marginStart="4dp"
+              android:layout_marginEnd="4dp"
+android:weightSum="3">
+    <TextView
+            android:id="@+id/on_plan" android:layout_width="0dp" android:layout_height="wrap_content"
+    android:layout_weight="1"
+            android:textSize="14sp"
+android:textColor="@android:color/black"
+    android:text="5(On Plan)"/>
+    <TextView
+            android:id="@+id/cons" android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="14sp"
+android:gravity="center"
+            android:textColor="@android:color/black"
+            android:text="89(Cons)"/>
+    <TextView
+            android:id="@+id/stock" android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="14sp"
+android:gravity="end|center"
+            android:layout_marginEnd="2dp"
+            android:textColor="@android:color/black"
+            android:text="2(Stock)"/>
+
+</LinearLayout>
+    </LinearLayout>
+    <View android:layout_width="match_parent" android:layout_height="1dp"
+          android:layout_gravity="center_horizontal"
+          android:layout_marginTop="5dp"
+          android:background="@android:color/darker_gray"/>
+</LinearLayout>

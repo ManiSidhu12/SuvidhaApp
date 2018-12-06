@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_margin="5dp"
+              android:layout_height="wrap_content">
+    <LinearLayout
+            android:id="@+id/layClick" android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical">
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal">
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+              android:layout_centerInParent="true"
+              android:layout_toStartOf="@+id/txt_item_no"
+              android:id="@+id/txt_item_name"
+              android:textColor="@android:color/black"
+              android:textSize="16sp"
+              android:gravity="start|center"
+              android:layout_marginEnd="4dp"
+              android:text="Bag holder 65MM L 62MM Width"
+              android:textStyle="bold"
+              android:padding="3dp"/>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:layout_alignParentEnd="true"
+              android:layout_centerInParent="true"
+              android:layout_marginEnd="7dp"
+              android:id="@+id/txt_item_no"
+
+              android:textColor="@android:color/holo_blue_dark"
+              android:textSize="14sp"
+              android:gravity="start|center"
+              android:text="R605075"
+              android:padding="3dp"/>
+    </RelativeLayout>
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="10dp"
+    android:layout_marginTop="2dp">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                  android:layout_centerInParent="true"
+                  android:id="@+id/txt_item_qty"
+                  android:textSize="14sp"
+                  android:text="Qty:50"
+
+                  android:gravity="start|center"
+                  android:padding="3dp"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:layout_toEndOf="@+id/txt_item_qty"
+                  android:layout_marginStart="35dp"
+                  android:layout_centerInParent="true"
+                  android:id="@+id/txt_item_price"
+                  android:textSize="16sp"
+                  android:gravity="start|center"
+                  android:textColor="@android:color/black"
+                  android:padding="3dp"/>
+
+    </RelativeLayout>
+
+    </LinearLayout>
+    <View
+            android:id="@+id/line_btns"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+           android:layout_gravity="center_horizontal"
+            android:visibility="gone"
+            android:background="@android:color/darker_gray" />
+
+    <LinearLayout
+            android:id="@+id/lay_btns"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:weightSum="2">
+
+        <RelativeLayout
+                android:id="@+id/btn_delivery_status"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/white">
+
+            <TextView
+                    android:id="@+id/txt_del"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="start|center"
+                    android:text="Delivery Schedule"
+                    android:textColor="#333333"
+                    android:textSize="14sp" />
+        </RelativeLayout>
+
+        <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:background="@android:color/darker_gray" />
+
+        <RelativeLayout
+                android:id="@+id/btn_stock_status"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/white">
+
+
+            <TextView
+                    android:id="@+id/txt_stock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="Stock Status"
+                    android:textColor="#333333"
+                    android:textSize="14sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+<!--
+    <RelativeLayout android:layout_width="200dp" android:layout_height="35dp"
+    android:orientation="horizontal"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginStart="15dp"
+    android:layout_marginEnd="15dp"
+    android:layout_marginTop="5dp"
+                    android:visibility="gone"
+    android:layout_marginBottom="5dp">
+        <Button
+                android:id="@+id/btn_delivery_status" android:layout_width="wrap_content" android:layout_height="match_parent"
+                android:text="Delivery Schedule"
+                android:textAllCaps="false"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
+                android:textSize="12sp"
+                android:layout_gravity="center"
+                android:textColor="@android:color/white"
+                android:background="@drawable/orange_bg"
+                android:gravity="center"
+        android:layout_marginEnd="10dp"/>
+        <Button
+                android:id="@+id/btn_stock_status" android:layout_width="wrap_content" android:layout_height="match_parent"
+                android:text="Stock Status"
+                android:layout_toEndOf="@+id/btn_delivery_status"
+                android:textAllCaps="false"
+                android:textSize="12sp"
+                android:textColor="@android:color/white"
+                android:background="@drawable/btn_bg"
+                android:gravity="center"
+                android:layout_marginStart="10dp"/>
+
+    </RelativeLayout>
+-->
+    <View android:layout_width="match_parent" android:layout_height="1dp"
+    android:layout_gravity="center_horizontal"
+    android:background="@android:color/darker_gray"
+   />
+</LinearLayout>
