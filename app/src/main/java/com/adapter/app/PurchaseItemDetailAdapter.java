@@ -12,6 +12,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.bignerdranch.expandablerecyclerview.Adapter.ExpandableRecyclerAdapter;
 import com.bignerdranch.expandablerecyclerview.Model.ParentListItem;
 import com.bignerdranch.expandablerecyclerview.ViewHolder.ChildViewHolder;
@@ -26,7 +27,7 @@ public class PurchaseItemDetailAdapter extends ExpandableRecyclerAdapter<Purchas
     private LayoutInflater mInflater;
 
     Context c;
-    String value= "";
+    String value = "";
 
     public PurchaseItemDetailAdapter(Context context, List<ParentListItem> itemList) {
         super(itemList);
@@ -54,22 +55,22 @@ public class PurchaseItemDetailAdapter extends ExpandableRecyclerAdapter<Purchas
     public void onBindParentViewHolder(final SimpleParentViewHolder parentViewHolder, final int position, ParentListItem parentListItem) {
         SimpleParentItem simpleParentItem = (SimpleParentItem) parentListItem;
         //  Common.setSemiBold(c,parentViewHolder.mTvTitle);
-     parentViewHolder.txtPrice.setText("@85");
-    parentViewHolder.txtItemNo.setPaintFlags(parentViewHolder.txtItemNo.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        parentViewHolder.txtPrice.setText("@85");
+        parentViewHolder.txtItemNo.setPaintFlags(parentViewHolder.txtItemNo.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
 //        parentViewHolder.mTvTitle.setText(simpleParentItem.getTitle());
-        if(value.equalsIgnoreCase("delivery")){
-            parentViewHolder.layDelivery.setBackgroundColor(Color.parseColor("#008577"));
-            parentViewHolder.layStock.setBackgroundColor(Color.parseColor("#ffffff"));
-            parentViewHolder.txtDel.setTextColor(Color.parseColor("#FFFFFF"));
-            parentViewHolder.txtStock.setTextColor(Color.parseColor("#000000"));
-        }
-        else if(value.equalsIgnoreCase("stock")){
-            parentViewHolder.layStock.setBackgroundColor(Color.parseColor("#008577"));
-            parentViewHolder.layDelivery.setBackgroundColor(Color.parseColor("#ffffff"));
-            parentViewHolder.txtStock.setTextColor(Color.parseColor("#FFFFFF"));
-            parentViewHolder.txtDel.setTextColor(Color.parseColor("#000000"));
-        }
+//        if (value.equalsIgnoreCase("delivery")) {
+//            parentViewHolder.layDelivery.setBackgroundColor(Color.parseColor("#008577"));
+//            parentViewHolder.layStock.setBackgroundColor(Color.parseColor("#ffffff"));
+//            parentViewHolder.txtDel.setTextColor(Color.parseColor("#FFFFFF"));
+//            parentViewHolder.txtStock.setTextColor(Color.parseColor("#000000"));
+//        } else if (value.equalsIgnoreCase("stock")) {
+//            parentViewHolder.layStock.setBackgroundColor(Color.parseColor("#008577"));
+//            parentViewHolder.layDelivery.setBackgroundColor(Color.parseColor("#ffffff"));
+//            parentViewHolder.txtStock.setTextColor(Color.parseColor("#FFFFFF"));
+//            parentViewHolder.txtDel.setTextColor(Color.parseColor("#000000"));
+//        }
+//
         if (simpleParentItem.getChildItemList() != null) {
 //            parentViewHolder.mParentDropDownArrow.setVisibility(View.VISIBLE);
         } else {
@@ -83,21 +84,53 @@ public class PurchaseItemDetailAdapter extends ExpandableRecyclerAdapter<Purchas
                 parentViewHolder.lineBtns.setVisibility(View.VISIBLE);
             }
         });
-        parentViewHolder.txtDel.setOnClickListener(new View.OnClickListener() {
+        parentViewHolder.layDelivery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-value ="delivery";
-notifyDataSetChanged();
+
+                if (value.equalsIgnoreCase("delivery")) {
+                    value = "delivery1";
+                    parentViewHolder.layDelivery.setBackgroundColor(Color.parseColor("#ffffff"));
+                    parentViewHolder.layStock.setBackgroundColor(Color.parseColor("#ffffff"));
+                    parentViewHolder.txtDel.setTextColor(Color.parseColor("#000000"));
+                    parentViewHolder.txtStock.setTextColor(Color.parseColor("#000000"));
+                    collapseParent(position);
+                }else{
+                    value = "delivery";
+                    parentViewHolder.layDelivery.setBackgroundColor(Color.parseColor("#008577"));
+                    parentViewHolder.layStock.setBackgroundColor(Color.parseColor("#ffffff"));
+                    parentViewHolder.txtDel.setTextColor(Color.parseColor("#FFFFFF"));
+                    parentViewHolder.txtStock.setTextColor(Color.parseColor("#000000"));
+                    expandParent(position);
+                }
+
+               // notifyDataSetChanged();
             }
         });
-        parentViewHolder.txtStock.setOnClickListener(new View.OnClickListener() {
+        parentViewHolder.layStock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                value ="stock";
-                notifyDataSetChanged();
+                if (value.equalsIgnoreCase("stock")) {
+                    value = "stock1";
+                    parentViewHolder.layDelivery.setBackgroundColor(Color.parseColor("#ffffff"));
+                    parentViewHolder.layStock.setBackgroundColor(Color.parseColor("#ffffff"));
+                    parentViewHolder.txtDel.setTextColor(Color.parseColor("#000000"));
+                    parentViewHolder.txtStock.setTextColor(Color.parseColor("#000000"));
+                    collapseParent(position);
+                }else{
+                    value = "stock";
+                    parentViewHolder.layStock.setBackgroundColor(Color.parseColor("#008577"));
+                    parentViewHolder.layDelivery.setBackgroundColor(Color.parseColor("#ffffff"));
+                    parentViewHolder.txtStock.setTextColor(Color.parseColor("#FFFFFF"));
+                    parentViewHolder.txtDel.setTextColor(Color.parseColor("#000000"));
+                    expandParent(position);
+                }
+               // value = "stock";
+
+                //notifyDataSetChanged();
             }
         });
-/*
+     /*
         parentViewHolder.mParentDropDownArrow1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,13 +153,13 @@ notifyDataSetChanged();
     public void onBindChildViewHolder(SimpleChildViewHolder simpleChildViewHolder, int position, Object childListItem) {
         SimpleChild simpleChild = (SimpleChild) childListItem;
         //  Common.setRegular(c,simpleChildViewHolder.mTvContent);
-       // simpleChildViewHolder.mTvContent.setText(simpleChild.getTitle());
-       // //  simpleChildViewHolder.mCheckBox.setChecked(simpleChild.isSolved());
-        if(value.equalsIgnoreCase("stock")){
+        // simpleChildViewHolder.mTvContent.setText(simpleChild.getTitle());
+        // //  simpleChildViewHolder.mCheckBox.setChecked(simpleChild.isSolved());
+        if (value.equalsIgnoreCase("stock")) {
             simpleChildViewHolder.layStockData.setVisibility(View.VISIBLE);
             simpleChildViewHolder.layDeliveryData.setVisibility(View.GONE);
         }
-        if(value.equalsIgnoreCase("delivery")){
+        if (value.equalsIgnoreCase("delivery")) {
             simpleChildViewHolder.layStockData.setVisibility(View.GONE);
             simpleChildViewHolder.layDeliveryData.setVisibility(View.VISIBLE);
         }
@@ -177,11 +210,11 @@ notifyDataSetChanged();
 
         public TextView mTvTitle;
         public ImageButton mParentDropDownArrow;
-        public LinearLayout layBtns,layClick;
-        public View  lineBtns;
+        public LinearLayout layBtns, layClick;
+        public View lineBtns;
         RelativeLayout layDelivery;
         RelativeLayout layStock;
-        TextView txtPrice,txtItemNo,txtDel,txtStock;
+        TextView txtPrice, txtItemNo, txtDel, txtStock;
 
         //  public ImageButton mParentDropDownArrow1;
 
@@ -202,7 +235,7 @@ notifyDataSetChanged();
             //mParentDropDownArrow = itemView.findViewById(R.id.collapseButton);
             //   mParentDropDownArrow1 = itemView.findViewById(R.id.parent_list_item_expand_arrow1);
 
-           layClick.setClickable(false);
+            layClick.setClickable(false);
         }
 
         @SuppressLint("NewApi")
@@ -214,9 +247,9 @@ notifyDataSetChanged();
             }
 
             if (expanded) {
-               // mParentDropDownArrow.setRotation(ROTATED_POSITION);
+                // mParentDropDownArrow.setRotation(ROTATED_POSITION);
             } else {
-               // mParentDropDownArrow.setRotation(INITIAL_POSITION);
+                // mParentDropDownArrow.setRotation(INITIAL_POSITION);
             }
         }
     }

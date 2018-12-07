@@ -3,7 +3,6 @@ package com.suvidha.app
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import com.adapter.app.PurchaseDetailAdapter
 import com.adapter.app.PurchaseItemDetailAdapter
 import com.adapter.app.SimpleChild
 import com.adapter.app.SimpleParentItem
@@ -12,18 +11,22 @@ import kotlinx.android.synthetic.main.purchase_detail_screen.*
 import java.util.*
 
 class PurchaseItemDetail : AppCompatActivity(){
+
     val expandableListDetail = HashMap<String, List<String>>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar!!.title = "Purchase Item Detail"
         setContentView(R.layout.purchase_detail_screen)
+
         setData()
+
         recycler_purchase_detail.layoutManager = LinearLayoutManager(this@PurchaseItemDetail)
-        //recycler_purchase_detail.adapter = PurchaseDetailAdapter(this@PurchaseItemDetail)
-        val adap = PurchaseItemDetailAdapter(this@PurchaseItemDetail, generateMockData())
-        recycler_purchase_detail.setAdapter(adap)
-    }
+
+        recycler_purchase_detail.adapter = PurchaseItemDetailAdapter(this@PurchaseItemDetail, generateMockData())
+
+        }
+
     private fun generateMockData(): List<ParentListItem> {
         val parentListItems = ArrayList<ParentListItem>()
         for (entry in expandableListDetail.entries) {
@@ -45,7 +48,9 @@ class PurchaseItemDetail : AppCompatActivity(){
         }
         Collections.reverse(parentListItems)
         return parentListItems
+
     }
+
     fun setData(){
 
         val cricket = ArrayList<String>()
