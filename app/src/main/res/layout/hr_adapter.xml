@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+<RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+android:layout_gravity="center_horizontal"
+android:layout_margin="5dp">
+    <TextView
+            android:id="@+id/txt_convo_no" android:layout_width="wrap_content" android:layout_height="wrap_content"
+    android:text="#63"
+    android:layout_alignParentStart="true"
+              android:padding="4dp"
+              android:textSize="14sp"
+            android:gravity="start|center"
+              android:textColor="@android:color/holo_blue_light"
+    android:layout_centerInParent="true"/>
+    <TextView
+            android:id="@+id/txt_name" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Kanwar Singh"
+           android:layout_toEndOf="@+id/txt_convo_no"
+            android:layout_marginStart="7dp"
+            android:padding="4dp"
+            android:textSize="16sp"
+            android:gravity="start|center"
+            android:textColor="@android:color/black"
+            android:layout_toStartOf="@+id/date"
+            android:layout_centerInParent="true"/>
+    <TextView
+            android:id="@+id/date" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="10-12-2018"
+android:layout_alignParentEnd="true"
+            android:layout_marginEnd="7dp"
+            android:padding="4dp"
+            android:textSize="16sp"
+            android:gravity="start|center"
+            android:layout_centerInParent="true"/>
+
+
+</RelativeLayout>
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                  >
+    <TextView
+            android:id="@+id/amount" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="93.75"
+            android:layout_alignParentStart="true"
+            android:padding="4dp"
+            android:textSize="14sp"
+            android:gravity="start|center"
+            android:layout_centerInParent="true"/>
+        <TextView
+                android:id="@+id/hod" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="Abhijit Singha(HOD)"
+                android:layout_toEndOf="@+id/amount"
+                android:layout_marginStart="7dp"
+                android:padding="4dp"
+                android:textSize="16sp"
+                android:gravity="start|center"
+                android:textColor="@android:color/black"
+                android:layout_toStartOf="@+id/confirmed_on"
+                android:layout_centerInParent="true"/>
+        <TextView
+                android:id="@+id/confirmed_on" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="10-12-2018"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="7dp"
+                android:padding="4dp"
+                android:textSize="16sp"
+                android:gravity="start|center"
+                android:layout_centerInParent="true"/>
+
+
+    </RelativeLayout>
+</LinearLayout>

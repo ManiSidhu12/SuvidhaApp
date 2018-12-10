@@ -104,7 +104,7 @@ public class PurchaseItemDetailAdapter extends ExpandableRecyclerAdapter<Purchas
                     expandParent(position);
                 }
 
-               // notifyDataSetChanged();
+                 // notifyDataSetChanged();
             }
         });
         parentViewHolder.layStock.setOnClickListener(new View.OnClickListener() {
@@ -126,6 +126,7 @@ public class PurchaseItemDetailAdapter extends ExpandableRecyclerAdapter<Purchas
                     expandParent(position);
                 }
                // value = "stock";
+
 
                 //notifyDataSetChanged();
             }

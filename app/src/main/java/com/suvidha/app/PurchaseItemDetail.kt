@@ -16,7 +16,9 @@ class PurchaseItemDetail : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         supportActionBar!!.title = "Purchase Item Detail"
+
         setContentView(R.layout.purchase_detail_screen)
 
         setData()
@@ -26,6 +28,8 @@ class PurchaseItemDetail : AppCompatActivity(){
         recycler_purchase_detail.adapter = PurchaseItemDetailAdapter(this@PurchaseItemDetail, generateMockData())
 
         }
+
+
 
     private fun generateMockData(): List<ParentListItem> {
         val parentListItems = ArrayList<ParentListItem>()
@@ -46,7 +50,7 @@ class PurchaseItemDetail : AppCompatActivity(){
             parentListItems.add(simpleParentItem)
 
         }
-        Collections.reverse(parentListItems)
+        parentListItems.reverse()
         return parentListItems
 
     }

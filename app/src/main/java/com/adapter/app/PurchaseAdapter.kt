@@ -10,14 +10,13 @@ import android.view.ViewGroup
 import com.suvidha.app.PurchaseItemDetail
 import com.suvidha.app.R
 import kotlinx.android.synthetic.main.purchase_adapter.view.*
-import android.graphics.Paint.UNDERLINE_TEXT_FLAG
-
-
 
 class PurchaseAdapter(var ctx : Context) :  RecyclerView.Adapter<PurchaseAdapter.ViewHolder>(){
+
    var expandValue  = -1
+
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
-        var v = LayoutInflater.from(ctx).inflate(R.layout.purchase_adapter,p0,false)
+        val v = LayoutInflater.from(ctx).inflate(R.layout.purchase_adapter,p0,false)
         return ViewHolder(v)
     }
 

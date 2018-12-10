@@ -13,23 +13,25 @@ import kotlinx.android.synthetic.main.home_screen.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import java.util.*
 
-
 class Home : AppCompatActivity() {
-    val expandableListDetail = HashMap<String, List<String>>()
 
+    val expandableListDetail = HashMap<String, List<String>>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.home_screen)
-        setSupportActionBar(toolbar)
-setData()
 
-        val toggle = ActionBarDrawerToggle(
-            this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
+        setContentView(R.layout.home_screen)
+
+        setSupportActionBar(toolbar)
+
+         setData()
+
+        val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
         )
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
         recycler_nav.layoutManager = LinearLayoutManager(this@Home)
+
         val adap = SimpleExpandableAdapter(this@Home, generateMockData(),drawer_layout)
         recycler_nav.setAdapter(adap)
 
@@ -63,11 +65,11 @@ setData()
             parentListItems.add(simpleParentItem)
 
         }
-        Collections.reverse(parentListItems)
+        parentListItems.reverse()
         return parentListItems
     }
-fun setData(){
 
+private fun setData(){
     val cricket = ArrayList<String>()
     cricket.add("Prepare Your Local Conveyance")
 
@@ -91,8 +93,8 @@ fun setData(){
     expandableListDetail["HR"] = cricket
     expandableListDetail["Installation & services"] = football
     expandableListDetail["Purchase"] = basketball
-   expandableListDetail["Quotes & Enquiries"] = football1
-  expandableListDetail["T.A. Bill"] = football2
+    expandableListDetail["Quotes & Enquiries"] = football1
+    expandableListDetail["T.A. Bill"] = football2
 }
 
 }

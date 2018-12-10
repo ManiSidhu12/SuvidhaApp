@@ -15,6 +15,7 @@ import com.bignerdranch.expandablerecyclerview.Adapter.ExpandableRecyclerAdapter
 import com.bignerdranch.expandablerecyclerview.Model.ParentListItem;
 import com.bignerdranch.expandablerecyclerview.ViewHolder.ChildViewHolder;
 import com.bignerdranch.expandablerecyclerview.ViewHolder.ParentViewHolder;
+import com.fragments.app.HRFragment;
 import com.fragments.app.PurchaseFragment;
 import com.github.captain_miao.recyclerviewutils.listener.OnRecyclerItemClickListener;
 import com.suvidha.app.R;
@@ -102,9 +103,16 @@ public class SimpleExpandableAdapter extends ExpandableRecyclerAdapter<SimpleExp
                     int parentIndex = getParentWrapperIndex(parentPosition);
                     if (item instanceof SimpleChild) {
                      //   Log.e("values",((SimpleChild) item).getCat_id()+"Ak"+((SimpleChild)item).getTitle());
-                        PurchaseFragment f = new PurchaseFragment();
-                        ((FragmentActivity) v.getContext()).getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
-                        drawer.closeDrawer(GravityCompat.START);
+                        if(parentPosition == 0){
+                            HRFragment f = new HRFragment();
+                            ((FragmentActivity) v.getContext()).getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
+                            drawer.closeDrawer(GravityCompat.START);
+                        }
+                        else {
+                            PurchaseFragment f = new PurchaseFragment();
+                            ((FragmentActivity) v.getContext()).getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
+                            drawer.closeDrawer(GravityCompat.START);
+                        }
                       /*  Products f = new Products();
                         Bundle b = new Bundle();
                         b.putString("cat_id",((SimpleChild) item).getCat_id());
