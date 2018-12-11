@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+android:layout_margin="5dp">
+
+    <TextView
+            android:id="@+id/txt_party" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Hari Om Agnihotri"
+            android:layout_gravity="center_horizontal"
+            android:padding="4dp"
+            android:textSize="16sp"
+            android:gravity="start|center"
+            android:textColor="@android:color/black"
+            />
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp">
+        <TextView
+                android:id="@+id/txt_install_no" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="10789"
+                android:layout_alignParentStart="true"
+                android:textSize="16sp"
+                android:gravity="start|center"
+                android:textColor="@android:color/holo_blue_light"
+                android:layout_centerInParent="true"/>
+        <TextView
+                android:id="@+id/txt_city" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Chatarpur(R-4)"
+                android:layout_alignParentEnd="true"
+                android:padding="4dp"
+                android:textSize="14sp"
+                android:gravity="end|center"
+                android:textColor="@android:color/black"
+                android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp">
+        <TextView
+                android:id="@+id/txt_install_date" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="12/11/2018"
+                android:layout_alignParentStart="true"
+                android:textSize="14sp"
+                android:gravity="start|center"
+                android:textColor="@android:color/black"
+                android:layout_centerInParent="true"/>
+        <TextView
+                android:id="@+id/txt_state" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Madhya Pardesh"
+                android:layout_alignParentEnd="true"
+                android:textSize="14sp"
+                android:gravity="end|center"
+                android:textColor="@android:color/black"
+                android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+<View android:layout_width="match_parent" android:layout_height="1dp"
+      android:layout_gravity="center_horizontal"
+      android:layout_marginTop="7dp"
+      android:background="@android:color/darker_gray"/>
+</LinearLayout>

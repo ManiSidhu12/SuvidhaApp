@@ -16,6 +16,7 @@ import com.bignerdranch.expandablerecyclerview.Model.ParentListItem;
 import com.bignerdranch.expandablerecyclerview.ViewHolder.ChildViewHolder;
 import com.bignerdranch.expandablerecyclerview.ViewHolder.ParentViewHolder;
 import com.fragments.app.HRFragment;
+import com.fragments.app.InstallFragment;
 import com.fragments.app.PurchaseFragment;
 import com.github.captain_miao.recyclerviewutils.listener.OnRecyclerItemClickListener;
 import com.suvidha.app.R;
@@ -30,6 +31,7 @@ public class SimpleExpandableAdapter extends ExpandableRecyclerAdapter<SimpleExp
 
     Context c;
     DrawerLayout drawer;
+
     public SimpleExpandableAdapter(Context context, List<ParentListItem> itemList, DrawerLayout drawer) {
         super(itemList);
         mInflater = LayoutInflater.from(context);
@@ -105,6 +107,11 @@ public class SimpleExpandableAdapter extends ExpandableRecyclerAdapter<SimpleExp
                      //   Log.e("values",((SimpleChild) item).getCat_id()+"Ak"+((SimpleChild)item).getTitle());
                         if(parentPosition == 0){
                             HRFragment f = new HRFragment();
+                            ((FragmentActivity) v.getContext()).getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
+                            drawer.closeDrawer(GravityCompat.START);
+                        }
+                        else if(parentPosition == 1){
+                            InstallFragment f = new InstallFragment();
                             ((FragmentActivity) v.getContext()).getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
                             drawer.closeDrawer(GravityCompat.START);
                         }

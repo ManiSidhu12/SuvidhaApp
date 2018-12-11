@@ -44,7 +44,8 @@
             <Spinner
                     android:id="@+id/spin_user"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"></Spinner>
+                    android:layout_height="match_parent"
+            android:layout_marginStart="7dp"></Spinner>
 
         </RelativeLayout>
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
@@ -63,6 +64,31 @@
                     android:id="@+id/spin_postatus"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"></Spinner>
+
+        </RelativeLayout>
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:text="Enter Keyword to Search"
+                  android:textColor="@android:color/black"
+                  android:padding="2dp"
+                  android:layout_gravity="center_horizontal"
+                  android:gravity="start|center"
+                  android:textSize="16sp"/>
+
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="40dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/spin_bg">
+            <EditText
+                    android:id="@+id/edt_srch_purchase"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Search"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp"
+                    android:gravity="start|center"
+                    android:background="@android:color/transparent"
+                    android:padding="4dp"
+            />
 
         </RelativeLayout>
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content"

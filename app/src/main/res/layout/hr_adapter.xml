@@ -5,13 +5,14 @@
               android:layout_height="wrap_content">
 <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
 android:layout_gravity="center_horizontal"
-android:layout_margin="5dp">
+android:layout_marginStart="5dp"
+android:layout_marginEnd="5dp">
     <TextView
             android:id="@+id/txt_convo_no" android:layout_width="wrap_content" android:layout_height="wrap_content"
     android:text="#63"
     android:layout_alignParentStart="true"
               android:padding="4dp"
-              android:textSize="14sp"
+              android:textSize="16sp"
             android:gravity="start|center"
               android:textColor="@android:color/holo_blue_light"
     android:layout_centerInParent="true"/>
@@ -19,29 +20,32 @@ android:layout_margin="5dp">
             android:id="@+id/txt_name" android:layout_width="match_parent" android:layout_height="wrap_content"
             android:text="Kanwar Singh"
            android:layout_toEndOf="@+id/txt_convo_no"
-            android:layout_marginStart="7dp"
+            android:layout_marginStart="3dp"
             android:padding="4dp"
             android:textSize="16sp"
             android:gravity="start|center"
             android:textColor="@android:color/black"
-            android:layout_toStartOf="@+id/date"
+            android:layout_toStartOf="@+id/txt_amount"
             android:layout_centerInParent="true"/>
     <TextView
-            android:id="@+id/date" android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="10-12-2018"
+            android:id="@+id/txt_amount" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="93.75"
 android:layout_alignParentEnd="true"
             android:layout_marginEnd="7dp"
             android:padding="4dp"
             android:textSize="16sp"
             android:gravity="start|center"
+            android:textColor="@android:color/black"
             android:layout_centerInParent="true"/>
 
 
 </RelativeLayout>
+<!--
     <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginStart="5dp"
                     android:layout_marginEnd="5dp"
+                    android:visibility="gone"
                   >
     <TextView
             android:id="@+id/amount" android:layout_width="wrap_content" android:layout_height="wrap_content"
@@ -52,18 +56,27 @@ android:layout_alignParentEnd="true"
             android:gravity="start|center"
             android:layout_centerInParent="true"/>
         <TextView
-                android:id="@+id/hod" android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:text="Abhijit Singha(HOD)"
+                android:id="@+id/confirmed_on" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="10-12-2018"
                 android:layout_toEndOf="@+id/amount"
                 android:layout_marginStart="7dp"
                 android:padding="4dp"
                 android:textSize="16sp"
                 android:gravity="start|center"
                 android:textColor="@android:color/black"
-                android:layout_toStartOf="@+id/confirmed_on"
                 android:layout_centerInParent="true"/>
         <TextView
-                android:id="@+id/confirmed_on" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:id="@+id/approved_by" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="10-12-2018"
+               android:layout_toEndOf="@+id/confirmed_on"
+                android:layout_toStartOf="@+id/approved_by1"
+                android:layout_marginStart="7dp"
+                android:padding="4dp"
+                android:textSize="16sp"
+                android:gravity="start|center"
+                android:layout_centerInParent="true"/>
+        <TextView
+                android:id="@+id/approved_by1" android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:text="10-12-2018"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="7dp"
@@ -74,4 +87,61 @@ android:layout_alignParentEnd="true"
 
 
     </RelativeLayout>
+-->
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+    >
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:orientation="vertical"
+                      android:layout_alignParentStart="true"
+                      android:layout_centerInParent="true"
+                      android:layout_marginStart="4dp">
+            <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Date:"
+                    android:textSize="14sp"
+                    android:paddingStart="4dp"
+                    android:gravity="start|center"
+            />
+            <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="12-11-2018"
+                    android:padding="2dp"
+                    android:textSize="14sp"
+                    android:textColor="@android:color/black"
+                    android:gravity="start|center"
+            />
+        </LinearLayout>
+
+
+       <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+       android:orientation="vertical"
+       android:layout_alignParentEnd="true"
+       android:layout_centerInParent="true"
+       android:layout_marginEnd="2dp">
+           <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                   android:text="Prepared by:"
+                   android:textSize="14sp"
+                    android:paddingStart="4dp"
+                   android:gravity="end|center"
+                />
+           <TextView
+                   android:layout_width="wrap_content" android:layout_height="wrap_content"
+                   android:text="Kanwar Singh"
+                   android:padding="2dp"
+                   android:textSize="14sp"
+                   android:textColor="@android:color/black"
+                   android:gravity="end|center"
+           />
+       </LinearLayout>
+
+
+    </RelativeLayout>
+    <View android:layout_width="match_parent" android:layout_height="1dp"
+          android:layout_gravity="center_horizontal"
+          android:layout_marginTop="5dp"
+          android:background="@android:color/darker_gray"/>
 </LinearLayout>

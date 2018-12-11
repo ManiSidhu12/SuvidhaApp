@@ -26,7 +26,8 @@
                           android:layout_gravity="center_horizontal"
                           android:gravity="start|center"
                           android:textSize="16sp"/>
-                <RelativeLayout android:layout_width="match_parent" android:layout_height="40dp"
+                <RelativeLayout
+                        android:id="@+id/lay_from_date" android:layout_width="match_parent" android:layout_height="40dp"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_margin="5dp"
                                 android:background="@drawable/spin_bg">
@@ -52,7 +53,8 @@
                           android:layout_gravity="center_horizontal"
                           android:gravity="start|center"
                           android:textSize="16sp"/>
-                <RelativeLayout android:layout_width="match_parent" android:layout_height="40dp"
+                <RelativeLayout
+                        android:id="@+id/lay_to_date" android:layout_width="match_parent" android:layout_height="40dp"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_margin="5dp"
                                 android:background="@drawable/spin_bg">
@@ -83,6 +85,7 @@
             <Spinner
                     android:id="@+id/spin_filter"
                     android:layout_width="match_parent"
+                    android:layout_marginStart="5dp"
                     android:layout_height="match_parent"></Spinner>
 
         </RelativeLayout>
@@ -100,7 +103,8 @@
                     android:layout_marginEnd="7dp"
                     android:background="@drawable/green_bg"
                     android:textAllCaps="false"/>
-            <Button android:layout_width="150dp" android:layout_height="match_parent"
+            <Button
+                    android:layout_width="150dp" android:layout_height="match_parent"
                     android:text="Prepare New Convo."
                     android:id="@+id/btn_prepare"
                     android:layout_alignParentEnd="true"

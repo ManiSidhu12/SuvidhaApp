@@ -6,6 +6,7 @@ import android.support.design.widget.TextInputLayout
 import android.view.View
 import android.view.WindowManager
 import android.widget.EditText
+import android.widget.Toast
 import com.suvidha.app.R
 
 class Common{
@@ -42,6 +43,8 @@ class Common{
                 (c as Activity).window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
             }
         }
-
+fun showToast(c : Context,msg: String){
+    Toast.makeText(c,msg,Toast.LENGTH_SHORT).show()
+}
     }
 }

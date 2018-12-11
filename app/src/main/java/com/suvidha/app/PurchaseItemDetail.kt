@@ -55,7 +55,7 @@ class PurchaseItemDetail : AppCompatActivity(){
 
     }
 
-    fun setData(){
+   private fun setData(){
 
         val cricket = ArrayList<String>()
         cricket.add("Prepare Your Local Conveyance")
