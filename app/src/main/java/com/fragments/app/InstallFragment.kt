@@ -18,7 +18,9 @@ class InstallFragment : Fragment(){
     lateinit var btnFilter : ImageView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
         v = inflater.inflate(R.layout.installation_screen,container,false)
+
         toolBar = activity!!.findViewById(R.id.toolbar)
         toolBar.title = "Installation & Services"
         btnFilter = toolBar.findViewById(R.id.img_filter)
@@ -28,10 +30,12 @@ class InstallFragment : Fragment(){
         v.recycler_install.adapter = InstallAdapter(activity!!)
 
         work()
+
         return v
 
     }
     private fun work(){
+
         btnFilter.setOnClickListener {
             if(v.lay_filters_install.visibility == View.VISIBLE){
                 v.lay_filters_install.visibility = View.GONE

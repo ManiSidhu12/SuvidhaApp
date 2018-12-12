@@ -1,13 +1,11 @@
 package com.fragments.app
 
 import android.app.DatePickerDialog
-import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +17,6 @@ import com.common.app.Common
 import com.suvidha.app.NewConveyance
 import com.suvidha.app.R
 import kotlinx.android.synthetic.main.hr_screen.view.*
-import java.text.DateFormat
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -53,8 +50,8 @@ class HRFragment : Fragment(){
         v.recycler_convo.layoutManager = LinearLayoutManager(activity!!)
         v.recycler_convo.adapter = HRAdapter(activity!!)
 
+        work()
 
-work()
         return v
     }
     private fun work(){
@@ -69,10 +66,10 @@ work()
         }
     }
     private fun showDatePicker(txt : TextView,value : String,dateFrom : String) {
-        val c = Calendar.getInstance()
+        val c= Calendar.getInstance()
         val mYear = c.get(Calendar.YEAR)
-        val mMonth = c.get(Calendar.MONTH)
-        val mDay = c.get(Calendar.DAY_OF_MONTH)
+        val mMonth= c.get(Calendar.MONTH)
+        val mDay  = c.get(Calendar.DAY_OF_MONTH)
 
         val datePickerDialog = DatePickerDialog(activity, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
      if(value.equals("to")){
@@ -95,9 +92,7 @@ work()
     }
 private fun checkDate(dateFrom : String,dateTo : String) : Boolean{
     var bool =  false
-    val dateFormat = SimpleDateFormat(
-        "MM/dd/yyyy"
-    )
+    val dateFormat = SimpleDateFormat("MM/dd/yyyy")
     var convertedDate = Date()
     var convertedDate2 = Date()
     try {

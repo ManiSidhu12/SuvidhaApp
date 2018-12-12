@@ -18,6 +18,7 @@ import com.bignerdranch.expandablerecyclerview.ViewHolder.ParentViewHolder;
 import com.fragments.app.HRFragment;
 import com.fragments.app.InstallFragment;
 import com.fragments.app.PurchaseFragment;
+import com.fragments.app.UserEnquiry;
 import com.github.captain_miao.recyclerviewutils.listener.OnRecyclerItemClickListener;
 import com.suvidha.app.R;
 
@@ -112,6 +113,11 @@ public class SimpleExpandableAdapter extends ExpandableRecyclerAdapter<SimpleExp
                         }
                         else if(parentPosition == 1){
                             InstallFragment f = new InstallFragment();
+                            ((FragmentActivity) v.getContext()).getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
+                            drawer.closeDrawer(GravityCompat.START);
+                        }
+                        else if(parentPosition == 3){
+                            UserEnquiry f = new UserEnquiry();
                             ((FragmentActivity) v.getContext()).getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
                             drawer.closeDrawer(GravityCompat.START);
                         }

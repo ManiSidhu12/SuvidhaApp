@@ -53,6 +53,7 @@ class PurchaseFragment : Fragment(){
         v.spin_user.adapter = adapterPrepare
 
         work()
+
         return v
     }
     fun work(){
@@ -65,4 +66,7 @@ class PurchaseFragment : Fragment(){
             }
         }
     }
+
+
+
 }
