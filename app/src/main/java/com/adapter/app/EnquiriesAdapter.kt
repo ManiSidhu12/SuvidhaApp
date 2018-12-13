@@ -14,9 +14,10 @@ class EnquiriesAdapter (var ctx : Context) : RecyclerView.Adapter<EnquiriesAdapt
     }
 
     override fun getItemCount(): Int {
-return 5    }
+        return 5
+    }
 
-    override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, p1: Int) {
     }
 
     class ViewHolder(itemView : View) :  RecyclerView.ViewHolder(itemView){
