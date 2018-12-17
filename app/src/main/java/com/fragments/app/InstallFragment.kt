@@ -57,10 +57,7 @@ class InstallFragment : Fragment(){
 
         work()
 
-        //===== 
-        //=====
-        //=====
-        //=====
+
 
 
         return v

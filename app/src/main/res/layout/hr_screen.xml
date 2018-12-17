@@ -105,7 +105,7 @@
                     android:textAllCaps="false"/>
             <Button
                     android:layout_width="150dp" android:layout_height="match_parent"
-                    android:text="Prepare New Convo."
+                    android:text="New Conveyance"
                     android:id="@+id/btn_prepare"
                     android:layout_alignParentEnd="true"
                     android:layout_centerInParent="true"

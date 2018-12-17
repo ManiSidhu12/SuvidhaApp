@@ -3,18 +3,35 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="45dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@color/colorPrimary">
+        <ImageView android:layout_width="20dp" android:layout_height="22dp"
+                   android:layout_alignParentStart="true"
+                   android:layout_centerInParent="true"
+                   android:layout_marginStart="7dp"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="match_parent"
+                  android:layout_centerInParent="true"
+                  android:text="Conveyance Form(New)"
+                  android:textColor="@android:color/white"
+                  android:textSize="16sp"
+                  android:gravity="center"/>
+    </RelativeLayout>
+
     <android.support.v4.widget.NestedScrollView android:layout_width="match_parent" android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal">
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_margin="15dp">
+<!--
             <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_margin="10dp"
-            android:text="Conveyance Form(New)"
+            android:text=""
             android:textSize="18sp"
             android:gravity="center"
             android:textColor="@android:color/black"/>
+-->
             <LinearLayout android:layout_width="match_parent" android:layout_height="45dp"
             android:layout_gravity="center_horizontal"
                           android:weightSum="3"
@@ -37,7 +54,7 @@
                             android:id="@+id/spin_name"
                             android:layout_width="match_parent"
                             android:layout_marginStart="5dp"
-                            android:layout_height="match_parent"></Spinner>
+                            android:layout_height="match_parent"/>
 
                 </RelativeLayout>
 
@@ -70,7 +87,7 @@
                             android:textSize="14sp"
                             android:gravity="start|center"
                             android:padding="4dp"
-                            android:layout_height="match_parent"></EditText>
+                            android:layout_height="match_parent"/>
 
                 </RelativeLayout>
 
@@ -103,7 +120,7 @@
                             android:textSize="14sp"
                             android:gravity="start|center"
                             android:padding="4dp"
-                            android:layout_height="match_parent"></EditText>
+                            android:layout_height="match_parent"/>
 
                 </RelativeLayout>
 
@@ -136,7 +153,7 @@
                             android:textSize="14sp"
                             android:gravity="start|center"
                             android:padding="4dp"
-                            android:layout_height="match_parent"></EditText>
+                            android:layout_height="match_parent"/>
 
                 </RelativeLayout>
 
@@ -169,7 +186,7 @@
                             android:textSize="14sp"
                             android:gravity="start|center"
                             android:padding="4dp"
-                            android:layout_height="match_parent"></EditText>
+                            android:layout_height="match_parent"/>
 
                 </RelativeLayout>
 
@@ -191,6 +208,7 @@
                 <RelativeLayout android:layout_width="0dp" android:layout_height="40dp"
                                android:layout_weight="2"
                                 android:layout_marginEnd="7dp"
+                                android:id="@+id/lay_conv_date"
                                 android:background="@drawable/spin_bg">
                     <TextView
                             android:id="@+id/txt_convo_date"
@@ -200,7 +218,7 @@
                             android:textSize="14sp"
                             android:gravity="start|center"
                             android:padding="4dp"
-                            android:layout_height="match_parent"></TextView>
+                            android:layout_height="match_parent"/>
 
                 </RelativeLayout>
 
@@ -233,6 +251,7 @@
                 <RelativeLayout android:layout_width="0dp" android:layout_height="40dp"
                              android:layout_weight="2"
                                 android:layout_marginEnd="7dp"
+                                android:id="@+id/lay_date"
                                 android:background="@drawable/spin_bg">
                     <TextView
                             android:id="@+id/txt_date"
@@ -242,7 +261,7 @@
                             android:textSize="14sp"
                             android:gravity="start|center"
                             android:padding="4dp"
-                            android:layout_height="match_parent"></TextView>
+                            android:layout_height="match_parent"/>
 
                 </RelativeLayout>
 
@@ -269,7 +288,7 @@
                             android:id="@+id/spin_mode"
                             android:layout_width="match_parent"
                             android:layout_marginStart="5dp"
-                            android:layout_height="match_parent"></Spinner>
+                            android:layout_height="match_parent"/>
 
                 </RelativeLayout>
 
@@ -302,7 +321,7 @@
                             android:textSize="14sp"
                             android:gravity="start|center"
                             android:padding="4dp"
-                            android:layout_height="match_parent"></EditText>
+                            android:layout_height="match_parent"/>
 
                 </RelativeLayout>
 
@@ -332,10 +351,19 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginStart="7dp"
-                            android:textSize="16sp"
+                            android:layout_toStartOf="@+id/img_cncl1"
+                            android:layout_marginEnd="2dp"
+                            android:textSize="13sp"
                             android:gravity="start|center"
                             android:textColor="@android:color/black"
-                            android:text="07-12-2018"></TextView>
+                            android:text="mm/dd/yyyy --:--:--"/>
+                    <ImageView
+                            android:id="@+id/img_cncl1" android:layout_width="17dp" android:layout_height="18dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerInParent="true"
+                            android:layout_marginEnd="5dp"
+                            android:visibility="gone"
+                            android:src="@drawable/close"/>
 
                 </RelativeLayout>
             </LinearLayout>
@@ -358,11 +386,20 @@
                             android:id="@+id/txt_time_out"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_toStartOf="@+id/img_cncl"
+                            android:layout_marginEnd="2dp"
                             android:layout_marginStart="7dp"
-                            android:textSize="16sp"
+                            android:textSize="13sp"
                             android:gravity="start|center"
                             android:textColor="@android:color/black"
-                            android:text="07-12-2018"></TextView>
+                            android:text="mm/dd/yyyy --:--:--"/>
+                    <ImageView
+                            android:id="@+id/img_cncl" android:layout_width="17dp" android:layout_height="17dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginEnd="5dp"
+                            android:visibility="gone"
+                    android:src="@drawable/close"/>
 
                 </RelativeLayout>
             </LinearLayout>
@@ -397,7 +434,7 @@
                             android:textSize="14sp"
                             android:gravity="start|center"
                             android:padding="4dp"
-                            android:layout_height="match_parent"></EditText>
+                            android:layout_height="match_parent"/>
 
                 </RelativeLayout>
 
@@ -430,7 +467,7 @@
                             android:textSize="14sp"
                             android:gravity="start|center"
                             android:padding="4dp"
-                            android:layout_height="match_parent"></EditText>
+                            android:layout_height="match_parent"/>
 
                 </RelativeLayout>
 
@@ -463,7 +500,7 @@
                             android:textSize="14sp"
                             android:gravity="start|center"
                             android:padding="4dp"
-                            android:layout_height="match_parent"></EditText>
+                            android:layout_height="match_parent"/>
 
                 </RelativeLayout>
 

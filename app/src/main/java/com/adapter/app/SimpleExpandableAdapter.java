@@ -6,6 +6,7 @@ import android.os.Build;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,10 +16,7 @@ import com.bignerdranch.expandablerecyclerview.Adapter.ExpandableRecyclerAdapter
 import com.bignerdranch.expandablerecyclerview.Model.ParentListItem;
 import com.bignerdranch.expandablerecyclerview.ViewHolder.ChildViewHolder;
 import com.bignerdranch.expandablerecyclerview.ViewHolder.ParentViewHolder;
-import com.fragments.app.HRFragment;
-import com.fragments.app.InstallFragment;
-import com.fragments.app.PurchaseFragment;
-import com.fragments.app.UserEnquiry;
+import com.fragments.app.*;
 import com.github.captain_miao.recyclerviewutils.listener.OnRecyclerItemClickListener;
 import com.suvidha.app.R;
 
@@ -104,6 +102,7 @@ public class SimpleExpandableAdapter extends ExpandableRecyclerAdapter<SimpleExp
                     int itemPosition = (int) getItemId(position);
                     int parentPosition = getParentPosition(itemPosition);
                     int parentIndex = getParentWrapperIndex(parentPosition);
+        Log.e("possss",parentIndex+",,"+parentPosition);
                     if (item instanceof SimpleChild) {
                      //   Log.e("values",((SimpleChild) item).getCat_id()+"Ak"+((SimpleChild)item).getTitle());
                         if(parentPosition == 0){
@@ -117,9 +116,16 @@ public class SimpleExpandableAdapter extends ExpandableRecyclerAdapter<SimpleExp
                             drawer.closeDrawer(GravityCompat.START);
                         }
                         else if(parentPosition == 3){
-                            UserEnquiry f = new UserEnquiry();
-                            ((FragmentActivity) v.getContext()).getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
+                            if(((SimpleChild) item).getTitle().equalsIgnoreCase("User Wise Enquiries Followed-Up")) {
+                                UserEnquiry f = new UserEnquiry();
+                                ((FragmentActivity) v.getContext()).getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
+                            }
+                            else {
+                                NewEnquiry f = new NewEnquiry();
+                                ((FragmentActivity) v.getContext()).getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
+                            }
                             drawer.closeDrawer(GravityCompat.START);
+
                         }
                         else {
                             PurchaseFragment f = new PurchaseFragment();

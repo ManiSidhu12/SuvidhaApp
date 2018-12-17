@@ -22,13 +22,15 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class HRFragment : Fragment(){
+ class HRFragment : Fragment(){
+
     lateinit var v : View
     lateinit var toolBar : Toolbar
     lateinit var btnFilter : ImageView
     var listFilters = ArrayList<String>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
         v = inflater.inflate(R.layout.hr_screen,container,false)
 
         toolBar = activity!!.findViewById(R.id.toolbar)
@@ -54,7 +56,9 @@ class HRFragment : Fragment(){
 
         return v
     }
+
     private fun work(){
+
         v.lay_from_date.setOnClickListener {
             showDatePicker(v.txt_from_date,"from","")
         }
@@ -64,16 +68,18 @@ class HRFragment : Fragment(){
         v.btn_prepare.setOnClickListener {
             startActivity(Intent(activity!!,NewConveyance::class.java))
         }
+
     }
     private fun showDatePicker(txt : TextView,value : String,dateFrom : String) {
-        val c= Calendar.getInstance()
-        val mYear = c.get(Calendar.YEAR)
-        val mMonth= c.get(Calendar.MONTH)
-        val mDay  = c.get(Calendar.DAY_OF_MONTH)
+        val c      = Calendar.getInstance()
+        val mYear  = c.get(Calendar.YEAR)
+        val mMonth = c.get(Calendar.MONTH)
+        val mDay   = c.get(Calendar.DAY_OF_MONTH)
 
-        val datePickerDialog = DatePickerDialog(activity, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-     if(value.equals("to")){
+        val datePickerDialog = DatePickerDialog(activity, DatePickerDialog.OnDateSetListener
+         { view, year, monthOfYear, dayOfMonth ->
 
+             if(value.equals("to")){
     if(checkDate(dateFrom,(monthOfYear + 1).toString() + "/" + dayOfMonth.toString()  + "/" + year)){
         txt.text =  (monthOfYear + 1).toString() + "/" + dayOfMonth.toString()  + "/" + year
 
@@ -99,7 +105,7 @@ private fun checkDate(dateFrom : String,dateTo : String) : Boolean{
         convertedDate = dateFormat.parse(dateFrom)
         convertedDate2 = dateFormat.parse(dateTo)
         if (convertedDate2.after(convertedDate)) {
-         bool =   true
+         bool =  true
         } else {
            bool =  false
         }
