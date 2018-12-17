@@ -71,19 +71,19 @@ class Home : AppCompatActivity() {
 
 private fun setData(){
     val cricket = ArrayList<String>()
-    cricket.add("Prepare Your Local Conveyance")
+    cricket.add("Prepare your local conveyance")
 
     val football = ArrayList<String>()
-    football.add("Installation Complaint/Call Register")
+    football.add("Installation complaint/call register")
 
     val basketball = ArrayList<String>()
-    basketball.add("Purchase Order Approval For Confirmation")
-    basketball.add("Plan Approval For Purchase Order")
-    basketball.add("View Pending Plan")
+    basketball.add("Purchase order approval for confirmation")
+    basketball.add("Plan approval for purchase order")
+    basketball.add("View pending plan")
 
     val football1 = ArrayList<String>()
-    football1.add("User Wise Enquiries Followed-Up")
-    football1.add("Prepare/Modify an Enquiry")
+    football1.add("User-wise enquiries Followed-up")
+    football1.add("Prepare/modify an Enquiry")
     football1.add("Enquiry Register & Followed-Up")
     football1.add("Quotation Ageing")
     football1.add("Rejection Analysis")

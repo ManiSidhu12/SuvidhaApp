@@ -9,7 +9,7 @@
                     android:layout_marginEnd="5dp">
         <TextView
                 android:id="@+id/txt_convo_no" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="#63"
+                android:text="63"
                 android:layout_alignParentStart="true"
                 android:padding="4dp"
                 android:textSize="16sp"

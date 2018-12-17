@@ -23,7 +23,7 @@
         android:orientation="vertical"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="45dp"
+            <LinearLayout android:layout_width="match_parent" android:layout_height="30dp"
                           android:layout_gravity="center_horizontal"
                           android:orientation="horizontal"
                           android:weightSum="3"
@@ -37,12 +37,11 @@
                         android:textSize="14sp"
                         android:padding="4dp"
                         android:gravity="start|center"/>
-                <RelativeLayout android:layout_width="0dp" android:layout_height="40dp"
+                <RelativeLayout android:layout_width="0dp" android:layout_height="30dp"
                                 android:layout_weight="2"
                                 android:layout_marginEnd="7dp"
                                 android:background="@drawable/spin_bg">
                     <TextView
-                            android:id="@+id/edt_designation"
                             android:layout_width="match_parent"
                             android:layout_marginStart="7dp"
                             android:text="13519"
@@ -55,21 +54,21 @@
                 </RelativeLayout>
 
             </LinearLayout>
-            <LinearLayout android:layout_width="match_parent" android:layout_height="45dp"
+            <LinearLayout android:layout_width="match_parent" android:layout_height="30dp"
                           android:layout_gravity="center_horizontal"
                           android:orientation="horizontal"
                           android:weightSum="3"
-                          android:layout_marginTop="10dp">
+                          android:layout_marginTop="5dp">
                 <TextView
                         android:id="@+id/date"
                         android:layout_width="0dp" android:layout_height="match_parent"
-                        android:text="Dated"
+                        android:text="Enquiry Date"
                         android:layout_weight="1"
                         android:textColor="@android:color/black"
                         android:textSize="14sp"
                         android:padding="4dp"
                         android:gravity="start|center"/>
-                <RelativeLayout android:layout_width="0dp" android:layout_height="40dp"
+                <RelativeLayout android:layout_width="0dp" android:layout_height="30dp"
                                 android:layout_weight="2"
                                 android:layout_marginEnd="7dp"
                                 android:background="@drawable/spin_bg">
@@ -87,11 +86,11 @@
                 </RelativeLayout>
 
             </LinearLayout>
-            <LinearLayout android:layout_width="match_parent" android:layout_height="45dp"
+            <LinearLayout android:layout_width="match_parent" android:layout_height="30dp"
                           android:layout_gravity="center_horizontal"
                           android:orientation="horizontal"
                           android:weightSum="3"
-                          android:layout_marginTop="10dp">
+                          android:layout_marginTop="5dp">
                 <TextView
                         android:id="@+id/cust_name"
                         android:layout_width="0dp" android:layout_height="match_parent"
@@ -101,7 +100,7 @@
                         android:textSize="14sp"
                         android:padding="4dp"
                         android:gravity="start|center"/>
-                <RelativeLayout android:layout_width="0dp" android:layout_height="40dp"
+                <RelativeLayout android:layout_width="0dp" android:layout_height="30dp"
                                 android:layout_weight="2"
                                 android:layout_marginEnd="7dp"
                                 android:background="@drawable/spin_bg">
@@ -120,11 +119,11 @@
                 </RelativeLayout>
 
             </LinearLayout>
-            <LinearLayout android:layout_width="match_parent" android:layout_height="60dp"
+            <LinearLayout android:layout_width="match_parent" android:layout_height="30dp"
                           android:layout_gravity="center_horizontal"
                           android:orientation="horizontal"
                           android:weightSum="3"
-                          android:layout_marginTop="10dp">
+                          android:layout_marginTop="5dp">
                 <TextView
                         android:id="@+id/adrs"
                         android:layout_width="0dp" android:layout_height="match_parent"
@@ -134,7 +133,7 @@
                         android:textSize="14sp"
                         android:padding="4dp"
                         android:gravity="start|center"/>
-                <RelativeLayout android:layout_width="0dp" android:layout_height="60dp"
+                <RelativeLayout android:layout_width="0dp" android:layout_height="30dp"
                                 android:layout_weight="2"
                                 android:layout_marginEnd="7dp"
                                 android:background="@drawable/spin_bg">
@@ -152,11 +151,11 @@
                 </RelativeLayout>
 
             </LinearLayout>
-            <LinearLayout android:layout_width="match_parent" android:layout_height="45dp"
+            <LinearLayout android:layout_width="match_parent" android:layout_height="30dp"
                           android:layout_gravity="center_horizontal"
                           android:orientation="horizontal"
                           android:weightSum="3"
-                          android:layout_marginTop="10dp">
+                          android:layout_marginTop="5dp">
                 <TextView
                         android:id="@+id/phn"
                         android:layout_width="0dp" android:layout_height="match_parent"
@@ -166,7 +165,7 @@
                         android:textSize="14sp"
                         android:padding="4dp"
                         android:gravity="start|center"/>
-                <RelativeLayout android:layout_width="0dp" android:layout_height="40dp"
+                <RelativeLayout android:layout_width="0dp" android:layout_height="30dp"
                                 android:layout_weight="2"
                                 android:layout_marginEnd="7dp"
                                 android:background="@drawable/spin_bg">
@@ -186,11 +185,11 @@
                 </RelativeLayout>
 
             </LinearLayout>
-            <LinearLayout android:layout_width="match_parent" android:layout_height="45dp"
+            <LinearLayout android:layout_width="match_parent" android:layout_height="30dp"
                           android:layout_gravity="center_horizontal"
                           android:orientation="horizontal"
                           android:weightSum="3"
-                          android:layout_marginTop="10dp">
+                          android:layout_marginTop="5dp">
                 <TextView
                         android:id="@+id/contact"
                         android:layout_width="0dp" android:layout_height="match_parent"
@@ -200,7 +199,7 @@
                         android:textSize="14sp"
                         android:padding="4dp"
                         android:gravity="start|center"/>
-                <RelativeLayout android:layout_width="0dp" android:layout_height="40dp"
+                <RelativeLayout android:layout_width="0dp" android:layout_height="30dp"
                                 android:layout_weight="2"
                                 android:layout_marginEnd="7dp"
                                 android:background="@drawable/spin_bg">
@@ -219,11 +218,11 @@
                 </RelativeLayout>
 
             </LinearLayout>
-            <LinearLayout android:layout_width="match_parent" android:layout_height="45dp"
+            <LinearLayout android:layout_width="match_parent" android:layout_height="30dp"
                           android:layout_gravity="center_horizontal"
                           android:orientation="horizontal"
                           android:weightSum="3"
-                          android:layout_marginTop="10dp">
+                          android:layout_marginTop="5dp">
                 <TextView
                         android:id="@+id/email"
                         android:layout_width="0dp" android:layout_height="match_parent"
@@ -233,7 +232,7 @@
                         android:textSize="14sp"
                         android:padding="4dp"
                         android:gravity="start|center"/>
-                <RelativeLayout android:layout_width="0dp" android:layout_height="40dp"
+                <RelativeLayout android:layout_width="0dp" android:layout_height="30dp"
                                 android:layout_weight="2"
                                 android:layout_marginEnd="7dp"
                                 android:background="@drawable/spin_bg">
@@ -257,7 +256,7 @@
                           android:layout_gravity="center_horizontal"
                           android:orientation="horizontal"
                           android:weightSum="3"
-                          android:layout_marginTop="10dp">
+                          android:layout_marginTop="5dp">
                 <TextView
                         android:id="@+id/desc"
                         android:layout_width="0dp" android:layout_height="match_parent"
@@ -266,7 +265,7 @@
                         android:textColor="@android:color/black"
                         android:textSize="14sp"
                         android:padding="4dp"
-                        android:gravity="start|center"/>
+                        android:gravity="start|top"/>
                 <RelativeLayout android:layout_width="0dp" android:layout_height="60dp"
                                 android:layout_weight="2"
                                 android:layout_marginEnd="7dp"
@@ -285,12 +284,12 @@
                 </RelativeLayout>
 
             </LinearLayout>
-            <LinearLayout android:layout_width="match_parent" android:layout_height="45dp"
+            <LinearLayout android:layout_width="match_parent" android:layout_height="30dp"
                           android:layout_gravity="center_horizontal"
                           android:orientation="horizontal"
                           android:weightSum="3"
-                          android:layout_marginTop="10dp">
-                <TextViewn
+                          android:layout_marginTop="5dp">
+                <TextView
                         android:layout_width="0dp" android:layout_height="match_parent"
                         android:text=""
                         android:layout_weight="1"
@@ -298,7 +297,7 @@
                         android:textSize="14sp"
                         android:padding="4dp"
                         android:gravity="start|center"/>
-                <LinearLayout android:layout_width="0dp" android:layout_height="40dp"
+                <LinearLayout android:layout_width="0dp" android:layout_height="30dp"
                                 android:layout_weight="2"
                                 android:layout_marginEnd="7dp"
                                 >
@@ -324,21 +323,21 @@
 
             </LinearLayout>
             <LinearLayout
-                    android:id="@+id/publishing" android:layout_width="match_parent" android:layout_height="45dp"
+                    android:id="@+id/publishing" android:layout_width="match_parent" android:layout_height="30dp"
                           android:layout_gravity="center_horizontal"
                           android:orientation="horizontal"
                           android:weightSum="3"
-                          android:layout_marginTop="10dp">
+                          android:layout_marginTop="5dp">
                 <TextView
                         android:id="@+id/publish"
                         android:layout_width="0dp" android:layout_height="match_parent"
-                        android:text="Publish On"
+                        android:text="Published On"
                         android:layout_weight="1"
                         android:textColor="@android:color/black"
                         android:textSize="14sp"
                         android:padding="4dp"
                         android:gravity="start|center"/>
-                <LinearLayout android:layout_width="0dp" android:layout_height="40dp"
+                <LinearLayout android:layout_width="0dp" android:layout_height="30dp"
                                 android:layout_weight="2"
                                 android:layout_marginEnd="7dp"
                                 android:background="@drawable/spin_bg">
@@ -357,11 +356,11 @@
 
             </LinearLayout>
             <LinearLayout
-                    android:id="@+id/opening" android:layout_width="match_parent" android:layout_height="45dp"
+                    android:id="@+id/opening" android:layout_width="match_parent" android:layout_height="30dp"
                     android:layout_gravity="center_horizontal"
                     android:orientation="horizontal"
                     android:weightSum="3"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="5dp">
                 <TextView
                         android:id="@+id/open"
                         android:layout_width="0dp" android:layout_height="match_parent"
@@ -371,7 +370,7 @@
                         android:textSize="14sp"
                         android:padding="4dp"
                         android:gravity="start|center"/>
-                <LinearLayout android:layout_width="0dp" android:layout_height="40dp"
+                <LinearLayout android:layout_width="0dp" android:layout_height="30dp"
                                 android:layout_weight="2"
                                 android:weightSum="2"
                               android:orientation="horizontal"
@@ -417,11 +416,11 @@ android:layout_weight="1.3"
                 </LinearLayout>
 
             </LinearLayout>
-            <LinearLayout android:layout_width="match_parent" android:layout_height="40dp"
+            <LinearLayout android:layout_width="match_parent" android:layout_height="30dp"
                           android:layout_gravity="center_horizontal"
                           android:weightSum="3"
                           android:orientation="horizontal"
-                          android:layout_marginTop="10dp">
+                          android:layout_marginTop="5dp">
                 <TextView
                         android:id="@+id/type"
                         android:layout_width="0dp" android:layout_height="match_parent"
@@ -431,7 +430,7 @@ android:layout_weight="1.3"
                         android:textSize="14sp"
                         android:padding="4dp"
                         android:gravity="start|center"/>
-                <RelativeLayout android:layout_width="0dp" android:layout_height="40dp"
+                <RelativeLayout android:layout_width="0dp" android:layout_height="30dp"
                                 android:layout_weight="2"
                                 android:layout_marginEnd="7dp"
                                 android:background="@drawable/spin_bg">
@@ -448,9 +447,9 @@ android:layout_weight="1.3"
       android:layout_gravity="center_horizontal"
       android:layout_margin="10dp"
       android:background="@android:color/darker_gray"/>
-            <LinearLayout android:layout_width="match_parent" android:layout_height="45dp"
+            <LinearLayout android:layout_width="match_parent" android:layout_height="30dp"
             android:orientation="horizontal"
-                          android:layout_marginTop="10dp"
+                          android:layout_marginTop="5dp"
             android:weightSum="2">
                 <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
                               android:layout_gravity="center_horizontal"
@@ -467,7 +466,7 @@ android:layout_weight="1.3"
                             android:textSize="14sp"
                             android:padding="4dp"
                             android:gravity="start|center"/>
-                    <RelativeLayout android:layout_width="0dp" android:layout_height="40dp"
+                    <RelativeLayout android:layout_width="0dp" android:layout_height="30dp"
                                     android:layout_weight="2"
                                     android:layout_marginEnd="7dp"
                                     android:background="@drawable/spin_bg">
@@ -495,7 +494,7 @@ android:layout_weight="1.3"
                             android:textSize="14sp"
                             android:padding="4dp"
                             android:gravity="start|center"/>
-                    <RelativeLayout android:layout_width="0dp" android:layout_height="40dp"
+                    <RelativeLayout android:layout_width="0dp" android:layout_height="30dp"
                                     android:layout_weight="2"
                                     android:layout_marginEnd="7dp"
                                     android:background="@drawable/spin_bg">
@@ -510,9 +509,9 @@ android:layout_weight="1.3"
                 </LinearLayout>
 
             </LinearLayout>
-            <LinearLayout android:layout_width="match_parent" android:layout_height="45dp"
+            <LinearLayout android:layout_width="match_parent" android:layout_height="30dp"
                           android:orientation="horizontal"
-                          android:layout_marginTop="10dp"
+                          android:layout_marginTop="5dp"
                           android:weightSum="2">
                 <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
                               android:layout_gravity="center_horizontal"
@@ -529,7 +528,7 @@ android:layout_weight="1.3"
                             android:textSize="14sp"
                             android:padding="4dp"
                             android:gravity="start|center"/>
-                    <RelativeLayout android:layout_width="0dp" android:layout_height="40dp"
+                    <RelativeLayout android:layout_width="0dp" android:layout_height="30dp"
                                     android:layout_weight="2"
                                     android:layout_marginEnd="7dp"
                                     android:background="@drawable/spin_bg">
@@ -557,7 +556,7 @@ android:layout_weight="1.3"
                             android:textSize="14sp"
                             android:padding="4dp"
                             android:gravity="start|center"/>
-                    <RelativeLayout android:layout_width="0dp" android:layout_height="40dp"
+                    <RelativeLayout android:layout_width="0dp" android:layout_height="30dp"
                                     android:layout_weight="2"
                                     android:layout_marginEnd="7dp"
                                     android:background="@drawable/spin_bg">
@@ -572,9 +571,9 @@ android:layout_weight="1.3"
                 </LinearLayout>
 
             </LinearLayout>
-            <LinearLayout android:layout_width="match_parent" android:layout_height="45dp"
+            <LinearLayout android:layout_width="match_parent" android:layout_height="30dp"
                           android:orientation="horizontal"
-                          android:layout_marginTop="10dp"
+                          android:layout_marginTop="5dp"
                           android:weightSum="2">
                 <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
                               android:layout_gravity="center_horizontal"
@@ -591,7 +590,7 @@ android:layout_weight="1.3"
                             android:textSize="14sp"
                             android:padding="4dp"
                             android:gravity="start|center"/>
-                    <RelativeLayout android:layout_width="0dp" android:layout_height="40dp"
+                    <RelativeLayout android:layout_width="0dp" android:layout_height="30dp"
                                     android:layout_weight="2"
                                     android:layout_marginEnd="7dp"
                                     android:background="@drawable/spin_bg">
@@ -619,7 +618,7 @@ android:layout_weight="1.3"
                             android:textSize="14sp"
                             android:padding="4dp"
                             android:gravity="start|center"/>
-                    <RelativeLayout android:layout_width="0dp" android:layout_height="40dp"
+                    <RelativeLayout android:layout_width="0dp" android:layout_height="30dp"
                                     android:layout_weight="2"
                                     android:layout_marginEnd="7dp"
                                     android:background="@drawable/spin_bg">
@@ -634,7 +633,7 @@ android:layout_weight="1.3"
                 </LinearLayout>
 
             </LinearLayout>
-            <LinearLayout android:layout_width="match_parent" android:layout_height="40dp"
+            <LinearLayout android:layout_width="match_parent" android:layout_height="30dp"
                           android:layout_gravity="center_horizontal"
                           android:weightSum="3"
                           android:orientation="horizontal"
@@ -642,13 +641,13 @@ android:layout_weight="1.3"
                 <TextView
                         android:id="@+id/intimation"
                         android:layout_width="0dp" android:layout_height="match_parent"
-                        android:text="Intimation"
+                        android:text="Source of Info."
                         android:layout_weight="1"
                         android:textColor="@android:color/black"
                         android:textSize="14sp"
                         android:padding="4dp"
                         android:gravity="start|center"/>
-                <RelativeLayout android:layout_width="0dp" android:layout_height="40dp"
+                <RelativeLayout android:layout_width="0dp" android:layout_height="30dp"
                                 android:layout_weight="2"
                                 android:layout_marginEnd="7dp"
                                 android:background="@drawable/spin_bg">
@@ -661,7 +660,7 @@ android:layout_weight="1.3"
                 </RelativeLayout>
 
             </LinearLayout>
-            <LinearLayout android:layout_width="match_parent" android:layout_height="40dp"
+            <LinearLayout android:layout_width="match_parent" android:layout_height="30dp"
                           android:layout_gravity="center_horizontal"
                           android:weightSum="3"
                           android:orientation="horizontal"
@@ -673,7 +672,7 @@ android:layout_weight="1.3"
                         android:textSize="14sp"
                         android:padding="4dp"
                         android:gravity="start|center"/>
-                <RelativeLayout android:layout_width="0dp" android:layout_height="40dp"
+                <RelativeLayout android:layout_width="0dp" android:layout_height="30dp"
                                 android:layout_weight="2"
                                 android:layout_marginEnd="7dp"
                 >
