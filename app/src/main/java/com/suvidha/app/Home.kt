@@ -84,7 +84,7 @@ private fun setData(){
     val football1 = ArrayList<String>()
     football1.add("User-wise enquiries Followed-up")
     football1.add("Prepare/modify an Enquiry")
-    football1.add("Enquiry Register & Followed-Up")
+    football1.add("Enquiry Register & Follow-up")
     football1.add("Quotation Ageing")
     football1.add("Rejection Analysis")
     val football2 = ArrayList<String>()

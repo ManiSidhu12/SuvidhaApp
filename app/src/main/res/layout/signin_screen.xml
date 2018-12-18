@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+android:background="@color/colorPrimary">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+
+                  android:layout_above="@+id/lay_email"
+                  android:layout_centerHorizontal="true"
+    android:orientation="vertical"
+    android:layout_marginBottom="50dp"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp">
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="Sign In"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textSize="35sp"
+                  android:fontFamily="sans-serif"
+                  android:textStyle="bold"
+        android:padding="3dp"/>
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:text="to continue to Suvidha"
+                  android:layout_gravity="center_horizontal"
+                  android:gravity="center"
+                  android:textColor="@android:color/white"
+                  android:textSize="20sp"
+                  android:fontFamily="sans-serif"
+                  android:textStyle="normal"
+                  android:padding="4dp"/>
+
+    </LinearLayout>
+    <RelativeLayout
+            android:id="@+id/lay_email"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_above="@+id/lay_pswd"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/newedt_bg">
+
+        <ImageView
+                android:id="@+id/img_email"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="5dp"
+                android:padding="5dp"
+                android:src="@drawable/email" />
+
+        <View
+                android:id="@+id/line_email"
+                android:layout_width="1dp"
+                android:layout_height="25dp"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="3dp"
+                android:layout_toEndOf="@+id/img_email"
+                android:background="@android:color/darker_gray"
+                android:padding="5dp" />
+
+        <EditText
+                android:id="@+id/edt_email"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_toEndOf="@+id/line_email"
+                android:background="@android:color/transparent"
+                android:gravity="start|center"
+                android:hint="Email Address"
+                android:inputType="textEmailAddress"
+                android:padding="5dp"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+
+        />
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:id="@+id/lay_pswd"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+          android:layout_centerInParent="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/newedt_bg">
+
+        <ImageView
+                android:id="@+id/img_pswd"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="5dp"
+                android:padding="5dp"
+                android:src="@drawable/pswd" />
+
+        <View
+                android:id="@+id/line_pswd"
+                android:layout_width="1dp"
+                android:layout_height="25dp"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="3dp"
+                android:layout_toEndOf="@+id/img_pswd"
+                android:background="@android:color/darker_gray"
+                android:padding="5dp" />
+
+        <EditText
+                android:id="@+id/edt_pswd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="3dp"
+                android:layout_toEndOf="@+id/line_pswd"
+                android:background="@android:color/transparent"
+                android:gravity="start|center"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:padding="5dp"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+    </RelativeLayout>
+    <RelativeLayout
+            android:id="@+id/lay_remember" android:layout_width="match_parent" android:layout_height="wrap_content"
+                   android:layout_below="@+id/lay_pswd"
+                    android:layout_centerHorizontal="true"
+    android:layout_marginStart="20dp"
+                    android:layout_marginTop="13dp"
+    android:layout_marginEnd="20dp">
+        <ImageView
+                android:id="@+id/img_remember" android:layout_width="20dp" android:layout_height="20dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="3dp"
+                android:src="@drawable/newedt_bg"
+        />
+
+        <TextView
+                android:id="@+id/txt_remember" android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/img_remember"
+                android:layout_marginStart="7dp"
+                android:layout_centerInParent="true"
+                android:textSize="16sp"
+                android:textColor="@android:color/white"
+                android:gravity="center"
+                android:fontFamily="sans-serif"
+                android:textStyle="normal"
+                android:text="Remember Me"/>
+    </RelativeLayout>
+    <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent" android:layout_height="45dp"
+            android:layout_below="@+id/lay_remember"
+         android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@color/login_color"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="Log In"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"/>
+<TextView
+        android:id="@+id/txt_forgot" android:layout_width="match_parent" android:layout_height="wrap_content"
+android:layout_below="@+id/btn_login"
+android:layout_centerHorizontal="true"
+          android:layout_marginEnd="20dp"
+          android:layout_marginTop="10dp"
+          android:text="Forgot your password?"
+          android:textColor="#A9C5DD"
+          android:padding="4dp"
+          android:gravity="center"
+          android:textSize="16sp"
+          android:textStyle="normal"
+          android:fontFamily="sans-serif"
+android:layout_marginStart="20dp"/>
+</RelativeLayout>

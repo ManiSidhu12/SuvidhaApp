@@ -116,8 +116,12 @@ public class SimpleExpandableAdapter extends ExpandableRecyclerAdapter<SimpleExp
                             drawer.closeDrawer(GravityCompat.START);
                         }
                         else if(parentPosition == 3){
-                            if(((SimpleChild) item).getTitle().equalsIgnoreCase("User Wise Enquiries Followed-Up")) {
+                            if(((SimpleChild) item).getTitle().equalsIgnoreCase("User-wise enquiries Followed-up")) {
                                 UserEnquiry f = new UserEnquiry();
+                                ((FragmentActivity) v.getContext()).getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
+                            }
+                            if(((SimpleChild) item).getTitle().equalsIgnoreCase("Enquiry Register & Follow-up")) {
+                                EnquiryFollowUp f = new EnquiryFollowUp();
                                 ((FragmentActivity) v.getContext()).getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
                             }
                             else {

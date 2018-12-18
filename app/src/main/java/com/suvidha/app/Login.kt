@@ -2,15 +2,17 @@ package com.suvidha.app
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Paint
 import android.os.Bundle
-import kotlinx.android.synthetic.main.login_screen.*
+import kotlinx.android.synthetic.main.signin_screen.*
 
 class Login : Activity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.login_screen)
+        setContentView(R.layout.signin_screen)
 
+        txt_forgot.paintFlags = Paint.UNDERLINE_TEXT_FLAG
         work()
     }
     private fun work(){
