@@ -37,28 +37,32 @@ class PurchaseAdapter(var ctx : Context) :  RecyclerView.Adapter<PurchaseAdapter
         if(p1 == 1){
             holder.txtName.text = "Devi Dayal Welding Works"
             holder.txtStatus.text = "Canceled"
-            holder.txtStatus.setTextColor( ContextCompat.getColor(ctx, R.color.red))
+            holder.txtStatus.setTextColor(ContextCompat.getColor(ctx, R.color.red))
         }
-       if(expandValue == p1){
+        if(expandValue == p1){
             holder.line.visibility = View.GONE
-            holder.layDetails .visibility = View.VISIBLE
-            holder.line1 .visibility = View.VISIBLE
-           // holder.btnMore.setImageResource(R.drawable.ic_expand_less_black_24dp)
+            holder.layDetails.visibility = View.VISIBLE
+            holder.line1.visibility = View.VISIBLE
+            holder.imgDrop.setImageResource(R.drawable.ic_expand_less_black_24dp)
+            holder.imgDrop.setColorFilter(ContextCompat.getColor(ctx, R.color.dark_blue), android.graphics.PorterDuff.Mode.SRC_IN)
+
         }
         else{
             holder.line.visibility = View.VISIBLE
             holder.layDetails.visibility = View.GONE
-            holder.line1 .visibility = View.GONE
-          //  holder.btnMore.setImageResource(R.drawable.ic_expand_more_black_24dp)
+            holder.line1.visibility = View.GONE
+            holder.imgDrop.setImageResource(R.drawable.ic_expand_more_black_24dp)
+            holder.imgDrop.setColorFilter(ContextCompat.getColor(ctx, R.color.dark_blue), android.graphics.PorterDuff.Mode.SRC_IN)
+
 
         }
-        holder.itemView.setOnClickListener {
-           if(expandValue == p1){
-               expandValue = -1
-           }
-            else{
-               expandValue = p1
-           }
+        holder.layClick.setOnClickListener {
+            if(expandValue == p1){
+                expandValue = -1
+            }
+            else {
+                expandValue = p1
+            }
             notifyDataSetChanged()
         }
         holder.txtDetails.setOnClickListener {
@@ -66,10 +70,10 @@ class PurchaseAdapter(var ctx : Context) :  RecyclerView.Adapter<PurchaseAdapter
         }
         holder.imgChk.setOnClickListener {
             if(pos  == p1){
-              pos = -1
+                pos = -1
             }
             else{
-               pos  = p1
+                pos  = p1
             }
             notifyDataSetChanged()
         }
@@ -84,5 +88,7 @@ class PurchaseAdapter(var ctx : Context) :  RecyclerView.Adapter<PurchaseAdapter
         var imgChk = itemView.img_chk
         var txtStatus = itemView.txt_confirmation_status
         var txtName = itemView.txt_suppliername
+        var layClick = itemView.lay_click
+        var imgDrop = itemView.drop_img
     }
 }

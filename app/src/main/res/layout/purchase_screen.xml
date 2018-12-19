@@ -1,318 +1,336 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-                                            android:background="#F9F9F9"
+                                            android:orientation="vertical"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:background="@color/grey"
 >
     <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
-    android:layout_gravity="center_horizontal"
-    android:orientation="vertical">
-    <LinearLayout
-            android:id="@+id/lay_filters"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="#F9F9F9"
-            android:visibility="gone"
-            android:layout_marginTop="15dp">
-        <TextView
-                android:id="@+id/select_branch"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                  android:text="Select Branch"
-                  android:textColor="@android:color/black"
-                  android:padding="2dp"
                   android:layout_gravity="center_horizontal"
-                  android:gravity="start|center"
-                android:fontFamily="sans-serif"
-                android:textStyle="bold"
-                  android:textSize="13sp"/>
-        <RelativeLayout android:layout_width="match_parent" android:layout_height="40dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_margin="5dp"
-                        android:background="@drawable/spin_bg">
-            <Spinner
-                    android:id="@+id/spin_branch"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
-
-        </RelativeLayout>
-        <TextView
-                android:id="@+id/prepare"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                  android:text="Prepared by User"
-                android:layout_marginTop="4dp"
-                  android:textColor="@android:color/black"
-                  android:padding="2dp"
-                  android:layout_gravity="center_horizontal"
-                  android:gravity="start|center"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif"
-                  android:textSize="13sp"/>
-        <RelativeLayout android:layout_width="match_parent" android:layout_height="40dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_margin="5dp"
-                        android:background="@drawable/spin_bg">
-            <Spinner
-                    android:id="@+id/spin_user"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-            android:layout_marginStart="7dp"/>
-
-        </RelativeLayout>
-        <TextView
-                android:id="@+id/po_status" android:layout_width="match_parent" android:layout_height="wrap_content"
-                  android:text="Select PO Status(Pending for Approval)"
-                  android:textColor="@android:color/black"
-                  android:padding="2dp"
-                android:layout_marginTop="4dp"
-                  android:layout_gravity="center_horizontal"
-                  android:gravity="start|center"
-                android:fontFamily="sans-serif"
-                android:textStyle="bold"
-                  android:textSize="13sp"/>
-
-        <RelativeLayout
-                android:id="@+id/lay_status" android:layout_width="match_parent" android:layout_height="40dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_margin="5dp"
-                        android:background="@drawable/spin_bg">
-            <Spinner
-                    android:id="@+id/spin_postatus"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
-
-        </RelativeLayout>
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                  android:text="Enter Keyword to Search"
-                  android:textColor="@android:color/black"
-                  android:padding="2dp"
-                  android:layout_gravity="center_horizontal"
-                  android:gravity="start|center"
-                  android:layout_marginTop="4dp"
-                  android:fontFamily="sans-serif"
-                  android:textStyle="bold"
-                  android:textSize="13sp"/>
-
-        <RelativeLayout android:layout_width="match_parent" android:layout_height="40dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_margin="5dp"
-                        android:background="@drawable/spin_bg">
-            <EditText
-                    android:id="@+id/edt_srch_purchase"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Search"
-                    android:textColor="@android:color/black"
-                    android:textSize="14sp"
-                    android:gravity="start|center"
-                    android:background="@android:color/transparent"
-                    android:padding="4dp"
-            />
-
-        </RelativeLayout>
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-                      android:id="@+id/lay_enquiry"
-                      android:visibility="gone"
-        android:orientation="vertical">
-        <TextView
-                android:id="@+id/zonetxt" android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:text="Zone"
-                android:textColor="@android:color/black"
-                android:padding="2dp"
-                android:layout_gravity="center_horizontal"
-                android:gravity="start|center"
-                android:textSize="16sp"/>
-
-        <RelativeLayout
-                android:id="@+id/lay_zone" android:layout_width="match_parent" android:layout_height="40dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="5dp"
-                android:background="@drawable/spin_bg">
-            <Spinner
-                    android:id="@+id/spinzone"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
-
-        </RelativeLayout>
-        <TextView
-                android:id="@+id/priority" android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:text="Priority"
-                android:textColor="@android:color/black"
-                android:padding="2dp"
-                android:layout_gravity="center_horizontal"
-                android:gravity="start|center"
-                android:textSize="16sp"/>
-
-        <RelativeLayout
-                android:id="@+id/lay_priority" android:layout_width="match_parent" android:layout_height="40dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="5dp"
-                android:background="@drawable/spin_bg">
-            <Spinner
-                    android:id="@+id/spin_priority"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
-
-        </RelativeLayout>
-        <TextView
-                android:id="@+id/remark_prev" android:layout_width="match_parent" android:layout_height="wrap_content"
-                  android:text="Previous Remarks"
-                  android:textColor="@android:color/black"
-                  android:padding="2dp"
-                  android:layout_gravity="center_horizontal"
-                  android:gravity="start|center"
-                  android:textSize="16sp"/>
-
-        <RelativeLayout
-                android:id="@+id/layy_remark" android:layout_width="match_parent" android:layout_height="40dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_margin="5dp"
-                        android:background="@drawable/spin_bg">
-            <EditText
-                    android:id="@+id/edt_prev_remark_purchase"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textColor="@android:color/black"
-                    android:textSize="14sp"
-                    android:gravity="start|center"
-                    android:enabled="false"
-                    android:background="@android:color/transparent"
-                    android:padding="4dp"
-            />
-
-        </RelativeLayout>
-        <TextView
-                android:id="@+id/click" android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:text="Click row for view last remark"
-                android:textColor="@android:color/holo_red_dark"
-                android:padding="2dp"
-                android:layout_gravity="center_horizontal"
-                android:gravity="start|center"
-                android:textSize="16sp"/>
-        <TextView
-                android:id="@+id/tye" android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:text="Customer Type"
-                android:textColor="@android:color/black"
-                android:padding="2dp"
-                android:layout_gravity="center_horizontal"
-                android:gravity="start|center"
-                android:textSize="16sp"/>
-
-        <RelativeLayout
-                android:id="@+id/lay_type" android:layout_width="match_parent" android:layout_height="40dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="5dp"
-                android:background="@drawable/spin_bg">
-            <Spinner
-                    android:id="@+id/spintype"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
-
-        </RelativeLayout>
-        </LinearLayout>
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                  android:text="Management Action"
-                  android:textColor="@android:color/black"
-                  android:padding="2dp"
-                  android:id="@+id/txt_action"
-                  android:layout_gravity="center_horizontal"
-                  android:fontFamily="sans-serif"
-                  android:textStyle="bold"
-                  android:layout_marginTop="4dp"
-                  android:gravity="start|center"
-                  android:textSize="13sp"/>
-
+                  android:orientation="vertical">
         <LinearLayout
-                android:id="@+id/lay_btns" android:layout_width="match_parent" android:layout_height="40dp"
-                      android:layout_gravity="center_horizontal"
-                      android:layout_margin="5dp"
-                android:layout_marginBottom="20dp"
-                android:weightSum="3"
-                      android:orientation="horizontal">
-            <Button android:layout_width="0dp" android:layout_height="match_parent"
-            android:text="Approve"
-                    android:layout_weight="1"
-            android:textColor="@android:color/white"
-            android:textSize="14sp"
-            android:gravity="center"
-                    android:background="@drawable/green_bg"
-            android:textAllCaps="false"/>
-            <Button android:layout_width="0dp" android:layout_height="match_parent"
-                    android:text="Refuse"
-                    android:layout_weight="1"
-                    android:layout_marginStart="12dp"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp"
-                    android:gravity="center"
-                    android:background="@drawable/refuse_bg"
-                    android:textAllCaps="false"/>
-            <Button android:layout_width="0dp" android:layout_height="match_parent"
-                    android:text="Hold"
-                    android:layout_weight="1"
-                    android:layout_marginStart="12dp"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp"
-                    android:gravity="center"
-                    android:background="@drawable/hold_bg"
-                    android:textAllCaps="false"/>
+                android:id="@+id/lay_filters"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/grey"
+                android:visibility="gone"
+                android:layout_marginTop="15dp">
+            <TextView
+                    android:id="@+id/select_branch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Select Branch"
+                    android:textColor="@android:color/black"
+                    android:padding="2dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="start|center"
+                    android:fontFamily="sans-serif"
+                    android:textStyle="bold"
+                    android:textSize="13sp"/>
+            <RelativeLayout android:layout_width="match_parent" android:layout_height="40dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/spin_bg">
+                <Spinner
+                        android:id="@+id/spin_branch"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
 
+            </RelativeLayout>
+            <TextView
+                    android:id="@+id/prepare"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Prepared by User"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@android:color/black"
+                    android:padding="2dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="start|center"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif"
+                    android:textSize="13sp"/>
+            <RelativeLayout android:layout_width="match_parent" android:layout_height="40dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/spin_bg">
+                <Spinner
+                        android:id="@+id/spin_user"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="7dp"/>
 
-        </LinearLayout>
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                      android:layout_gravity="center_horizontal"
-                      android:layout_marginTop="7dp"
-                      android:background="@drawable/spin_bg"
-                      android:visibility="gone"
-                      android:orientation="vertical">
+            </RelativeLayout>
+            <TextView
+                    android:id="@+id/po_status" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="Select PO Status(Pending for Approval)"
+                    android:textColor="@android:color/black"
+                    android:padding="2dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="start|center"
+                    android:fontFamily="sans-serif"
+                    android:textStyle="bold"
+                    android:textSize="13sp"/>
+
+            <RelativeLayout
+                    android:id="@+id/lay_status" android:layout_width="match_parent" android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/spin_bg">
+                <Spinner
+                        android:id="@+id/spin_postatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+
+            </RelativeLayout>
             <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                      android:text="Show POs"
+                      android:text="Enter Keyword to Search"
                       android:textColor="@android:color/black"
                       android:padding="2dp"
                       android:layout_gravity="center_horizontal"
-                      android:layout_margin="4dp"
                       android:gravity="start|center"
-                      android:textSize="16sp"/>
-            <RadioGroup android:layout_width="match_parent" android:layout_height="wrap_content"
-                        android:weightSum="4"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginBottom="4dp"
-                        android:orientation="horizontal">
-                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content"
-                             android:layout_weight="1"
-                             android:textSize="14sp"
-                             android:text="All" android:checked="false"/>
-                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content"
-                             android:layout_weight="1"
-                             android:textSize="14sp"
-                             android:text="Written" android:checked="false"/>
-                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content"
-                             android:layout_weight="1"
-                             android:textSize="14sp"
-                             android:text="Verbal" android:checked="false"/>
-                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content"
-                             android:layout_weight="1"
-                             android:textSize="14sp"
-                             android:text="Local" android:checked="false"/>
-            </RadioGroup>
+                      android:layout_marginTop="4dp"
+                      android:fontFamily="sans-serif"
+                      android:textStyle="bold"
+                      android:textSize="13sp"/>
 
+            <RelativeLayout android:layout_width="match_parent" android:layout_height="40dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/spin_bg">
+                <EditText
+                        android:id="@+id/edt_srch_purchase"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Search"
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp"
+                        android:gravity="start|center"
+                        android:background="@android:color/transparent"
+                        android:padding="4dp"
+                />
+
+            </RelativeLayout>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:layout_gravity="center_horizontal"
+                          android:id="@+id/lay_enquiry"
+                          android:visibility="gone"
+                          android:orientation="vertical">
+                <TextView
+                        android:id="@+id/zonetxt" android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Zone"
+                        android:textColor="@android:color/black"
+                        android:padding="2dp"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="start|center"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="sans-serif"
+                        android:textStyle="bold"
+                        android:textSize="13sp"/>
+
+                <RelativeLayout
+                        android:id="@+id/lay_zone" android:layout_width="match_parent" android:layout_height="40dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/spin_bg">
+                    <Spinner
+                            android:id="@+id/spinzone"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+
+                </RelativeLayout>
+                <TextView
+                        android:id="@+id/priority" android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Priority"
+                        android:textColor="@android:color/black"
+                        android:padding="2dp"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="start|center"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="sans-serif"
+                        android:textStyle="bold"
+                        android:textSize="13sp"/>
+
+                <RelativeLayout
+                        android:id="@+id/lay_priority" android:layout_width="match_parent" android:layout_height="40dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/spin_bg">
+                    <Spinner
+                            android:id="@+id/spin_priority"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+
+                </RelativeLayout>
+                <TextView
+                        android:id="@+id/remark_prev" android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Previous Remarks"
+                        android:textColor="@android:color/black"
+                        android:padding="2dp"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="start|center"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="sans-serif"
+                        android:textStyle="bold"
+                        android:textSize="13sp"/>
+
+                <RelativeLayout
+                        android:id="@+id/layy_remark" android:layout_width="match_parent" android:layout_height="40dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/spin_bg">
+                    <EditText
+                            android:id="@+id/edt_prev_remark_purchase"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textColor="@android:color/black"
+                            android:textSize="14sp"
+                            android:gravity="start|center"
+                            android:enabled="false"
+                            android:background="@android:color/transparent"
+                            android:padding="4dp"
+                    />
+
+                </RelativeLayout>
+                <TextView
+                        android:id="@+id/click" android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="Click row for view last remark"
+                        android:textColor="@android:color/holo_red_dark"
+                        android:padding="2dp"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="start|center"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="sans-serif"
+                        android:textStyle="bold"
+                        android:textSize="13sp"/>
+                <TextView
+                        android:id="@+id/tye" android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="Customer Type"
+                        android:textColor="@android:color/black"
+                        android:padding="2dp"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="start|center"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="sans-serif"
+                        android:textStyle="bold"
+                        android:textSize="13sp"/>
+
+                <RelativeLayout
+                        android:id="@+id/lay_type" android:layout_width="match_parent" android:layout_height="40dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/spin_bg">
+                    <Spinner
+                            android:id="@+id/spintype"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+
+                </RelativeLayout>
+            </LinearLayout>
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:text="Management Action"
+                      android:textColor="@android:color/black"
+                      android:padding="2dp"
+                      android:id="@+id/txt_action"
+                      android:layout_gravity="center_horizontal"
+                      android:fontFamily="sans-serif"
+                      android:textStyle="bold"
+                      android:layout_marginTop="4dp"
+                      android:gravity="start|center"
+                      android:textSize="13sp"/>
+
+            <LinearLayout
+                    android:id="@+id/lay_btns" android:layout_width="match_parent" android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="5dp"
+                    android:layout_marginBottom="20dp"
+                    android:weightSum="3"
+                    android:orientation="horizontal">
+                <Button android:layout_width="0dp" android:layout_height="match_parent"
+                        android:text="Approve"
+                        android:layout_weight="1"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp"
+                        android:gravity="center"
+                        android:background="@drawable/green_bg"
+                        android:textAllCaps="false"/>
+                <Button android:layout_width="0dp" android:layout_height="match_parent"
+                        android:text="Refuse"
+                        android:layout_weight="1"
+                        android:layout_marginStart="12dp"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp"
+                        android:gravity="center"
+                        android:background="@drawable/refuse_bg"
+                        android:textAllCaps="false"/>
+                <Button android:layout_width="0dp" android:layout_height="match_parent"
+                        android:text="Hold"
+                        android:layout_weight="1"
+                        android:layout_marginStart="12dp"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp"
+                        android:gravity="center"
+                        android:background="@drawable/hold_bg"
+                        android:textAllCaps="false"/>
+
+
+            </LinearLayout>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:layout_gravity="center_horizontal"
+                          android:layout_marginTop="7dp"
+                          android:background="@drawable/spin_bg"
+                          android:visibility="gone"
+                          android:orientation="vertical">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:text="Show POs"
+                          android:textColor="@android:color/black"
+                          android:padding="2dp"
+                          android:layout_gravity="center_horizontal"
+                          android:layout_margin="4dp"
+                          android:gravity="start|center"
+                          android:textSize="16sp"/>
+                <RadioGroup android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:weightSum="4"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginBottom="4dp"
+                            android:orientation="horizontal">
+                    <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                 android:layout_weight="1"
+                                 android:textSize="14sp"
+                                 android:text="All" android:checked="false"/>
+                    <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                 android:layout_weight="1"
+                                 android:textSize="14sp"
+                                 android:text="Written" android:checked="false"/>
+                    <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                 android:layout_weight="1"
+                                 android:textSize="14sp"
+                                 android:text="Verbal" android:checked="false"/>
+                    <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                 android:layout_weight="1"
+                                 android:textSize="14sp"
+                                 android:text="Local" android:checked="false"/>
+                </RadioGroup>
+
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-    <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_purchase"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:background="@android:color/white"
-            android:nestedScrollingEnabled="false"
-            android:orientation="vertical"/>
+        <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_purchase"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/white"
+                android:nestedScrollingEnabled="false"
+                android:orientation="vertical"/>
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>
