@@ -1,6 +1,7 @@
 package com.suvidha.app
 
 import android.os.Bundle
+import android.support.design.widget.BottomNavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
@@ -22,7 +23,7 @@ class Home : AppCompatActivity() {
 
         setContentView(R.layout.home_screen)
 
-        setSupportActionBar(toolbar)
+     //   setSupportActionBar(toolbar)
 
          setData()
 

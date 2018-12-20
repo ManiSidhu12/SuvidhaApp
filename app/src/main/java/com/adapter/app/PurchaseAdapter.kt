@@ -54,7 +54,6 @@ class PurchaseAdapter(var ctx : Context) :  RecyclerView.Adapter<PurchaseAdapter
             holder.imgDrop.setImageResource(R.drawable.ic_expand_more_black_24dp)
             holder.imgDrop.setColorFilter(ContextCompat.getColor(ctx, R.color.dark_blue), android.graphics.PorterDuff.Mode.SRC_IN)
 
-
         }
         holder.layClick.setOnClickListener {
             if(expandValue == p1){

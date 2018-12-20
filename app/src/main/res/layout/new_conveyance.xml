@@ -6,10 +6,14 @@
     <RelativeLayout android:layout_width="match_parent" android:layout_height="45dp"
                     android:layout_gravity="center_horizontal"
                     android:background="@color/colorPrimary">
-        <ImageView android:layout_width="20dp" android:layout_height="22dp"
-                   android:layout_alignParentStart="true"
-                   android:layout_centerInParent="true"
-                   android:layout_marginStart="7dp"/>
+        <ImageView
+                android:id="@+id/img_back"
+                android:layout_width="22dp" android:layout_height="22dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="12dp"
+                android:tint="@android:color/white"
+                android:src="@drawable/back_arrow"/>
         <TextView android:layout_width="wrap_content" android:layout_height="match_parent"
                   android:layout_centerInParent="true"
                   android:text="Conveyance Form(New)"
@@ -36,23 +40,23 @@
                         android:gravity="center"
                         android:textColor="@android:color/black"/>
             -->
-            <LinearLayout android:layout_width="match_parent" android:layout_height="45dp"
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                           android:layout_gravity="center_horizontal"
-                          android:weightSum="3"
-                          android:orientation="horizontal"
-                          android:layout_marginTop="10dp">
+                          android:orientation="vertical"
+            >
                 <TextView
                         android:id="@+id/name"
-                        android:layout_width="0dp" android:layout_height="match_parent"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
                         android:text="Name"
-                        android:layout_weight="1"
                         android:textColor="@android:color/black"
-                        android:textSize="14sp"
-                        android:padding="4dp"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:fontFamily="sans-serif"
+                        android:padding="2dp"
                         android:gravity="start|center"/>
-                <RelativeLayout android:layout_width="0dp" android:layout_height="40dp"
-                                android:layout_weight="2"
+                <RelativeLayout android:layout_width="match_parent" android:layout_height="35dp"
                                 android:layout_marginEnd="7dp"
+                                android:layout_marginTop="3dp"
                                 android:background="@drawable/spin_bg">
                     <Spinner
                             android:id="@+id/spin_name"
@@ -63,23 +67,23 @@
                 </RelativeLayout>
 
             </LinearLayout>
-            <LinearLayout android:layout_width="match_parent" android:layout_height="45dp"
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                           android:layout_gravity="center_horizontal"
-                          android:orientation="horizontal"
-                          android:weightSum="3"
+                          android:orientation="vertical"
                           android:layout_marginTop="10dp">
                 <TextView
                         android:id="@+id/designation"
-                        android:layout_width="0dp" android:layout_height="match_parent"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
                         android:text="Designation"
-                        android:layout_weight="1"
                         android:textColor="@android:color/black"
-                        android:textSize="14sp"
-                        android:padding="4dp"
+                        android:textSize="13sp"
+                        android:padding="2dp"
+                        android:fontFamily="sans-serif"
+                        android:textStyle="bold"
                         android:gravity="start|center"/>
-                <RelativeLayout android:layout_width="0dp" android:layout_height="40dp"
-                                android:layout_weight="2"
+                <RelativeLayout android:layout_width="match_parent" android:layout_height="35dp"
                                 android:layout_marginEnd="7dp"
+                                android:layout_marginTop="3dp"
                                 android:background="@drawable/spin_bg">
                     <EditText
                             android:id="@+id/edt_designation"
@@ -96,23 +100,23 @@
                 </RelativeLayout>
 
             </LinearLayout>
-            <LinearLayout android:layout_width="match_parent" android:layout_height="45dp"
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                           android:layout_gravity="center_horizontal"
-                          android:orientation="horizontal"
-                          android:weightSum="3"
-                          android:layout_marginTop="10dp">
+                          android:orientation="vertical"
+                          android:layout_marginTop="5dp">
                 <TextView
                         android:id="@+id/dept"
-                        android:layout_width="0dp" android:layout_height="match_parent"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
                         android:text="Department"
-                        android:layout_weight="1"
                         android:textColor="@android:color/black"
-                        android:textSize="14sp"
-                        android:padding="4dp"
+                        android:textSize="13sp"
+                        android:fontFamily="sans-serif"
+                        android:textStyle="bold"
+                        android:padding="2dp"
                         android:gravity="start|center"/>
-                <RelativeLayout android:layout_width="0dp" android:layout_height="40dp"
-                                android:layout_weight="2"
+                <RelativeLayout android:layout_width="match_parent" android:layout_height="35dp"
                                 android:layout_marginEnd="7dp"
+                                android:layout_marginTop="3dp"
                                 android:background="@drawable/spin_bg">
                     <EditText
                             android:id="@+id/edt_dept"
@@ -129,23 +133,23 @@
                 </RelativeLayout>
 
             </LinearLayout>
-            <LinearLayout android:layout_width="match_parent" android:layout_height="45dp"
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                           android:layout_gravity="center_horizontal"
-                          android:orientation="horizontal"
-                          android:weightSum="3"
-                          android:layout_marginTop="10dp">
+                          android:orientation="vertical"
+                          android:layout_marginTop="5dp">
                 <TextView
                         android:id="@+id/hod"
-                        android:layout_width="0dp" android:layout_height="match_parent"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
                         android:text="Head of Dept."
-                        android:layout_weight="1"
                         android:textColor="@android:color/black"
-                        android:textSize="14sp"
-                        android:padding="4dp"
+                        android:textSize="13sp"
+                        android:padding="2dp"
+                        android:fontFamily="sans-serif"
+                        android:textStyle="bold"
                         android:gravity="start|center"/>
-                <RelativeLayout android:layout_width="0dp" android:layout_height="40dp"
-                                android:layout_weight="2"
+                <RelativeLayout android:layout_width="match_parent" android:layout_height="35dp"
                                 android:layout_marginEnd="7dp"
+                                android:layout_marginTop="3dp"
                                 android:background="@drawable/spin_bg">
                     <EditText
                             android:id="@+id/edt_hod"
@@ -162,23 +166,23 @@
                 </RelativeLayout>
 
             </LinearLayout>
-            <LinearLayout android:layout_width="match_parent" android:layout_height="45dp"
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                           android:layout_gravity="center_horizontal"
-                          android:orientation="horizontal"
-                          android:weightSum="3"
-                          android:layout_marginTop="10dp">
+                          android:orientation="vertical"
+                          android:layout_marginTop="5dp">
                 <TextView
                         android:id="@+id/convo_no"
-                        android:layout_width="0dp" android:layout_height="match_parent"
-                        android:text="Last Convo No"
-                        android:layout_weight="1"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="Last conveyance no."
                         android:textColor="@android:color/black"
-                        android:textSize="14sp"
-                        android:padding="4dp"
+                        android:textSize="13sp"
+                        android:padding="2dp"
+                        android:fontFamily="sans-serif"
+                        android:textStyle="bold"
                         android:gravity="start|center"/>
-                <RelativeLayout android:layout_width="0dp" android:layout_height="40dp"
-                                android:layout_weight="2"
+                <RelativeLayout android:layout_width="match_parent" android:layout_height="35dp"
                                 android:layout_marginEnd="7dp"
+                                android:layout_marginTop="3dp"
                                 android:background="@drawable/spin_bg">
                     <EditText
                             android:id="@+id/edt_convono"
@@ -195,24 +199,24 @@
                 </RelativeLayout>
 
             </LinearLayout>
-            <LinearLayout android:layout_width="match_parent" android:layout_height="45dp"
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                           android:layout_gravity="center_horizontal"
-                          android:orientation="horizontal"
-                          android:weightSum="3"
-                          android:layout_marginTop="10dp">
+                          android:orientation="vertical"
+                          android:layout_marginTop="5dp">
                 <TextView
                         android:id="@+id/convo_date"
-                        android:layout_width="0dp" android:layout_height="match_parent"
-                        android:text="Conv Date"
-                        android:layout_weight="1"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="Convayence Date"
                         android:textColor="@android:color/black"
-                        android:textSize="14sp"
-                        android:padding="4dp"
+                        android:textSize="13sp"
+                        android:padding="2dp"
+                        android:fontFamily="sans-serif"
+                        android:textStyle="bold"
                         android:gravity="start|center"/>
-                <RelativeLayout android:layout_width="0dp" android:layout_height="40dp"
-                                android:layout_weight="2"
+                <RelativeLayout android:layout_width="match_parent" android:layout_height="35dp"
                                 android:layout_marginEnd="7dp"
                                 android:id="@+id/lay_conv_date"
+                                android:layout_marginTop="3dp"
                                 android:background="@drawable/spin_bg">
                     <TextView
                             android:id="@+id/txt_convo_date"
@@ -229,32 +233,35 @@
             </LinearLayout>
             <View android:layout_width="match_parent" android:layout_height="1dp"
                   android:layout_gravity="center_horizontal"
-                  android:layout_marginTop="20dp"
+                  android:layout_marginTop="5dp"
+                  android:visibility="gone"
                   android:background="@android:color/darker_gray"/>
             <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                       android:layout_gravity="center_horizontal"
-                      android:layout_margin="10dp"
-                      android:text="Conveyance Detail"
-                      android:textSize="16sp"
-                      android:gravity="center"
+                      android:layout_marginTop="5dp"
+                      android:text="Conveyance Details:-"
+                      android:textSize="14sp"
+                      android:fontFamily="sans-serif"
+                      android:textStyle="bold"
+                      android:gravity="start|center"
                       android:textColor="@android:color/black"/>
-            <LinearLayout android:layout_width="match_parent" android:layout_height="45dp"
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                           android:layout_gravity="center_horizontal"
-                          android:weightSum="3"
-                          android:orientation="horizontal"
+                          android:orientation="vertical"
             >
                 <TextView
                         android:id="@+id/date"
-                        android:layout_width="0dp" android:layout_height="match_parent"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
                         android:text="Date"
-                        android:layout_weight="1"
                         android:textColor="@android:color/black"
-                        android:textSize="14sp"
-                        android:padding="4dp"
+                        android:textSize="12sp"
+                        android:padding="2dp"
+                        android:fontFamily="sans-serif"
+                        android:textStyle="bold"
                         android:gravity="start|center"/>
-                <RelativeLayout android:layout_width="0dp" android:layout_height="40dp"
-                                android:layout_weight="2"
+                <RelativeLayout android:layout_width="match_parent" android:layout_height="35dp"
                                 android:layout_marginEnd="7dp"
+                                android:layout_marginTop="3dp"
                                 android:id="@+id/lay_date"
                                 android:background="@drawable/spin_bg">
                     <TextView
@@ -270,23 +277,23 @@
                 </RelativeLayout>
 
             </LinearLayout>
-            <LinearLayout android:layout_width="match_parent" android:layout_height="45dp"
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                           android:layout_gravity="center_horizontal"
-                          android:weightSum="3"
-                          android:orientation="horizontal"
-                          android:layout_marginTop="10dp">
+                          android:orientation="vertical"
+                          android:layout_marginTop="5dp">
                 <TextView
                         android:id="@+id/mode"
-                        android:layout_width="0dp" android:layout_height="match_parent"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
                         android:text="Mode"
-                        android:layout_weight="1"
                         android:textColor="@android:color/black"
-                        android:textSize="14sp"
-                        android:padding="4dp"
+                        android:textSize="13sp"
+                        android:padding="2dp"
+                        android:fontFamily="sans-serif"
+                        android:textStyle="bold"
                         android:gravity="start|center"/>
-                <RelativeLayout android:layout_width="0dp" android:layout_height="40dp"
-                                android:layout_weight="2"
+                <RelativeLayout android:layout_width="match_parent" android:layout_height="35dp"
                                 android:layout_marginEnd="7dp"
+                                android:layout_marginTop="3dp"
                                 android:background="@drawable/spin_bg">
                     <Spinner
                             android:id="@+id/spin_mode"
@@ -297,23 +304,23 @@
                 </RelativeLayout>
 
             </LinearLayout>
-            <LinearLayout android:layout_width="match_parent" android:layout_height="45dp"
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                           android:layout_gravity="center_horizontal"
-                          android:orientation="horizontal"
-                          android:weightSum="3"
-                          android:layout_marginTop="10dp">
+                          android:orientation="vertical"
+                          android:layout_marginTop="5dp">
                 <TextView
                         android:id="@+id/km"
-                        android:layout_width="0dp" android:layout_height="match_parent"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
                         android:text="K.M."
-                        android:layout_weight="1"
                         android:textColor="@android:color/black"
-                        android:textSize="14sp"
-                        android:padding="4dp"
+                        android:textSize="13sp"
+                        android:padding="2dp"
+                        android:fontFamily="sans-serif"
+                        android:textStyle="bold"
                         android:gravity="start|center"/>
-                <RelativeLayout android:layout_width="0dp" android:layout_height="40dp"
-                                android:layout_weight="2"
+                <RelativeLayout android:layout_width="match_parent" android:layout_height="35dp"
                                 android:layout_marginEnd="7dp"
+                                android:layout_marginTop="3dp"
                                 android:background="@drawable/spin_bg">
                     <EditText
                             android:id="@+id/edt_km"
@@ -332,7 +339,7 @@
             </LinearLayout>
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                           android:layout_gravity="center_horizontal"
-                          android:layout_marginTop="10dp"
+                          android:layout_marginTop="5dp"
                           android:orientation="horizontal"
                           android:weightSum="2">
                 <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
@@ -342,12 +349,14 @@
                               android:text="Time In"
                               android:textColor="@android:color/black"
                               android:padding="2dp"
+                              android:textStyle="bold"
+                              android:fontFamily="sans-serif"
                               android:layout_gravity="center_horizontal"
                               android:gravity="start|center"
-                              android:textSize="16sp"/>
+                              android:textSize="13sp"/>
                     <RelativeLayout
                             android:id="@+id/lay_time_in" android:layout_width="match_parent"
-                            android:layout_height="40dp"
+                            android:layout_height="35dp"
                             android:layout_gravity="center_horizontal"
                             android:layout_margin="5dp"
                             android:background="@drawable/spin_bg">
@@ -377,14 +386,16 @@
                               android:layout_weight="1">
                     <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                               android:text="Time Out"
+                              android:textStyle="bold"
+                              android:fontFamily="sans-serif"
                               android:textColor="@android:color/black"
                               android:padding="2dp"
                               android:layout_gravity="center_horizontal"
                               android:gravity="start|center"
-                              android:textSize="16sp"/>
+                              android:textSize="13sp"/>
                     <RelativeLayout
                             android:id="@+id/lay_time_out" android:layout_width="match_parent"
-                            android:layout_height="40dp"
+                            android:layout_height="35dp"
                             android:layout_gravity="center_horizontal"
                             android:layout_margin="5dp"
                             android:background="@drawable/spin_bg">
@@ -412,23 +423,23 @@
 
 
             </LinearLayout>
-            <LinearLayout android:layout_width="match_parent" android:layout_height="45dp"
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                           android:layout_gravity="center_horizontal"
-                          android:orientation="horizontal"
-                          android:weightSum="3"
-                          android:layout_marginTop="10dp">
+                          android:orientation="vertical"
+                          android:layout_marginTop="5dp">
                 <TextView
                         android:id="@+id/rate"
-                        android:layout_width="0dp" android:layout_height="match_parent"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
                         android:text="Rate/KM."
-                        android:layout_weight="1"
                         android:textColor="@android:color/black"
-                        android:textSize="14sp"
-                        android:padding="4dp"
+                        android:textSize="13sp"
+                        android:fontFamily="sans-serif"
+                        android:textStyle="bold"
+                        android:padding="2dp"
                         android:gravity="start|center"/>
-                <RelativeLayout android:layout_width="0dp" android:layout_height="40dp"
-                                android:layout_weight="2"
+                <RelativeLayout android:layout_width="match_parent" android:layout_height="35dp"
                                 android:layout_marginEnd="7dp"
+                                android:layout_marginTop="3dp"
                                 android:background="@drawable/spin_bg">
                     <EditText
                             android:id="@+id/edt_rate"
@@ -445,22 +456,22 @@
                 </RelativeLayout>
 
             </LinearLayout>
-            <LinearLayout android:layout_width="match_parent" android:layout_height="45dp"
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                           android:layout_gravity="center_horizontal"
-                          android:orientation="horizontal"
-                          android:weightSum="3"
-                          android:layout_marginTop="10dp">
+                          android:orientation="vertical"
+                          android:layout_marginTop="5dp">
                 <TextView
                         android:id="@+id/amount"
-                        android:layout_width="0dp" android:layout_height="match_parent"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
                         android:text="Amount"
-                        android:layout_weight="1"
                         android:textColor="@android:color/black"
-                        android:textSize="14sp"
-                        android:padding="4dp"
+                        android:textSize="13sp"
+                        android:fontFamily="sans-serif"
+                        android:textStyle="bold"
+                        android:padding="2dp"
                         android:gravity="start|center"/>
-                <RelativeLayout android:layout_width="0dp" android:layout_height="40dp"
-                                android:layout_weight="2"
+                <RelativeLayout android:layout_width="match_parent" android:layout_height="35dp"
+                                android:layout_marginTop="3dp"
                                 android:layout_marginEnd="7dp"
                                 android:background="@drawable/spin_bg">
                     <EditText
@@ -478,22 +489,22 @@
                 </RelativeLayout>
 
             </LinearLayout>
-            <LinearLayout android:layout_width="match_parent" android:layout_height="45dp"
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                           android:layout_gravity="center_horizontal"
-                          android:orientation="horizontal"
-                          android:weightSum="3"
-                          android:layout_marginTop="10dp">
+                          android:orientation="vertical"
+                          android:layout_marginTop="5dp">
                 <TextView
                         android:id="@+id/remark"
-                        android:layout_width="0dp" android:layout_height="match_parent"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
                         android:text="Brief Remark"
-                        android:layout_weight="1"
                         android:textColor="@android:color/black"
-                        android:textSize="14sp"
-                        android:padding="4dp"
+                        android:textSize="13sp"
+                        android:fontFamily="sans-serif"
+                        android:textStyle="bold"
+                        android:padding="2dp"
                         android:gravity="start|center"/>
-                <RelativeLayout android:layout_width="0dp" android:layout_height="40dp"
-                                android:layout_weight="2"
+                <RelativeLayout android:layout_width="match_parent" android:layout_height="35dp"
+                                android:layout_marginTop="3dp"
                                 android:layout_marginEnd="7dp"
                                 android:background="@drawable/spin_bg">
                     <EditText
@@ -511,12 +522,16 @@
                 </RelativeLayout>
 
             </LinearLayout>
-            <Button android:layout_width="140dp" android:layout_height="40dp"
+            <Button android:layout_width="match_parent" android:layout_height="40dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="20dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
                     android:textSize="14sp"
                     android:gravity="center"
                     android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:background="@color/green"
                     android:text="Add to List"/>
 
         </LinearLayout>

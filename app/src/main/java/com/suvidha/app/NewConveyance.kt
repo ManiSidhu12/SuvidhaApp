@@ -20,6 +20,9 @@ class NewConveyance : Activity(){
         work()
     }
     private fun work(){
+        img_back.setOnClickListener {
+            onBackPressed()
+        }
         lay_conv_date.setOnClickListener {
             showDatePicker(txt_convo_date,"","")
         }

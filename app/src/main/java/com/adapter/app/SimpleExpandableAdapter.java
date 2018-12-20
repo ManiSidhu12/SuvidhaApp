@@ -23,11 +23,9 @@ import com.suvidha.app.R;
 
 import java.util.List;
 
-
 public class SimpleExpandableAdapter extends ExpandableRecyclerAdapter<SimpleExpandableAdapter.SimpleParentViewHolder, SimpleExpandableAdapter.SimpleChildViewHolder> implements OnRecyclerItemClickListener {
 
     private LayoutInflater mInflater;
-
     Context c;
     DrawerLayout drawer;
 
@@ -66,6 +64,9 @@ public class SimpleExpandableAdapter extends ExpandableRecyclerAdapter<SimpleExp
         else{
             parentViewHolder.mParentDropDownArrow.setVisibility(View.GONE);
 
+        }
+        if(simpleParentItem.getTitle().equalsIgnoreCase("T.A. Bill")){
+            parentViewHolder.v1.setVisibility(View.GONE);
         }
 /*
         parentViewHolder.mParentDropDownArrow1.setOnClickListener(new View.OnClickListener() {
@@ -116,6 +117,7 @@ public class SimpleExpandableAdapter extends ExpandableRecyclerAdapter<SimpleExp
                             drawer.closeDrawer(GravityCompat.START);
                         }
                         else if(parentPosition == 3){
+                            Log.e("title",((SimpleChild) item).getTitle());
                             if(((SimpleChild) item).getTitle().equalsIgnoreCase("User-wise enquiries Followed-up")) {
                                 UserEnquiry f = new UserEnquiry();
                                 ((FragmentActivity) v.getContext()).getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
@@ -124,7 +126,7 @@ public class SimpleExpandableAdapter extends ExpandableRecyclerAdapter<SimpleExp
                                 EnquiryFollowUp f = new EnquiryFollowUp();
                                 ((FragmentActivity) v.getContext()).getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
                             }
-                            else {
+                            else   if(((SimpleChild) item).getTitle().equalsIgnoreCase("Prepare/modify an Enquiry")) {
                                 NewEnquiry f = new NewEnquiry();
                                 ((FragmentActivity) v.getContext()).getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
                             }
@@ -151,11 +153,13 @@ public class SimpleExpandableAdapter extends ExpandableRecyclerAdapter<SimpleExp
     public class SimpleChildViewHolder extends ChildViewHolder {
 
         public TextView mTvContent;
+        View line;
 
         public SimpleChildViewHolder(View itemView) {
             super(itemView);
 
             mTvContent =  itemView.findViewById(R.id.txt_subcat_name);
+            line =  itemView.findViewById(R.id.line);
         }
     }
 
@@ -163,7 +167,7 @@ public class SimpleExpandableAdapter extends ExpandableRecyclerAdapter<SimpleExp
         private static final float INITIAL_POSITION = 0.0f;
         private static final float ROTATED_POSITION = 180f;
         private final boolean HONEYCOMB_AND_ABOVE = Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB;
-
+        View v1;
         public TextView mTvTitle;
         public ImageButton mParentDropDownArrow;
       //  public ImageButton mParentDropDownArrow1;
@@ -174,6 +178,7 @@ public class SimpleExpandableAdapter extends ExpandableRecyclerAdapter<SimpleExp
 
             mTvTitle =  itemView.findViewById(R.id.txt_cat_name);
             mParentDropDownArrow = itemView.findViewById(R.id.collapseButton);
+            v1 = itemView.findViewById(R.id.view1);
          //   mParentDropDownArrow1 = itemView.findViewById(R.id.parent_list_item_expand_arrow1);
 
             mParentDropDownArrow.setClickable(false);
