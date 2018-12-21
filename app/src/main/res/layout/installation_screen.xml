@@ -1,152 +1,243 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-    <LinearLayout
-            android:id="@+id/lay_filters_install"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:visibility="gone"
-            android:layout_marginTop="15dp">
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                  android:text="Select Installation/Complain Status"
-                  android:textColor="@android:color/black"
-                  android:padding="2dp"
-                  android:layout_gravity="center_horizontal"
-                  android:gravity="start|center"
-                  android:textSize="16sp"/>
-        <RelativeLayout android:layout_width="match_parent" android:layout_height="40dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_margin="5dp"
-                        android:background="@drawable/spin_bg">
-            <Spinner
-                    android:id="@+id/spin_complain_status"
-                    android:layout_width="match_parent"
-                    android:layout_marginStart="7dp"
-                    android:layout_height="match_parent"/>
-
-        </RelativeLayout>
-        <LinearLayout android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                                            android:orientation="vertical"
+                                            android:layout_width="match_parent"
+                                            android:background="@color/grey"
+                                            android:layout_height="match_parent">
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical">
+        <LinearLayout
+                android:id="@+id/lay_filters_install"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:visibility="gone"
+                android:layout_marginTop="15dp">
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:text="Select Installation/Complain Status"
+                      android:textColor="@android:color/black"
+                      android:padding="2dp"
                       android:layout_gravity="center_horizontal"
-                      android:orientation="horizontal"
-                      android:weightSum="2">
-            <LinearLayout android:layout_width="0dp"
-                          android:layout_height="wrap_content"
-                          android:orientation="vertical"
-                          android:layout_weight="1">
-                <TextView android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:text="From Date"
-                          android:textColor="@android:color/black"
-                          android:padding="2dp"
-                          android:layout_gravity="center_horizontal"
-                          android:gravity="start|center"
-                          android:textSize="16sp"/>
-                <RelativeLayout
-                        android:id="@+id/lay_from_date_install"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_margin="5dp"
-                        android:background="@drawable/spin_bg">
-                    <TextView
-                            android:id="@+id/txt_from_date_install"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginStart="7dp"
-                            android:textSize="16sp"
-                            android:gravity="start|center"
-                            android:textColor="@android:color/black"
-                            android:text="07-12-2018"/>
-
-                </RelativeLayout>
-            </LinearLayout>
-            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
-                          android:orientation="vertical"
-                          android:layout_weight="1">
-                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                          android:text="To Date:"
-                          android:textColor="@android:color/black"
-                          android:padding="2dp"
-                          android:layout_gravity="center_horizontal"
-                          android:gravity="start|center"
-                          android:textSize="16sp"/>
-                <RelativeLayout
-                        android:id="@+id/lay_to_date_install" android:layout_width="match_parent" android:layout_height="40dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_margin="5dp"
-                        android:background="@drawable/spin_bg">
-                    <TextView
-                            android:id="@+id/txt_to_date_install"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginStart="7dp"
-                            android:textSize="16sp"
-                            android:gravity="start|center"
-                            android:textColor="@android:color/black"
-                            android:text="07-12-2018"/>
-
-                </RelativeLayout>
-            </LinearLayout>
-        </LinearLayout>
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                      android:layout_gravity="center_horizontal"
-                      android:orientation="horizontal"
-                      android:layout_marginTop="7dp"
-                      android:weightSum="2">
-            <RelativeLayout android:layout_width="0dp" android:layout_height="40dp"
+                      android:gravity="start|center"
+                      android:fontFamily="sans-serif"
+                      android:textStyle="bold"
+                      android:textSize="13sp"/>
+            <RelativeLayout android:layout_width="match_parent" android:layout_height="35dp"
                             android:layout_gravity="center_horizontal"
                             android:layout_margin="5dp"
-                            android:layout_weight="1"
                             android:background="@drawable/spin_bg">
                 <Spinner
-                        android:id="@+id/spin_priority"
+                        android:id="@+id/spin_complain_status"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                android:layout_marginStart="5dp"/>
-
-            </RelativeLayout>
-            <RelativeLayout android:layout_width="0dp" android:layout_height="40dp"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_margin="5dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/spin_bg">
-                <Spinner
-                        android:id="@+id/spin_dept"
-                        android:layout_width="match_parent"
+                        android:layout_marginStart="7dp"
                         android:layout_height="match_parent"/>
 
             </RelativeLayout>
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center_horizontal"
+                          android:orientation="horizontal"
+                          android:weightSum="2">
+                <LinearLayout android:layout_width="0dp"
+                              android:layout_height="wrap_content"
+                              android:orientation="vertical"
+                              android:layout_weight="1">
+                    <TextView android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:text="From Date"
+                              android:textColor="@android:color/black"
+                              android:padding="2dp"
+                              android:layout_gravity="center_horizontal"
+                              android:gravity="start|center"
+                              android:fontFamily="sans-serif"
+                              android:textStyle="bold"
+                              android:textSize="13sp"/>
+                    <RelativeLayout
+                            android:id="@+id/lay_from_date_install"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/spin_bg">
+                        <TextView
+                                android:id="@+id/txt_from_date_install"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="7dp"
+                                android:textSize="14sp"
+                                android:gravity="start|center"
+                                android:textColor="@android:color/black"
+                                android:text="07-12-2018"/>
 
-        </LinearLayout>
-        <RelativeLayout android:layout_width="match_parent" android:layout_height="40dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_margin="5dp"
-                        android:background="@drawable/spin_bg">
-            <EditText
-                    android:id="@+id/edt_srch_install"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Enter Keyword to Search"
+                    </RelativeLayout>
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                              android:orientation="vertical"
+                              android:layout_weight="1">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                              android:text="To Date:"
+                              android:textColor="@android:color/black"
+                              android:padding="2dp"
+                              android:layout_gravity="center_horizontal"
+                              android:gravity="start|center"
+                              android:fontFamily="sans-serif"
+                              android:textStyle="bold"
+                              android:textSize="13sp"/>
+                    <RelativeLayout
+                            android:id="@+id/lay_to_date_install" android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/spin_bg">
+                        <TextView
+                                android:id="@+id/txt_to_date_install"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="7dp"
+                                android:textSize="14sp"
+                                android:gravity="start|center"
+                                android:textColor="@android:color/black"
+                                android:text="07-12-2018"/>
+
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:layout_gravity="center_horizontal"
+                          android:orientation="horizontal"
+                          android:layout_marginTop="7dp"
+                          android:weightSum="2">
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                              android:orientation="vertical"
+                              android:layout_weight="1">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                              android:text="Priority"
+                              android:textColor="@android:color/black"
+                              android:padding="2dp"
+                              android:layout_gravity="center_horizontal"
+                              android:gravity="start|center"
+                              android:fontFamily="sans-serif"
+                              android:textStyle="bold"
+                              android:textSize="13sp"/>
+                    <RelativeLayout android:layout_width="match_parent" android:layout_height="35dp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_margin="5dp"
+                                    android:background="@drawable/spin_bg">
+                        <Spinner
+                                android:id="@+id/spin_priority"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="5dp"/>
+
+                    </RelativeLayout>
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                              android:orientation="vertical"
+                              android:layout_weight="1">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                              android:text="Department"
+                              android:textColor="@android:color/black"
+                              android:padding="2dp"
+                              android:layout_gravity="center_horizontal"
+                              android:gravity="start|center"
+                              android:fontFamily="sans-serif"
+                              android:textStyle="bold"
+                              android:textSize="13sp"/>
+                    <RelativeLayout android:layout_width="match_parent" android:layout_height="35dp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_margin="5dp"
+                                    android:background="@drawable/spin_bg">
+                        <Spinner
+                                android:id="@+id/spin_dept"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"/>
+
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:text="Enter Keyword to Search"
+                      android:textColor="@android:color/black"
+                      android:padding="2dp"
+                      android:layout_gravity="center_horizontal"
+                      android:gravity="start|center"
+                      android:layout_marginTop="4dp"
+                      android:fontFamily="sans-serif"
+                      android:textStyle="bold"
+                      android:textSize="13sp"/>
+            <RelativeLayout android:layout_width="match_parent" android:layout_height="35dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/spin_bg">
+                <EditText
+                        android:id="@+id/edt_srch_install"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Enter Keyword to Search"
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp"
+                        android:gravity="start|center"
+                        android:background="@android:color/transparent"
+                        android:padding="4dp"
+                />
+
+            </RelativeLayout>
+            <TextView
+                    android:id="@+id/remark_prev" android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Previous Remarks"
                     android:textColor="@android:color/black"
-                    android:textSize="14sp"
+                    android:padding="2dp"
+                    android:layout_gravity="center_horizontal"
                     android:gravity="start|center"
-                    android:background="@android:color/transparent"
-                    android:padding="4dp"
-            />
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="sans-serif"
+                    android:textStyle="bold"
+                    android:textSize="13sp"/>
 
-        </RelativeLayout>
+            <RelativeLayout
+                    android:id="@+id/layy_remark_install" android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/spin_bg">
+                <EditText
+                        android:id="@+id/edt_prev_remark_install"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp"
+                        android:gravity="start|center"
+                        android:enabled="false"
+                        android:background="@android:color/transparent"
+                        android:padding="4dp"
+                />
 
+            </RelativeLayout>
+            <TextView
+                    android:id="@+id/click_install" android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Click row for view last remark"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:padding="2dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="start|center"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="sans-serif"
+                    android:textStyle="bold"
+                    android:textSize="13sp"/>
+        </LinearLayout>
+        <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_install" android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:nestedScrollingEnabled="false"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/white"
+                android:layout_margin="7dp"/>
     </LinearLayout>
-    <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_install" android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-    android:layout_gravity="center_horizontal"
-    android:layout_margin="7dp"/>
-</LinearLayout>
+</android.support.v4.widget.NestedScrollView>

@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
+              android:layout_marginTop="7dp"
               android:layout_height="wrap_content">
     <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -14,7 +15,9 @@
                 android:padding="4dp"
                 android:textSize="16sp"
                 android:gravity="start|center"
-                android:textColor="@android:color/holo_blue_light"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                android:textColor="@color/dark_blue"
                 android:layout_centerInParent="true"/>
         <TextView
                 android:id="@+id/txt_name" android:layout_width="match_parent" android:layout_height="wrap_content"
@@ -22,19 +25,23 @@
                 android:layout_toEndOf="@+id/txt_convo_no"
                 android:layout_marginStart="3dp"
                 android:padding="4dp"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:gravity="start|center"
                 android:textColor="@android:color/black"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
                 android:layout_toStartOf="@+id/txt_amount"
                 android:layout_centerInParent="true"/>
         <TextView
                 android:id="@+id/txt_amount" android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:text="93.75"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="7dp"
+                android:layout_marginEnd="3dp"
                 android:padding="4dp"
                 android:textSize="16sp"
                 android:gravity="start|center"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
                 android:textColor="@android:color/black"
                 android:layout_centerInParent="true"/>
 
@@ -92,6 +99,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginStart="5dp"
                     android:layout_marginEnd="5dp"
+                    android:layout_marginTop="5dp"
     >
         <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
                       android:orientation="vertical"
@@ -101,15 +109,19 @@
             <TextView
                     android:layout_width="wrap_content" android:layout_height="wrap_content"
                     android:text="Date:"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:paddingStart="4dp"
+                    android:fontFamily="sans-serif"
+                    android:textStyle="bold"
                     android:gravity="start|center"
             />
             <TextView
                     android:layout_width="wrap_content" android:layout_height="wrap_content"
                     android:text="12-11-2018"
                     android:padding="2dp"
-                    android:textSize="14sp"
+                    android:textSize="15sp"
+                    android:fontFamily="sans-serif"
+                    android:textStyle="bold"
                     android:textColor="@android:color/black"
                     android:gravity="start|center"
             />
@@ -120,96 +132,114 @@
                       android:orientation="vertical"
                       android:layout_alignParentEnd="true"
                       android:layout_centerInParent="true"
-                      android:layout_marginEnd="2dp">
+                      >
             <TextView
                     android:layout_width="wrap_content" android:layout_height="wrap_content"
                     android:text="Prepared by:"
-                    android:textSize="14sp"
-                    android:paddingStart="4dp"
+                    android:textSize="12sp"
+                    android:fontFamily="sans-serif"
+                    android:layout_gravity="end"
+                    android:textStyle="bold"
+                    android:paddingStart="2dp"
                     android:gravity="end|center"
             />
             <TextView
                     android:layout_width="wrap_content" android:layout_height="wrap_content"
                     android:text="Kanwar Singh"
                     android:padding="2dp"
-                    android:textSize="14sp"
+                    android:textSize="15sp"
+                    android:fontFamily="sans-serif"
+                    android:layout_gravity="end"
+                    android:textStyle="bold"
                     android:textColor="@android:color/black"
                     android:gravity="end|center"
             />
         </LinearLayout>
 
     </RelativeLayout>
-    <View
-            android:id="@+id/line_btns_hr"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center_horizontal"
-            android:background="@android:color/darker_gray"/>
-
-    <LinearLayout
-            android:id="@+id/lay_btns_hr"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_gravity="center_horizontal"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_gravity="end"
+    android:layout_marginTop="5dp"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp">
         <RelativeLayout
-                android:id="@+id/lay_edit_hr"
-                android:layout_width="0dp"
+                android:id="@+id/lay_print"
+                android:layout_width="80dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/white">
-            <ImageView android:layout_width="20dp" android:layout_height="20dp"
-                       android:layout_toStartOf="@+id/txt_edit"
-                       android:layout_centerInParent="true"
-                       android:layout_marginEnd="7dp"
-                       android:src="@drawable/edit"/>
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                >
 
-            <TextView
-                    android:id="@+id/txt_edit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:gravity="start|center"
-                    android:text="Edit"
-                    android:textColor="#333333"
-                    android:textSize="14sp"/>
-        </RelativeLayout>
-
-        <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
-                android:background="@android:color/darker_gray"/>
-
-        <RelativeLayout
-                android:id="@+id/btn_print"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/white">
-
-            <ImageView android:layout_width="20dp" android:layout_height="20dp"
+            <ImageView
+                    android:id="@+id/img_print"
+                    android:layout_width="20dp"
+                       android:layout_height="20dp"
                        android:layout_toStartOf="@+id/txt_print"
                        android:layout_centerInParent="true"
-                       android:layout_marginEnd="7dp"
+                       android:layout_marginEnd="10dp"
                        android:src="@drawable/print"/>
 
             <TextView
                     android:id="@+id/txt_print"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
                     android:layout_centerInParent="true"
+                    android:layout_marginEnd="2dp"
                     android:gravity="center"
                     android:text="Print"
-                    android:textColor="#333333"
-                    android:textSize="14sp"/>
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="sans-serif"
+                    android:textStyle="bold"
+                    android:textSize="16sp"/>
         </RelativeLayout>
-    </LinearLayout>
-    <View android:layout_width="match_parent" android:layout_height="1dp"
-          android:layout_gravity="center_horizontal"
-          android:background="@android:color/darker_gray"/>
+        <View
+                android:id="@+id/vertline"
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:layout_toStartOf="@+id/lay_print"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/colorPrimary"/>
+
+        <RelativeLayout
+                android:id="@+id/lay_edit_hr"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:layout_toStartOf="@+id/vertline"
+                android:layout_centerInParent="true"
+             >
+            <ImageView
+                    android:id="@+id/img_edit" android:layout_width="20dp" android:layout_height="20dp"
+                     android:layout_alignParentStart="true"
+                       android:layout_centerInParent="true"
+                       android:layout_marginStart="13dp"
+                       android:src="@drawable/edit"/>
+
+            <TextView
+                    android:id="@+id/txt_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                   android:layout_toEndOf="@+id/img_edit"
+                    android:layout_marginStart="7dp"
+                    android:layout_centerInParent="true"
+                    android:gravity="start|center"
+                    android:text="Edit"
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="sans-serif"
+                    android:textStyle="bold"
+                    android:textSize="16sp"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+    <View
+            android:id="@+id/line_btns_hr"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="7dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@android:color/darker_gray"/>
+
 </LinearLayout>

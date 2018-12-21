@@ -36,7 +36,7 @@ import kotlin.collections.ArrayList
         toolBar = activity!!.findViewById(R.id.toolbar)
         toolBar.title = "List Of Conveyance"
         btnFilter = toolBar.findViewById(R.id.img_filter)
-        btnFilter.visibility = View.GONE
+        btnFilter.visibility = View.VISIBLE
 
         listFilters.add("All")
         listFilters.add("Pending from User")
@@ -58,7 +58,14 @@ import kotlin.collections.ArrayList
     }
 
     private fun work(){
-
+        btnFilter.setOnClickListener {
+            if(v.lay_filters_hr.visibility == View.VISIBLE){
+                v.lay_filters_hr.visibility = View.GONE
+            }
+            else{
+                v.lay_filters_hr.visibility = View.VISIBLE
+            }
+        }
         v.lay_from_date.setOnClickListener {
             showDatePicker(v.txt_from_date,"from","")
         }
