@@ -17,7 +17,9 @@
                 android:layout_height="wrap_content"
                 android:text="Anuj Mehta"
                 android:textColor="@android:color/black"
-                android:textSize="14sp"
+                android:textSize="13sp"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
                 android:padding="3dp"
                 android:gravity="start|center"/>
         <TextView
@@ -27,9 +29,9 @@
                 android:layout_marginEnd="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total: 2"
+                android:text="Total: 4"
                 android:textColor="@android:color/black"
-                android:textSize="14sp"
+                android:textSize="13sp"
                 android:padding="3dp"
                 android:gravity="end|center"/>
 
@@ -46,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:text="2 Enquiries"
                 android:textColor="@android:color/black"
-                android:textSize="14sp"
+                android:textSize="13sp"
                 android:padding="3dp"
                 android:gravity="start|center"/>
         <TextView
@@ -56,7 +58,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_centerInParent="true"
                 android:textColor="@android:color/black"
-                android:textSize="14sp"
+                android:textSize="13sp"
                 android:padding="3dp"
                 android:gravity="end|center"/>
     </RelativeLayout>

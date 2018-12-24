@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+>
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="45dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@color/colorPrimary">
+        <ImageView
+                android:id="@+id/img_back_detail_follow"
+                android:layout_width="22dp" android:layout_height="22dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="12dp"
+                android:tint="@android:color/white"
+                android:src="@drawable/back_arrow"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="match_parent"
+                  android:layout_centerInParent="true"
+                  android:text="FollowUp Detail"
+                  android:textColor="@android:color/white"
+                  android:textSize="14sp"
+                  android:gravity="center"/>
+    </RelativeLayout>
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+android:orientation="vertical"
+              android:layout_marginTop="10dp"
+              android:layout_marginStart="4dp"
+              android:layout_marginEnd="4dp">
+    <TextView
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Pardeep Sahu"
+            android:textColor="@android:color/black"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
+            android:textSize="13sp"
+            android:paddingStart="3dp"
+    android:paddingTop="3dp"
+    android:paddingEnd="3dp"/>
+    <TextView
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="start|center"
+            android:text="+91-9419192359"
+            android:textColor="@color/colorPrimary"
+            android:textSize="13sp"
+            android:padding="3dp"/>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="start|center"
+            android:text="rabbits8@gov.in"
+            android:textColor="@color/colorPrimary"
+            android:textSize="13sp"
+            android:padding="3dp"/>
+
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+    >
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:orientation="vertical"
+                      android:layout_alignParentStart="true"
+                      android:layout_centerInParent="true"
+                      android:layout_marginTop="2dp"
+
+        >
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:text="Last Follow Up"
+                      android:textSize="13sp"
+                      android:paddingStart="4dp"
+            />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:text="09-08-2018"
+                      android:paddingStart="4dp"
+                      android:layout_marginStart="3dp"
+                      android:textStyle="bold"
+                      android:fontFamily="sans-serif"
+                      android:textSize="13sp"
+                      android:textColor="@android:color/black"
+            />
+        </LinearLayout>
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:orientation="vertical"
+                      android:layout_alignParentEnd="true"
+                      android:layout_centerInParent="true"
+                      android:layout_marginTop="2dp"
+
+        >
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:text="Next Follow Up"
+                      android:textSize="13sp"
+                      android:paddingStart="4dp"
+            />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:text="15-08-2018"
+                      android:paddingStart="4dp"
+                      android:layout_marginStart="3dp"
+                      android:fontFamily="sans-serif"
+                      android:textSize="13sp"
+                      android:textStyle="bold"
+                      android:textColor="@android:color/black"
+            />
+        </LinearLayout>
+
+    </RelativeLayout>
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:layout_marginTop="12dp"
+                  android:orientation="horizontal">
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
+            android:gravity="start|center"
+            android:text="Enq.No. 66630"
+            android:textColor="@android:color/black"
+            android:textSize="13sp"
+            android:paddingStart="3dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+               android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                android:gravity="end"
+                android:text="17-07-2018"
+                android:textColor="@android:color/black"
+                android:textSize="13sp"
+                android:paddingEnd="3dp"/>
+
+    </RelativeLayout>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+android:layout_gravity="center_horizontal"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
+            android:gravity="start|center"
+            android:text="Tender"
+            android:textSize="13sp"
+            android:paddingStart="3dp"
+           />
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           android:layout_gravity="center_horizontal"
+            android:layout_marginTop="7dp"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
+            android:gravity="start|center"
+            android:text="Address:"
+            android:textSize="12sp"
+            android:paddingStart="3dp"
+    />
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
+            android:gravity="start|center"
+            android:textColor="@android:color/black"
+            android:text="No. 27 MIG , ,
+Itarsi - 461111, Madhya Pradesh, India"
+            android:textSize="13sp"
+            android:paddingStart="3dp"
+    />
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
+            android:gravity="start|center"
+            android:textColor="@android:color/black"
+            android:text="Guwahati(R-2)"
+            android:textSize="13sp"
+            android:paddingStart="3dp"
+    />
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
+            android:gravity="start|center"
+            android:textColor="@color/colorPrimary"
+            android:text="Assam"
+            android:textSize="13sp"
+            android:paddingStart="3dp"
+    />
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
+            android:gravity="end"
+            android:textColor="@android:color/black"
+            android:text="Contact Abhijit"
+            android:textSize="13sp"
+            android:paddingStart="3dp"
+    />
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
+            android:gravity="end"
+            android:textColor="@android:color/black"
+            android:text="User:- Suraj Goel"
+            android:textSize="13sp"
+            android:paddingStart="3dp"
+    />
+</LinearLayout>
+</LinearLayout>

@@ -3,12 +3,31 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="45dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@color/colorPrimary">
+        <ImageView
+                android:id="@+id/img_back_detail"
+                android:layout_width="22dp" android:layout_height="22dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="12dp"
+                android:tint="@android:color/white"
+                android:src="@drawable/back_arrow"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="match_parent"
+                  android:layout_centerInParent="true"
+                  android:text="Purchase Item Detail"
+                  android:textColor="@android:color/white"
+                  android:textSize="14sp"
+                  android:gravity="center"/>
+    </RelativeLayout>
+
     <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_purchase_detail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
-            android:orientation="vertical"></android.support.v7.widget.RecyclerView>
+            android:orientation="vertical"/>
 
 </LinearLayout>

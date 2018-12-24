@@ -21,7 +21,6 @@ return 5    }
 
     override fun onBindViewHolder(holder: ViewHolder, p1: Int) {
         holder.txtPrice.text = "@85"
-        holder.txtNo.paintFlags = holder.txtNo.paintFlags or Paint.UNDERLINE_TEXT_FLAG
 
         if(pos == p1){
             holder.layBtns.visibility = View.VISIBLE

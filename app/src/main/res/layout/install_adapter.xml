@@ -10,8 +10,10 @@ android:layout_margin="5dp">
             android:text="Hari Om Agnihotri"
             android:layout_gravity="center_horizontal"
             android:padding="4dp"
-            android:textSize="16sp"
+            android:textSize="13sp"
             android:gravity="start|center"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
             android:textColor="@android:color/black"
             />
     <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
@@ -22,17 +24,19 @@ android:layout_margin="5dp">
                 android:id="@+id/txt_install_no" android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:text="10789"
                 android:layout_alignParentStart="true"
-                android:textSize="16sp"
+                android:textSize="13sp"
                 android:gravity="start|center"
-                android:textColor="@android:color/holo_blue_light"
+                android:textColor="@color/colorPrimary"
                 android:layout_centerInParent="true"/>
         <TextView
                 android:id="@+id/txt_city" android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:text="Chatarpur(R-4)"
                 android:layout_alignParentEnd="true"
                 android:padding="4dp"
-                android:textSize="14sp"
+                android:textSize="13sp"
                 android:gravity="end|center"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
                 android:textColor="@android:color/black"
                 android:layout_centerInParent="true"/>
 
@@ -45,15 +49,17 @@ android:layout_margin="5dp">
                 android:id="@+id/txt_install_date" android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:text="12/11/2018"
                 android:layout_alignParentStart="true"
-                android:textSize="14sp"
+                android:textSize="13sp"
                 android:gravity="start|center"
                 android:textColor="@android:color/black"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
                 android:layout_centerInParent="true"/>
         <TextView
                 android:id="@+id/txt_state" android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:text="Madhya Pardesh"
                 android:layout_alignParentEnd="true"
-                android:textSize="14sp"
+                android:textSize="13sp"
                 android:gravity="end|center"
                 android:textColor="@android:color/black"
                 android:layout_centerInParent="true"/>

@@ -7,33 +7,31 @@
     <LinearLayout
             android:id="@+id/layClick" android:layout_width="match_parent" android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="7dp"
             android:orientation="vertical">
-        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal">
-            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                      android:layout_alignParentStart="true"
-                      android:layout_centerInParent="true"
-                      android:layout_toStartOf="@+id/txt_item_no"
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                 android:layout_gravity="center_horizontal"
+                  android:id="@+id/txt_item_no"
+                  android:textColor="@color/colorPrimary"
+                  android:textSize="14sp"
+                  android:fontFamily="sans-serif"
+                  android:textStyle="bold"
+                  android:gravity="start|center"
+                  android:text="R605075"
+                  android:padding="3dp"/>
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
                       android:id="@+id/txt_item_name"
                       android:textColor="@android:color/black"
-                      android:textSize="16sp"
+                      android:textSize="14sp"
                       android:gravity="start|center"
                       android:layout_marginEnd="4dp"
+                  android:fontFamily="sans-serif"
                       android:text="Bag holder 65MM L 62MM Width"
                       android:textStyle="bold"
                       android:padding="3dp"/>
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                      android:layout_alignParentEnd="true"
-                      android:layout_centerInParent="true"
-                      android:layout_marginEnd="7dp"
-                      android:id="@+id/txt_item_no"
 
-                      android:textColor="@android:color/holo_blue_dark"
-                      android:textSize="14sp"
-                      android:gravity="start|center"
-                      android:text="R605075"
-                      android:padding="3dp"/>
-        </RelativeLayout>
         <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginBottom="10dp"
@@ -44,17 +42,19 @@
                       android:id="@+id/txt_item_qty"
                       android:textSize="14sp"
                       android:text="Qty:50"
-
                       android:gravity="start|center"
+                      android:fontFamily="sans-serif"
+                      android:textStyle="bold"
                       android:padding="3dp"/>
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                       android:layout_toEndOf="@+id/txt_item_qty"
-                      android:layout_marginStart="35dp"
+                      android:layout_marginStart="20dp"
                       android:layout_centerInParent="true"
                       android:id="@+id/txt_item_price"
-                      android:textSize="16sp"
+                      android:textSize="14sp"
                       android:gravity="start|center"
-                      android:textColor="@android:color/black"
+                      android:fontFamily="sans-serif"
+                      android:textStyle="bold"
                       android:padding="3dp"/>
 
         </RelativeLayout>
@@ -98,8 +98,6 @@
         <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
                 android:background="@android:color/darker_gray"/>
 
         <RelativeLayout

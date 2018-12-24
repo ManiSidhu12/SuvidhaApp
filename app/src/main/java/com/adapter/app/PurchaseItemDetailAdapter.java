@@ -3,7 +3,6 @@ package com.adapter.app;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.Paint;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,7 +55,7 @@ public class PurchaseItemDetailAdapter extends ExpandableRecyclerAdapter<Purchas
         SimpleParentItem simpleParentItem = (SimpleParentItem) parentListItem;
         //  Common.setSemiBold(c,parentViewHolder.mTvTitle);
         parentViewHolder.txtPrice.setText("@85");
-        parentViewHolder.txtItemNo.setPaintFlags(parentViewHolder.txtItemNo.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+       // parentViewHolder.txtItemNo.setPaintFlags(parentViewHolder.txtItemNo.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
 //        parentViewHolder.mTvTitle.setText(simpleParentItem.getTitle());
 //        if (value.equalsIgnoreCase("delivery")) {
@@ -97,7 +96,7 @@ public class PurchaseItemDetailAdapter extends ExpandableRecyclerAdapter<Purchas
                     collapseParent(position);
                 }else{
                     value = "delivery";
-                    parentViewHolder.layDelivery.setBackgroundColor(Color.parseColor("#008577"));
+                    parentViewHolder.layDelivery.setBackgroundColor(Color.parseColor("#044A6C"));
                     parentViewHolder.layStock.setBackgroundColor(Color.parseColor("#ffffff"));
                     parentViewHolder.txtDel.setTextColor(Color.parseColor("#FFFFFF"));
                     parentViewHolder.txtStock.setTextColor(Color.parseColor("#000000"));
@@ -119,7 +118,7 @@ public class PurchaseItemDetailAdapter extends ExpandableRecyclerAdapter<Purchas
                     collapseParent(position);
                 }else{
                     value = "stock";
-                    parentViewHolder.layStock.setBackgroundColor(Color.parseColor("#008577"));
+                    parentViewHolder.layStock.setBackgroundColor(Color.parseColor("#044A6C"));
                     parentViewHolder.layDelivery.setBackgroundColor(Color.parseColor("#ffffff"));
                     parentViewHolder.txtStock.setTextColor(Color.parseColor("#FFFFFF"));
                     parentViewHolder.txtDel.setTextColor(Color.parseColor("#000000"));

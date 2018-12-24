@@ -1,5 +1,6 @@
 package com.suvidha.app
 
+import android.app.Activity
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
@@ -10,14 +11,13 @@ import com.bignerdranch.expandablerecyclerview.Model.ParentListItem
 import kotlinx.android.synthetic.main.purchase_detail_screen.*
 import java.util.*
 
-class PurchaseItemDetail : AppCompatActivity(){
+class PurchaseItemDetail : Activity(){
 
     val expandableListDetail = HashMap<String, List<String>>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        supportActionBar!!.title = "Purchase Item Detail"
 
         setContentView(R.layout.purchase_detail_screen)
 
@@ -26,6 +26,10 @@ class PurchaseItemDetail : AppCompatActivity(){
         recycler_purchase_detail.layoutManager = LinearLayoutManager(this@PurchaseItemDetail)
 
         recycler_purchase_detail.adapter = PurchaseItemDetailAdapter(this@PurchaseItemDetail, generateMockData())
+
+        img_back_detail.setOnClickListener {
+            onBackPressed()
+        }
 
         }
 

@@ -30,6 +30,8 @@
                   android:screenOrientation="portrait"/>
         <activity android:name=".NewConveyance"
                   android:screenOrientation="portrait"/>
+        <activity android:name=".FollowUpDetails"
+                  android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

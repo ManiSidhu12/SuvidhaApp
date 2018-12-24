@@ -2,11 +2,13 @@ package com.fragments.app
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import com.adapter.app.EnquiryFollowUpAdapter
 import com.suvidha.app.R
 import kotlinx.android.synthetic.main.purchase_screen.view.*
 
@@ -22,7 +24,8 @@ class EnquiryFollowUp : Fragment(){
         toolBar.title = "Enquiry Follow Up"
         btnFilter = toolBar!!.findViewById(R.id.img_filter)
         btnFilter.visibility = View.VISIBLE
-
+v.recycler_purchase.layoutManager = LinearLayoutManager(activity!!)
+        v.recycler_purchase.adapter = EnquiryFollowUpAdapter(activity!!)
         work()
 
 
