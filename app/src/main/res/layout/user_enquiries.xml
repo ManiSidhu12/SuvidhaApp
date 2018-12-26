@@ -7,6 +7,8 @@
                   android:layout_gravity="center_horizontal"
                   android:layout_margin="15dp"
                   android:orientation="horizontal"
+                  android:id="@+id/lay_dates"
+                  android:visibility="gone"
                   android:weightSum="2">
         <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
                       android:orientation="vertical"
@@ -32,7 +34,6 @@
                         android:layout_marginStart="7dp"
                         android:textSize="13sp"
                         android:fontFamily="sans-serif"
-                        android:textStyle="bold"
                         android:gravity="start|center"
                         android:textColor="@android:color/black"
                         android:text="07-12-2018"/>
@@ -74,6 +75,7 @@
             android:text="Apply"
             android:textSize="14sp"
             android:gravity="center"
+            android:visibility="gone"
             android:background="@color/colorPrimary"
             android:textColor="@android:color/white"
     android:layout_gravity="center_horizontal"/>

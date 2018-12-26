@@ -3,6 +3,7 @@ package com.adapter.app;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -65,9 +66,7 @@ public class SimpleExpandableAdapter extends ExpandableRecyclerAdapter<SimpleExp
             parentViewHolder.mParentDropDownArrow.setVisibility(View.GONE);
 
         }
-        if(simpleParentItem.getTitle().equalsIgnoreCase("T.A. Bill")){
-            parentViewHolder.v1.setVisibility(View.GONE);
-        }
+
 /*
         parentViewHolder.mParentDropDownArrow1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,6 +119,9 @@ public class SimpleExpandableAdapter extends ExpandableRecyclerAdapter<SimpleExp
                             Log.e("title",((SimpleChild) item).getTitle());
                             if(((SimpleChild) item).getTitle().equalsIgnoreCase("User-wise enquiries Followed-up")) {
                                 UserEnquiry f = new UserEnquiry();
+                                Bundle b = new Bundle();
+                                b.putString("type","user");
+                                f.setArguments(b);
                                 ((FragmentActivity) v.getContext()).getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
                             }
                             if(((SimpleChild) item).getTitle().equalsIgnoreCase("Enquiry Register & Follow-up")) {
@@ -128,6 +130,13 @@ public class SimpleExpandableAdapter extends ExpandableRecyclerAdapter<SimpleExp
                             }
                             else   if(((SimpleChild) item).getTitle().equalsIgnoreCase("Prepare/modify an Enquiry")) {
                                 NewEnquiry f = new NewEnquiry();
+                                ((FragmentActivity) v.getContext()).getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
+                            }
+                            else   if(((SimpleChild) item).getTitle().equalsIgnoreCase("Rejection Analysis")) {
+                                UserEnquiry f = new UserEnquiry();
+                                Bundle b = new Bundle();
+                                b.putString("type","reject");
+                                f.setArguments(b);
                                 ((FragmentActivity) v.getContext()).getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
                             }
                             drawer.closeDrawer(GravityCompat.START);

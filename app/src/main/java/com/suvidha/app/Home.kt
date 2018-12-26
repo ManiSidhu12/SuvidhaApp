@@ -2,6 +2,7 @@ package com.suvidha.app
 
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
+import android.support.v4.app.FragmentActivity
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
@@ -10,9 +11,12 @@ import com.adapter.app.SimpleChild
 import com.adapter.app.SimpleExpandableAdapter
 import com.adapter.app.SimpleParentItem
 import com.bignerdranch.expandablerecyclerview.Model.ParentListItem
+import com.fragments.app.HRFragment
+import com.fragments.app.PurchaseFragment
 import kotlinx.android.synthetic.main.home_screen.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import java.util.*
+import kotlin.math.exp
 
 class Home : AppCompatActivity() {
 
@@ -33,8 +37,13 @@ class Home : AppCompatActivity() {
         toggle.syncState()
         recycler_nav.layoutManager = LinearLayoutManager(this@Home)
 
+
         val adap = SimpleExpandableAdapter(this@Home, generateMockData(),drawer_layout)
         recycler_nav.setAdapter(adap)
+
+        val f = PurchaseFragment()
+       supportFragmentManager.beginTransaction().replace(R.id.frame, f).commit()
+
 
     }
 
@@ -96,6 +105,7 @@ private fun setData(){
     expandableListDetail["Purchase"] = basketball
     expandableListDetail["Quotes & Enquiries"] = football1
     expandableListDetail["T.A. Bill"] = football2
+
 }
 
 }

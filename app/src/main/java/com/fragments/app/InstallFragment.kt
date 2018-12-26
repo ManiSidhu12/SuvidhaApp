@@ -54,10 +54,11 @@ class InstallFragment : Fragment(){
 
         v.spin_priority.adapter = NothingSelectedSpinnerAdapter(adapterPriority, R.layout.selection, activity!!)
 
+        ///////*It is irrefuultable that eating together is a social activiity,sharing dinner together gives everyone a sense of identity.It can helpeas
+        // */
+
 
         work()
-
-
 
 
         return v

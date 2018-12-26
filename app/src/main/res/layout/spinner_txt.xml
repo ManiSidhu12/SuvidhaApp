@@ -3,10 +3,11 @@
     android:id="@android:id/text1"
     style="?android:attr/spinnerDropDownItemStyle"
     android:layout_width="fill_parent"
-    android:layout_height="50dp"
+    android:layout_height="38dp"
     android:gravity="start|center"
     android:singleLine="true"
     android:textColor="#000000"
+     android:background="@drawable/spin_border"
     android:textSize="16sp" >
 
     

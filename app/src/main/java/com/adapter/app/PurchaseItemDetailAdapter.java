@@ -54,7 +54,7 @@ public class PurchaseItemDetailAdapter extends ExpandableRecyclerAdapter<Purchas
     public void onBindParentViewHolder(final SimpleParentViewHolder parentViewHolder, final int position, ParentListItem parentListItem) {
         SimpleParentItem simpleParentItem = (SimpleParentItem) parentListItem;
         //  Common.setSemiBold(c,parentViewHolder.mTvTitle);
-        parentViewHolder.txtPrice.setText("@85");
+        parentViewHolder.txtPrice.setText("@ Rs.85.45");
        // parentViewHolder.txtItemNo.setPaintFlags(parentViewHolder.txtItemNo.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
 //        parentViewHolder.mTvTitle.setText(simpleParentItem.getTitle());

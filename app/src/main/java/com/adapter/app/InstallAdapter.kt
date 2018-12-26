@@ -3,6 +3,7 @@ package com.adapter.app
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.content.Context
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import com.common.app.NothingSelectedSpinnerAdapter
 import com.suvidha.app.R
 import kotlinx.android.synthetic.main.complaint_dialog.*
 import kotlinx.android.synthetic.main.followupdetails_dialog.*
+import kotlinx.android.synthetic.main.upload_document.*
 import java.util.*
 
 class InstallAdapter(var ctx : Context) : RecyclerView.Adapter<InstallAdapter.ViewHolder>(){
@@ -53,6 +55,9 @@ class InstallAdapter(var ctx : Context) : RecyclerView.Adapter<InstallAdapter.Vi
         dialog.forward.setOnClickListener {
             openDialogFollow(ctx,"forward")
         }
+        dialog.upload.setOnClickListener {
+            openDialogUpload(ctx)
+        }
     }
     private fun openDialogFollow(ctx : Context, type : String) {
 
@@ -90,6 +95,20 @@ class InstallAdapter(var ctx : Context) : RecyclerView.Adapter<InstallAdapter.Vi
         }
         dialog1.lay_date.setOnClickListener {
             showDatePicker(ctx,dialog1.txt_date_followup)
+        }
+    }
+    private fun openDialogUpload(ctx : Context) {
+
+        val dialog2 = Dialog(ctx, android.R.style.Theme_Translucent_NoTitleBar)
+        dialog2.setContentView(R.layout.upload_document)
+        dialog2.recycler_details.layoutManager = LinearLayoutManager(ctx)
+        dialog2.recycler_details.adapter = DocumentDetailsAdapter(ctx)
+        dialog2.show()
+        dialog2.btn_close_upload.setOnClickListener {
+            dialog2.dismiss()
+        }
+        dialog2.lay_browse.setOnClickListener {
+
         }
     }
 

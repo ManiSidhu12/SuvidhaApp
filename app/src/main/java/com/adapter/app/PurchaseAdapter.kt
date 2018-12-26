@@ -1,5 +1,6 @@
 package com.adapter.app
 
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.support.v4.content.ContextCompat
@@ -9,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.suvidha.app.PurchaseItemDetail
 import com.suvidha.app.R
+import kotlinx.android.synthetic.main.msg_popup.*
 import kotlinx.android.synthetic.main.purchase_adapter.view.*
 
 class PurchaseAdapter(var ctx : Context) :  RecyclerView.Adapter<PurchaseAdapter.ViewHolder>(){
@@ -36,7 +38,7 @@ class PurchaseAdapter(var ctx : Context) :  RecyclerView.Adapter<PurchaseAdapter
         }
         if(p1 == 1){
             holder.txtName.text = "Devi Dayal Welding Works"
-            holder.txtStatus.text = "Canceled"
+            holder.txtStatus.text = "Cancelled"
             holder.txtStatus.setTextColor(ContextCompat.getColor(ctx, R.color.red))
         }
         if(expandValue == p1){
@@ -76,8 +78,30 @@ class PurchaseAdapter(var ctx : Context) :  RecyclerView.Adapter<PurchaseAdapter
             }
             notifyDataSetChanged()
         }
-    }
+        holder.txtDownload.setOnClickListener {
+         openAlert(ctx,"Download")
+        }
+        holder.txtEmail.setOnClickListener {
+            openAlert(ctx,"Email")
 
+        }
+    }
+    private fun openAlert(ctx : Context, type : String) {
+
+        val dialog1 = Dialog(ctx, android.R.style.Theme_Translucent_NoTitleBar)
+        dialog1.setContentView(R.layout.msg_popup)
+        dialog1.show()
+        if(type.equals("Download")){
+            dialog1.txt_msg.text = "File not available for downloading..."
+        }
+        else{
+            dialog1.txt_msg.text = "Unable to send email to Invalid Email Id..."
+
+        }
+        dialog1.cncl.setOnClickListener {
+            dialog1.dismiss()
+        }
+    }
     class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
         var layDetails = itemView.lay_details
         var line = itemView.line
@@ -89,5 +113,7 @@ class PurchaseAdapter(var ctx : Context) :  RecyclerView.Adapter<PurchaseAdapter
         var txtName = itemView.txt_suppliername
         var layClick = itemView.lay_click
         var imgDrop = itemView.drop_img
+        var txtDownload = itemView.txt_download
+        var txtEmail = itemView.txt_email
     }
 }

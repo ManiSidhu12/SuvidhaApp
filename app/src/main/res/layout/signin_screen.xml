@@ -16,20 +16,28 @@ android:background="@color/colorPrimary">
         android:layout_gravity="center_horizontal"
         android:gravity="center"
         android:textColor="@android:color/white"
-        android:textSize="35sp"
+        android:textSize="30sp"
                   android:fontFamily="sans-serif"
                   android:textStyle="bold"
         android:padding="3dp"/>
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                  android:text="to continue to Suvidha"
+                  android:text="to"
                   android:layout_gravity="center_horizontal"
                   android:gravity="center"
                   android:textColor="@android:color/white"
-                  android:textSize="20sp"
+                  android:textSize="18sp"
                   android:fontFamily="sans-serif"
                   android:textStyle="normal"
                   android:padding="4dp"/>
-
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:text="Suvidha++"
+                  android:layout_gravity="center_horizontal"
+                  android:gravity="center"
+                  android:textColor="@android:color/white"
+                  android:textSize="30sp"
+                  android:fontFamily="sans-serif"
+                  android:textStyle="bold"
+                  android:padding="4dp"/>
     </LinearLayout>
     <RelativeLayout
             android:id="@+id/lay_email"
@@ -50,7 +58,7 @@ android:background="@color/colorPrimary">
                 android:layout_centerInParent="true"
                 android:layout_marginStart="5dp"
                 android:padding="5dp"
-                android:src="@drawable/email" />
+                android:src="@drawable/user" />
 
         <View
                 android:id="@+id/line_email"
@@ -70,8 +78,7 @@ android:background="@color/colorPrimary">
                 android:layout_toEndOf="@+id/line_email"
                 android:background="@android:color/transparent"
                 android:gravity="start|center"
-                android:hint="Email Address"
-                android:inputType="textEmailAddress"
+                android:hint="Username"
                 android:padding="5dp"
                 android:singleLine="true"
                 android:text=""

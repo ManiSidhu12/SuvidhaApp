@@ -23,7 +23,7 @@
                     android:id="@+id/select_branch"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Select Branch"
+                    android:text="Select Branch/Unit"
                     android:textColor="@android:color/black"
                     android:padding="2dp"
                     android:layout_gravity="center_horizontal"
@@ -46,7 +46,7 @@
                     android:id="@+id/prepare"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Prepared by User"
+                    android:text="Prepared by User/Dept."
                     android:layout_marginTop="4dp"
                     android:textColor="@android:color/black"
                     android:padding="2dp"
@@ -118,11 +118,53 @@
                         android:textColor="@android:color/black"
                         android:textSize="14sp"
                         android:gravity="start|center"
+                        android:singleLine="true"
                         android:background="@android:color/transparent"
                         android:padding="4dp"
                 />
 
             </RelativeLayout>
+            <RelativeLayout android:layout_width="match_parent" android:layout_height="40dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_margin="10dp"
+                            android:id="@+id/lay_reset"
+                            android:visibility="gone"
+            >
+                <RelativeLayout android:layout_width="wrap_content" android:layout_height="match_parent"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerInParent="true"
+                                android:layout_marginStart="3dp">
+                    <ImageView
+                            android:id="@+id/refresh" android:layout_width="15dp" android:layout_height="15dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerInParent="true"
+                            android:tint="@color/colorPrimary"
+                            android:src="@drawable/refresh"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="match_parent"
+                              android:text="Refresh"
+                              android:textSize="14sp"
+                              android:gravity="center"
+                              android:layout_toEndOf="@+id/refresh"
+                              android:textColor="@color/colorPrimary"
+                              android:layout_centerInParent="true"
+                              android:layout_marginStart="4dp"
+                              android:fontFamily="sans-serif"
+                              android:textStyle="bold"
+                    />
+                </RelativeLayout>
+                <Button
+                        android:layout_width="150dp" android:layout_height="match_parent"
+                        android:text="Search"
+                        android:id="@+id/btn_srch"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp"
+                        android:gravity="center"
+                        android:background="@color/colorPrimary"
+                        android:textAllCaps="false"/>
+            </RelativeLayout>
+
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                           android:layout_gravity="center_horizontal"
                           android:id="@+id/lay_enquiry"
@@ -242,54 +284,7 @@
 
                 </RelativeLayout>
             </LinearLayout>
-            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                      android:text="Management Action"
-                      android:textColor="@android:color/black"
-                      android:padding="2dp"
-                      android:id="@+id/txt_action"
-                      android:layout_gravity="center_horizontal"
-                      android:fontFamily="sans-serif"
-                      android:textStyle="bold"
-                      android:layout_marginTop="4dp"
-                      android:gravity="start|center"
-                      android:textSize="13sp"/>
 
-            <LinearLayout
-                    android:id="@+id/lay_btns" android:layout_width="match_parent" android:layout_height="35dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_margin="5dp"
-                    android:layout_marginBottom="20dp"
-                    android:weightSum="3"
-                    android:orientation="horizontal">
-                <Button android:layout_width="0dp" android:layout_height="match_parent"
-                        android:text="Approve"
-                        android:layout_weight="1"
-                        android:textColor="@android:color/white"
-                        android:textSize="14sp"
-                        android:gravity="center"
-                        android:background="@drawable/green_bg"
-                        android:textAllCaps="false"/>
-                <Button android:layout_width="0dp" android:layout_height="match_parent"
-                        android:text="Refuse"
-                        android:layout_weight="1"
-                        android:layout_marginStart="12dp"
-                        android:textColor="@android:color/white"
-                        android:textSize="14sp"
-                        android:gravity="center"
-                        android:background="@drawable/refuse_bg"
-                        android:textAllCaps="false"/>
-                <Button android:layout_width="0dp" android:layout_height="match_parent"
-                        android:text="Hold"
-                        android:layout_weight="1"
-                        android:layout_marginStart="12dp"
-                        android:textColor="@android:color/white"
-                        android:textSize="14sp"
-                        android:gravity="center"
-                        android:background="@drawable/hold_bg"
-                        android:textAllCaps="false"/>
-
-
-            </LinearLayout>
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                           android:layout_gravity="center_horizontal"
                           android:layout_marginTop="7dp"
@@ -329,6 +324,63 @@
                 </RadioGroup>
 
             </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+                android:id="@+id/lay_actions" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical"
+                      android:layout_marginStart="10dp"
+                      android:layout_marginEnd="10dp"
+                      android:layout_marginTop="10dp"
+                android:visibility="gone"
+        android:layout_gravity="center_horizontal">
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:text="Management Action"
+                  android:textColor="@android:color/black"
+                  android:padding="2dp"
+                  android:id="@+id/txt_action"
+                  android:layout_gravity="center_horizontal"
+                  android:fontFamily="sans-serif"
+                  android:textStyle="bold"
+                  android:layout_marginTop="4dp"
+                  android:gravity="start|center"
+                  android:textSize="13sp"/>
+
+        <LinearLayout
+                android:id="@+id/lay_btns" android:layout_width="match_parent" android:layout_height="35dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="5dp"
+                android:layout_marginBottom="20dp"
+                android:weightSum="3"
+                android:orientation="horizontal">
+            <Button android:layout_width="0dp" android:layout_height="match_parent"
+                    android:text="Approve"
+                    android:layout_weight="1"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:background="@drawable/green_bg"
+                    android:textAllCaps="false"/>
+            <Button android:layout_width="0dp" android:layout_height="match_parent"
+                    android:text="Refuse"
+                    android:layout_weight="1"
+                    android:layout_marginStart="12dp"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:background="@drawable/refuse_bg"
+                    android:textAllCaps="false"/>
+            <Button android:layout_width="0dp" android:layout_height="match_parent"
+                    android:text="Hold"
+                    android:layout_weight="1"
+                    android:layout_marginStart="12dp"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:background="@drawable/hold_bg"
+                    android:textAllCaps="false"/>
+
+
+        </LinearLayout>
         </LinearLayout>
         <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_purchase"
