@@ -13,6 +13,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import com.adapter.app.PurchaseAdapter
+import com.common.app.Common
 import com.common.app.NothingSelectedSpinnerAdapter
 import com.suvidha.app.R
 import kotlinx.android.synthetic.main.purchase_screen.view.*
@@ -75,6 +76,15 @@ v.lay_reset.visibility = View.VISIBLE
         return v
     }
     fun work(){
+        v.btn_approve.setOnClickListener {
+            Common.showToast(activity!!,"Please select POs for approval")
+        }
+        v.btn_refuse.setOnClickListener {
+            Common.showToast(activity!!,"Please select POs for refusal")
+        }
+        v.btn_hold.setOnClickListener {
+            Common.showToast(activity!!,"Please select POs to hold")
+        }
         v.btn_srch.setOnClickListener{
             val imm = activity!!.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(v.edt_srch_purchase.windowToken, 0)

@@ -358,6 +358,7 @@
                     android:textColor="@android:color/white"
                     android:textSize="14sp"
                     android:gravity="center"
+                    android:id="@+id/btn_approve"
                     android:background="@drawable/green_bg"
                     android:textAllCaps="false"/>
             <Button android:layout_width="0dp" android:layout_height="match_parent"
@@ -367,6 +368,7 @@
                     android:textColor="@android:color/white"
                     android:textSize="14sp"
                     android:gravity="center"
+                    android:id="@+id/btn_refuse"
                     android:background="@drawable/refuse_bg"
                     android:textAllCaps="false"/>
             <Button android:layout_width="0dp" android:layout_height="match_parent"
@@ -376,6 +378,7 @@
                     android:textColor="@android:color/white"
                     android:textSize="14sp"
                     android:gravity="center"
+                    android:id="@+id/btn_hold"
                     android:background="@drawable/hold_bg"
                     android:textAllCaps="false"/>
 
