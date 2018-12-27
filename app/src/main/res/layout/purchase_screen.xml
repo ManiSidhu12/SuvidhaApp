@@ -26,6 +26,7 @@
                     android:text="Select Branch/Unit"
                     android:textColor="@android:color/black"
                     android:padding="2dp"
+                    android:layout_marginStart="2dp"
                     android:layout_gravity="center_horizontal"
                     android:gravity="start|center"
                     android:fontFamily="sans-serif"
@@ -50,6 +51,7 @@
                     android:layout_marginTop="4dp"
                     android:textColor="@android:color/black"
                     android:padding="2dp"
+                    android:layout_marginStart="2dp"
                     android:layout_gravity="center_horizontal"
                     android:gravity="start|center"
                     android:textStyle="bold"
@@ -72,7 +74,8 @@
                     android:id="@+id/po_status"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Select PO Status(Pending for Approval)"
+                    android:text="Select PO Status"
+                    android:layout_marginStart="2dp"
                     android:textColor="@android:color/black"
                     android:padding="2dp"
                     android:layout_marginTop="4dp"
@@ -102,18 +105,25 @@
                       android:layout_gravity="center_horizontal"
                       android:gravity="start|center"
                       android:layout_marginTop="4dp"
+                      android:layout_marginStart="2dp"
+
                       android:fontFamily="sans-serif"
                       android:textStyle="bold"
                       android:textSize="13sp"/>
-
+<RelativeLayout android:layout_width="match_parent" android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="5dp">
             <RelativeLayout android:layout_width="match_parent" android:layout_height="35dp"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_margin="5dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerInParent="true"
+                            android:layout_toStartOf="@+id/btn_srch"
+                            android:layout_marginEnd="3dp"
                             android:background="@drawable/spin_bg">
                 <EditText
                         android:id="@+id/edt_srch_purchase"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+
                         android:hint="Search"
                         android:textColor="@android:color/black"
                         android:textSize="14sp"
@@ -122,6 +132,18 @@
                         android:background="@android:color/transparent"
                         android:padding="4dp"
                 />
+            </RelativeLayout>
+                <Button
+                        android:layout_width="100dp" android:layout_height="40dp"
+                        android:text="Search"
+                        android:id="@+id/btn_srch"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="5dp"
+                        android:textSize="14sp"
+                        android:gravity="center"
+                        android:textColor="@android:color/darker_gray"
+                        android:textAllCaps="false"/>
 
             </RelativeLayout>
             <RelativeLayout android:layout_width="match_parent" android:layout_height="40dp"
@@ -133,6 +155,7 @@
                 <RelativeLayout android:layout_width="wrap_content" android:layout_height="match_parent"
                                 android:layout_alignParentStart="true"
                                 android:layout_centerInParent="true"
+                                android:visibility="gone"
                                 android:layout_marginStart="3dp">
                     <ImageView
                             android:id="@+id/refresh" android:layout_width="15dp" android:layout_height="15dp"
@@ -152,17 +175,6 @@
                               android:textStyle="bold"
                     />
                 </RelativeLayout>
-                <Button
-                        android:layout_width="150dp" android:layout_height="match_parent"
-                        android:text="Search"
-                        android:id="@+id/btn_srch"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerInParent="true"
-                        android:textColor="@android:color/white"
-                        android:textSize="14sp"
-                        android:gravity="center"
-                        android:background="@color/colorPrimary"
-                        android:textAllCaps="false"/>
             </RelativeLayout>
 
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
@@ -176,6 +188,7 @@
                         android:text="Zone"
                         android:textColor="@android:color/black"
                         android:padding="2dp"
+                        android:layout_marginStart="2dp"
                         android:layout_gravity="center_horizontal"
                         android:gravity="start|center"
                         android:layout_marginTop="4dp"
@@ -204,6 +217,7 @@
                         android:gravity="start|center"
                         android:layout_marginTop="4dp"
                         android:fontFamily="sans-serif"
+                        android:layout_marginStart="2dp"
                         android:textStyle="bold"
                         android:textSize="13sp"/>
 
@@ -227,6 +241,8 @@
                         android:layout_gravity="center_horizontal"
                         android:gravity="start|center"
                         android:layout_marginTop="4dp"
+                        android:layout_marginStart="2dp"
+
                         android:fontFamily="sans-serif"
                         android:textStyle="bold"
                         android:textSize="13sp"/>
@@ -258,6 +274,8 @@
                         android:gravity="start|center"
                         android:layout_marginTop="4dp"
                         android:fontFamily="sans-serif"
+                        android:layout_marginStart="2dp"
+
                         android:textStyle="bold"
                         android:textSize="13sp"/>
                 <TextView
@@ -265,6 +283,8 @@
                         android:text="Customer Type"
                         android:textColor="@android:color/black"
                         android:padding="2dp"
+                        android:layout_marginStart="2dp"
+
                         android:layout_gravity="center_horizontal"
                         android:gravity="start|center"
                         android:layout_marginTop="4dp"
@@ -285,45 +305,6 @@
                 </RelativeLayout>
             </LinearLayout>
 
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                          android:layout_gravity="center_horizontal"
-                          android:layout_marginTop="7dp"
-                          android:background="@drawable/spin_bg"
-                          android:visibility="gone"
-                          android:orientation="vertical">
-                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                          android:text="Show POs"
-                          android:textColor="@android:color/black"
-                          android:padding="2dp"
-                          android:layout_gravity="center_horizontal"
-                          android:layout_margin="4dp"
-                          android:gravity="start|center"
-                          android:textSize="16sp"/>
-                <RadioGroup android:layout_width="match_parent" android:layout_height="wrap_content"
-                            android:weightSum="4"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="4dp"
-                            android:layout_marginBottom="4dp"
-                            android:orientation="horizontal">
-                    <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                 android:layout_weight="1"
-                                 android:textSize="14sp"
-                                 android:text="All" android:checked="false"/>
-                    <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                 android:layout_weight="1"
-                                 android:textSize="14sp"
-                                 android:text="Written" android:checked="false"/>
-                    <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                 android:layout_weight="1"
-                                 android:textSize="14sp"
-                                 android:text="Verbal" android:checked="false"/>
-                    <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                 android:layout_weight="1"
-                                 android:textSize="14sp"
-                                 android:text="Local" android:checked="false"/>
-                </RadioGroup>
-
-            </LinearLayout>
         </LinearLayout>
         <LinearLayout
                 android:id="@+id/lay_actions" android:layout_width="match_parent" android:layout_height="wrap_content"
@@ -338,6 +319,8 @@
                   android:textColor="@android:color/black"
                   android:padding="2dp"
                   android:id="@+id/txt_action"
+                  android:layout_marginStart="2dp"
+
                   android:layout_gravity="center_horizontal"
                   android:fontFamily="sans-serif"
                   android:textStyle="bold"

@@ -3,6 +3,7 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
+              android:background="#87cefa"
 android:layout_margin="5dp">
     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
             android:layout_gravity="end|center_horizontal"
@@ -17,24 +18,38 @@ android:layout_margin="5dp">
     <RelativeLayout
             android:id="@+id/lay_delivery_data" android:layout_width="match_parent" android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
+            android:layout_marginTop="7dp"
     >
     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
               android:layout_alignParentStart="true"
               android:layout_centerInParent="true"
-              android:id="@+id/txt_qty"
+              android:id="@+id/txt_date_scheduled"
               android:layout_marginStart="4dp"
               android:textColor="@android:color/black"
-              android:textSize="14sp"
+              android:textSize="13sp"
               android:fontFamily="sans-serif"
               android:textStyle="bold"
               android:gravity="start|center"
-              android:text="1 Item(30kg)"
+              android:text="Scheduled Dly. : 10-12-2018"
               android:padding="3dp"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:id="@+id/txt_quantity"
+android:layout_alignParentEnd="true"
+                  android:layout_centerInParent="true"
+                  android:textSize="13sp"
+                  android:textColor="@android:color/black"
+                  android:gravity="end|center"
+                  android:text="10.00 kgs"
+                  android:fontFamily="sans-serif"
+                  android:textStyle="bold"
+                  android:paddingEnd="5dp"/>
+
         <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
         android:layout_marginEnd="4dp"
                       android:layout_marginTop="2dp"
+                      android:visibility="gone"
         android:orientation="vertical">
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
 android:layout_gravity="end"
@@ -77,7 +92,7 @@ android:id="@+id/txt_deliverydate"
                       android:textSize="14sp"
                       android:gravity="start|center"
                       android:layout_marginEnd="4dp"
-                      android:text="Unit-SAHA"
+                      android:text="Unit-Ambala"
                       android:textStyle="bold"
                       android:fontFamily="sans-serif"
                       android:padding="3dp"/>
@@ -85,14 +100,13 @@ android:id="@+id/txt_deliverydate"
                       android:layout_alignParentEnd="true"
                       android:layout_centerInParent="true"
                       android:layout_marginEnd="7dp"
-                      android:id="@+id/txt_on_order"
+                      android:id="@+id/txt_consumed"
 
                       android:textSize="14sp"
                       android:fontFamily="sans-serif"
                       android:textStyle="bold"
-                      android:textColor="@android:color/black"
                       android:gravity="end|center"
-                      android:text="2(On Order)"
+                      android:text="Consumed: 30000.977"
                       android:padding="3dp"/>
         </RelativeLayout>
 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
@@ -107,17 +121,17 @@ android:weightSum="3">
             android:textSize="13sp"
             android:fontFamily="sans-serif"
             android:textStyle="bold"
-    android:text="5(On Plan)"/>
+    android:text="On Plan: 20000.899"/>
     <TextView
-            android:id="@+id/cons" android:layout_width="0dp" android:layout_height="wrap_content"
+            android:id="@+id/in_stock" android:layout_width="0dp" android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="14sp"
 android:gravity="center"
             android:fontFamily="sans-serif"
             android:textStyle="bold"
-            android:text="89(Cons)"/>
+            android:text="Stk. : 10000.999"/>
     <TextView
-            android:id="@+id/stock" android:layout_width="0dp" android:layout_height="wrap_content"
+            android:id="@+id/on_order" android:layout_width="0dp" android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="13sp"
 android:gravity="end|center"
@@ -125,7 +139,7 @@ android:gravity="end|center"
       android:fontFamily="sans-serif"
             android:textStyle="bold"
             android:paddingEnd="3dp"
-            android:text="2(Stock)"/>
+            android:text="On Ord.: 55555.666"/>
 
 </LinearLayout>
     </LinearLayout>

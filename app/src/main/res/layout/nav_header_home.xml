@@ -3,10 +3,11 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="160dp"
+        android:layout_height="165dp"
         android:background="@color/colorPrimary"
         android:theme="@style/ThemeOverlay.AppCompat.Dark"
         android:orientation="vertical"
+
         android:gravity="bottom">
 
     <ImageView
@@ -16,9 +17,13 @@
             android:contentDescription="@string/nav_header_desc"
             android:layout_gravity="center"
             android:layout_marginStart="7dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:src="@drawable/ic_dummypic"
             android:id="@+id/imageView"/>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:layout_gravity="center"
+                  android:orientation="vertical"
+    android:id="@+id/clicks">
     <TextView
             android:id="@+id/user_name_side"
             android:layout_width="match_parent"
@@ -27,7 +32,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:text="Aman"
-            android:textColor="@android:color/white"
+            android:textColor="@color/login_color"
             android:textSize="13sp"
             android:fontFamily="sans-serif"
             android:textStyle="bold"
@@ -57,4 +62,5 @@
             android:layout_marginStart="5dp"
             android:gravity="center"
             android:id="@+id/textView2"/>
+    </LinearLayout>
 </LinearLayout>

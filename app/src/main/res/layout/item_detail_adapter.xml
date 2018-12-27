@@ -41,7 +41,7 @@
                       android:layout_centerInParent="true"
                       android:id="@+id/txt_item_qty"
                       android:textSize="14sp"
-                      android:text="Qty:50.532"
+                      android:text="50.532 kgs"
                       android:gravity="start|center"
                       android:fontFamily="sans-serif"
                       android:textStyle="bold"
@@ -55,6 +55,18 @@
                       android:gravity="start|center"
                       android:fontFamily="sans-serif"
                       android:textStyle="bold"
+                      android:padding="3dp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+android:layout_alignParentEnd="true"
+                      android:layout_marginEnd="5dp"
+                      android:layout_centerInParent="true"
+                      android:id="@+id/txt_rate_history"
+                      android:textSize="14sp"
+                      android:gravity="start|center"
+                      android:fontFamily="sans-serif"
+                      android:textColor="@color/red"
+                      android:textStyle="bold"
+                      android:text="Rate History"
                       android:padding="3dp"/>
 
         </RelativeLayout>

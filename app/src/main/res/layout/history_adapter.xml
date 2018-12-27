@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+<TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+android:layout_margin="5dp"
+          android:layout_gravity="center_horizontal"
+          android:gravity="start|center"
+          android:padding="3dp"
+          android:textColor="@android:color/black"
+          android:textStyle="bold"
+          android:fontFamily="sans-serif"
+          android:id="@+id/supplier"
+          android:textSize="13sp"
+android:text="S R Industries"/>
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                 android:layout_alignParentStart="true"
+                  android:layout_centerInParent="true"
+                  android:gravity="start|center"
+                  android:padding="3dp"
+                  android:textColor="@android:color/black"
+                  android:fontFamily="sans-serif"
+                  android:textSize="13sp"
+                  android:text="Rs 983.54"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:layout_alignParentEnd="true"
+                  android:layout_centerInParent="true"
+                  android:gravity="end|center"
+                  android:layout_marginEnd="5dp"
+                  android:padding="3dp"
+                  android:textColor="@android:color/black"
+                  android:fontFamily="sans-serif"
+                  android:textSize="13sp"
+                  android:text="Dated : 10-12-2018"/>
+
+    </RelativeLayout>
+    <View android:layout_width="match_parent" android:layout_height="1dp"
+          android:layout_gravity="center_horizontal"
+          android:layout_margin="7dp"
+          android:background="@android:color/darker_gray"
+/></LinearLayout>

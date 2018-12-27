@@ -1,27 +1,33 @@
 package com.fragments.app
 
 import android.content.Context.INPUT_METHOD_SERVICE
+import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.content.ContextCompat.getSystemService
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.ArrayAdapter
-import android.widget.ImageView
 import com.adapter.app.PurchaseAdapter
 import com.common.app.Common
 import com.common.app.NothingSelectedSpinnerAdapter
 import com.suvidha.app.R
 import kotlinx.android.synthetic.main.purchase_screen.view.*
+import android.text.Editable
+import android.text.TextWatcher
+import android.widget.*
+import com.common.app.MyAdapter
+
 
 class PurchaseFragment : Fragment(){
     lateinit var v : View
     lateinit var toolBar : Toolbar
     lateinit var btnFilter : ImageView
+    var selectedItem = 0
+    var selectedItem1 = 0
+    var selectedItem2 = 0
     var listBranch = ArrayList<String>()
     var listPrepared = ArrayList<String>()
     var listStatus = ArrayList<String>()
@@ -30,16 +36,15 @@ class PurchaseFragment : Fragment(){
        v = inflater.inflate(R.layout.purchase_screen,container,false)
 
         toolBar = activity!!.findViewById(R.id.toolbar)
-        toolBar.title = "POs Pending Approvals"
+        toolBar.title = "POs Pending Approval"
         btnFilter = toolBar.findViewById(R.id.img_filter)
         btnFilter.visibility = View.VISIBLE
         v.recycler_purchase.layoutManager = LinearLayoutManager(activity!!)
         v.recycler_purchase.adapter = PurchaseAdapter(activity!!)
 
 
-        listBranch.add("Unit-SAHA")
+        listBranch.add("Unit-Chandigarh")
         listBranch.add("Unit-Ambala")
-        listBranch.add("Spares-Division")
 
 
         listPrepared.add("All")
@@ -57,25 +62,100 @@ class PurchaseFragment : Fragment(){
 
 
 v.lay_actions.visibility = View.VISIBLE
-v.lay_reset.visibility = View.VISIBLE
+//v.lay_reset.visibility = View.VISIBLE
         val adapterBranch = ArrayAdapter<String>(activity!!, R.layout.spinner_txt1, listBranch)
         adapterBranch.setDropDownViewResource(R.layout.spinner_txt)
-        v.spin_branch.adapter = adapterBranch
+        //v.spin_branch.adapter = MyAdapter(activity!!,android.R.layout.simple_spinner_item,listBranch,v.spin_branch)
 
-        v.spin_branch.adapter = NothingSelectedSpinnerAdapter(adapterBranch, R.layout.selection, activity!!)
-
+    //    v.spin_branch.adapter = NothingSelectedSpinnerAdapter(adapterBranch, R.layout.selection, activity!!)
+setSpinnerAdapter(v.spin_branch,listBranch,"branch")
         val adapterPrepare = ArrayAdapter<String>(activity!!, R.layout.spinner_txt1, listPrepared)
         adapterPrepare.setDropDownViewResource(R.layout.spinner_txt)
-        v.spin_user.adapter = adapterPrepare
+      //  v.spin_user.adapter = adapterPrepare
+        setSpinnerAdapter(v.spin_user,listPrepared,"user")
 
         val adapterStatus = ArrayAdapter<String>(activity!!, R.layout.spinner_txt1, listStatus)
         adapterStatus.setDropDownViewResource(R.layout.spinner_txt)
-        v.spin_postatus.adapter = adapterStatus
+            //  v.spin_postatus.adapter = adapterStatus
+        setSpinnerAdapter(v.spin_postatus,listStatus,"status")
         work()
+      /*  val dataAdapter = object : ArrayAdapter<String>(activity!!, android.R.layout.simple_spinner_item, listBranch) {
+
+            override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
+                var v1: View? = null
+                v1 = super.getDropDownView(position,null, parent)
+                // If this is the selected item position
+                if (position == selectedItem) {
+                    v1!!.setBackgroundColor(Color.parseColor("#044A6C"))
+                } else {
+                    // for other views
+                    v1!!.setBackgroundColor(Color.WHITE)
+
+                }
+                return v1
+            }
+        }
+
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        v.spin_branch.setAdapter(dataAdapter)*/
+
+        // Initialize an array adapter
 
         return v
     }
     fun work(){
+
+        v.spin_branch.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                selectedItem = position
+
+
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
+        v.spin_user.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                selectedItem1 = position
+
+
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
+        v.spin_postatus.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                selectedItem2 = position
+
+
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
+        v.edt_srch_purchase.addTextChangedListener(object : TextWatcher {
+
+            // Before EditText text change.
+            override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
+
+            }
+
+            override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
+
+            }
+
+            // This method is invoked after user input text in EditText.
+            override fun afterTextChanged(editable: Editable) {
+                if(v.edt_srch_purchase.text.toString().length > 0){
+                    v.btn_srch.setBackgroundColor(Color.parseColor("#044A6C"))
+                    v.btn_srch.setTextColor(Color.parseColor("#ffffff"))
+                }
+                else{
+                    v.btn_srch.setBackgroundResource(android.R.drawable.btn_default)
+                    v.btn_srch.setTextColor(activity!!.resources.getColor(android.R.color.darker_gray))
+                }
+            }
+        })
+
         v.btn_approve.setOnClickListener {
             Common.showToast(activity!!,"Please select POs for approval")
         }
@@ -86,6 +166,8 @@ v.lay_reset.visibility = View.VISIBLE
             Common.showToast(activity!!,"Please select POs to hold")
         }
         v.btn_srch.setOnClickListener{
+            v.edt_srch_purchase.text = Editable.Factory.getInstance().newEditable("")
+
             val imm = activity!!.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(v.edt_srch_purchase.windowToken, 0)
         }
@@ -99,5 +181,63 @@ v.lay_reset.visibility = View.VISIBLE
         }
     }
 
+fun setSpinnerAdapter(spin : Spinner,list : ArrayList<String>,type : String){
+    var  mAdapter = object : ArrayAdapter<String>(activity!!, R.layout.support_simple_spinner_dropdown_item, list) {
+        override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+            // Cast the spinner collapsed item (non-popup item) as a text view
+            val tv = super.getView(position, convertView, parent) as TextView
 
+            // Set the text color of spinner item
+            tv.setTextColor(Color.BLACK)
+
+            // Return the view
+            return tv
+        }
+
+        override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
+            // Cast the drop down items (popup items) as text view
+            val tv = super.getDropDownView(position, convertView, parent) as TextView
+
+            // Set the text color of drop down items
+            tv.setTextColor(Color.RED)
+
+            // If this item is selected item
+            if(type.equals("branch")) {
+                if (position == selectedItem) {
+                    // Set spinner selected popup item's text color
+                    tv.setBackgroundColor(Color.parseColor("#044A6C"))
+                    tv.setTextColor(Color.WHITE)
+                } else {
+                    tv.setBackgroundColor(Color.WHITE)
+                    tv.setTextColor(Color.BLACK)
+                }
+            }
+            else if(type.equals("user"))
+            {
+                if (position == selectedItem1) {
+                    // Set spinner selected popup item's text color
+                    tv.setBackgroundColor(Color.parseColor("#044A6C"))
+                    tv.setTextColor(Color.WHITE)
+                } else {
+                    tv.setBackgroundColor(Color.WHITE)
+                    tv.setTextColor(Color.BLACK)
+                }
+            }
+            else{
+                if (position == selectedItem2) {
+                    // Set spinner selected popup item's text color
+                    tv.setBackgroundColor(Color.parseColor("#044A6C"))
+                    tv.setTextColor(Color.WHITE)
+                } else {
+                    tv.setBackgroundColor(Color.WHITE)
+                    tv.setTextColor(Color.BLACK)
+                }
+            }
+
+            // Return the modified view
+            return tv
+        }
+    }
+   spin.adapter = mAdapter
+}
 }

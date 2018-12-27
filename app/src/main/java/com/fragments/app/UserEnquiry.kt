@@ -27,7 +27,7 @@ class UserEnquiry : Fragment(){
         v.recycler_enquiry.layoutManager = LinearLayoutManager(activity!!)
 
         if(arguments!!.getString("type") != null && arguments!!.getString("type").equals("user")) {
-            toolBar.title = "List Of Conveyance"
+            toolBar.title = "User Enquiries"
             btnFilter.visibility = View.VISIBLE
 
             v.recycler_enquiry.adapter = EnquiriesAdapter(activity!!,"user")

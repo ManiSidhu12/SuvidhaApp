@@ -1,16 +1,16 @@
 package com.adapter.app;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.*;
 
 import com.bignerdranch.expandablerecyclerview.Adapter.ExpandableRecyclerAdapter;
 import com.bignerdranch.expandablerecyclerview.Model.ParentListItem;
@@ -93,13 +93,15 @@ public class PurchaseItemDetailAdapter extends ExpandableRecyclerAdapter<Purchas
                     parentViewHolder.layStock.setBackgroundColor(Color.parseColor("#ffffff"));
                     parentViewHolder.txtDel.setTextColor(Color.parseColor("#000000"));
                     parentViewHolder.txtStock.setTextColor(Color.parseColor("#000000"));
+                    expandParent(position);
                     collapseParent(position);
                 }else{
-                    value = "delivery";
                     parentViewHolder.layDelivery.setBackgroundColor(Color.parseColor("#044A6C"));
                     parentViewHolder.layStock.setBackgroundColor(Color.parseColor("#ffffff"));
                     parentViewHolder.txtDel.setTextColor(Color.parseColor("#FFFFFF"));
                     parentViewHolder.txtStock.setTextColor(Color.parseColor("#000000"));
+                    value = "delivery";
+                    collapseParent(position);
                     expandParent(position);
                 }
 
@@ -115,19 +117,27 @@ public class PurchaseItemDetailAdapter extends ExpandableRecyclerAdapter<Purchas
                     parentViewHolder.layStock.setBackgroundColor(Color.parseColor("#ffffff"));
                     parentViewHolder.txtDel.setTextColor(Color.parseColor("#000000"));
                     parentViewHolder.txtStock.setTextColor(Color.parseColor("#000000"));
+                    expandParent(position);
                     collapseParent(position);
                 }else{
-                    value = "stock";
                     parentViewHolder.layStock.setBackgroundColor(Color.parseColor("#044A6C"));
                     parentViewHolder.layDelivery.setBackgroundColor(Color.parseColor("#ffffff"));
                     parentViewHolder.txtStock.setTextColor(Color.parseColor("#FFFFFF"));
                     parentViewHolder.txtDel.setTextColor(Color.parseColor("#000000"));
+                    value = "stock";
+                    collapseParent(position);
                     expandParent(position);
                 }
                // value = "stock";
 
 
                 //notifyDataSetChanged();
+            }
+        });
+        parentViewHolder.txtRateHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+openDialog(c);
             }
         });
      /*
@@ -202,7 +212,24 @@ public class PurchaseItemDetailAdapter extends ExpandableRecyclerAdapter<Purchas
             layDeliveryData = itemView.findViewById(R.id.lay_delivery_data);
         }
     }
+    private void openDialog(Context ctx) {
 
+        final Dialog dialog1 = new  Dialog(ctx, android.R.style.Theme_Translucent_NoTitleBar);
+        dialog1.setContentView(R.layout.history_dialog);
+        Button btnClose = dialog1.findViewById(R.id.btn_close);
+
+        RecyclerView recycler_history  =dialog1.findViewById(R.id.recycler_history);
+        recycler_history.setLayoutManager(new LinearLayoutManager(ctx));
+        recycler_history.setAdapter(new HistoryAdapter(ctx));
+        dialog1.show();
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog1.dismiss();
+            }
+        });
+
+    }
     public class SimpleParentViewHolder extends ParentViewHolder {
         private static final float INITIAL_POSITION = 0.0f;
         private static final float ROTATED_POSITION = 180f;
@@ -214,7 +241,7 @@ public class PurchaseItemDetailAdapter extends ExpandableRecyclerAdapter<Purchas
         public View lineBtns;
         RelativeLayout layDelivery;
         RelativeLayout layStock;
-        TextView txtPrice, txtItemNo, txtDel, txtStock;
+        TextView txtPrice, txtItemNo, txtDel, txtStock,txtRateHistory;
 
         //  public ImageButton mParentDropDownArrow1;
 
@@ -232,6 +259,7 @@ public class PurchaseItemDetailAdapter extends ExpandableRecyclerAdapter<Purchas
             txtPrice = itemView.findViewById(R.id.txt_item_price);
             txtItemNo = itemView.findViewById(R.id.txt_item_no);
             layStock = itemView.findViewById(R.id.btn_stock_status);
+            txtRateHistory = itemView.findViewById(R.id.txt_rate_history);
             //mParentDropDownArrow = itemView.findViewById(R.id.collapseButton);
             //   mParentDropDownArrow1 = itemView.findViewById(R.id.parent_list_item_expand_arrow1);
 
