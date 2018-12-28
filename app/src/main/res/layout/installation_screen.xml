@@ -212,7 +212,6 @@
                         android:textColor="@android:color/black"
                         android:textSize="14sp"
                         android:gravity="start|center"
-                        android:enabled="false"
                         android:background="@android:color/transparent"
                         android:padding="4dp"
                 />

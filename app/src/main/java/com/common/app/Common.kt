@@ -3,6 +3,7 @@ package com.common.app
 import android.app.Activity
 import android.content.Context
 import android.support.design.widget.TextInputLayout
+import android.text.TextUtils
 import android.view.Gravity
 import android.view.View
 import android.view.WindowManager
@@ -46,5 +47,28 @@ fun showToast(c : Context,msg: String){
     toast.setGravity(Gravity.CENTER, 0, 0)
     toast.show()
 }
+
+        fun validateEmail(c: Context, edt_Email: EditText, lay_email: TextInputLayout): Boolean {
+            val email = edt_Email.text.toString().trim { it <= ' ' }
+
+            if (email.isEmpty()) {
+                lay_email.error = "Please Enter Email Id..."
+                requestFocus(c, edt_Email)
+                return false
+            } else if (!isValidEmail(email)) {
+                lay_email.error = "Please enter valid Email..."
+                requestFocus(c, edt_Email)
+                return false
+            } else {
+                lay_email.isErrorEnabled = false
+            }
+
+            return true
+        }
+
+        private fun isValidEmail(email: String): Boolean {
+            return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
+        }
+
     }
 }

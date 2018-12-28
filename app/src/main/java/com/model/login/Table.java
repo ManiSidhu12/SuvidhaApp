@@ -32,6 +32,18 @@ private String designation;
 @SerializedName("emailid")
 @Expose
 private String emailid;
+
+    public String getUserexists() {
+        return userexists;
+    }
+
+    public void setUserexists(String userexists) {
+        this.userexists = userexists;
+    }
+
+    @SerializedName("userexists")
+    @Expose
+    private String userexists;
 @SerializedName("useraccesstoken")
 @Expose
 private String useraccesstoken;

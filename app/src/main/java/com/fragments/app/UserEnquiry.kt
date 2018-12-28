@@ -2,6 +2,7 @@ package com.fragments.app
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
 import android.view.LayoutInflater
@@ -48,10 +49,20 @@ work()
 if(v.lay_dates.visibility == View.GONE){
     v.lay_dates.visibility = View.VISIBLE
     btn_apply.visibility = View.VISIBLE
+    btnFilter.setImageResource(R.drawable.filledfilter)
+    btnFilter.setColorFilter(
+        ContextCompat.getColor(activity!!,android.R.color.white),
+        android.graphics.PorterDuff.Mode.SRC_IN
+    )
 }
             else{
     v.lay_dates.visibility = View.GONE
     btn_apply.visibility = View.GONE
+    btnFilter.setImageResource(R.drawable.filter)
+    btnFilter.setColorFilter(
+        ContextCompat.getColor(activity!!,android.R.color.white),
+        android.graphics.PorterDuff.Mode.SRC_IN
+    )
             }
         }
     }

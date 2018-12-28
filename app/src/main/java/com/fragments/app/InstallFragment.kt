@@ -2,6 +2,7 @@ package com.fragments.app
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
 import android.view.LayoutInflater
@@ -29,6 +30,9 @@ class InstallFragment : Fragment(){
         toolBar.title = "Installation & Services"
         btnFilter = toolBar.findViewById(R.id.img_filter)
         btnFilter.visibility = View.VISIBLE
+        btnFilter.setImageResource(R.drawable.filter)
+        btnFilter.setColorFilter(ContextCompat.getColor(activity!!,android.R.color.white),
+            android.graphics.PorterDuff.Mode.SRC_IN)
 
         v.recycler_install.layoutManager = LinearLayoutManager(activity!!)
         v.recycler_install.adapter = InstallAdapter(activity!!)
@@ -69,9 +73,19 @@ class InstallFragment : Fragment(){
         btnFilter.setOnClickListener {
             if(v.lay_filters_install.visibility == View.VISIBLE){
                 v.lay_filters_install.visibility = View.GONE
+                btnFilter.setImageResource(R.drawable.filter)
+                btnFilter.setColorFilter(
+                    ContextCompat.getColor(activity!!,android.R.color.white),
+                    android.graphics.PorterDuff.Mode.SRC_IN
+                )
             }
             else{
                 v.lay_filters_install.visibility = View.VISIBLE
+                btnFilter.setImageResource(R.drawable.filledfilter)
+                btnFilter.setColorFilter(
+                    ContextCompat.getColor(activity!!,android.R.color.white),
+                    android.graphics.PorterDuff.Mode.SRC_IN
+                )
             }
         }
     }

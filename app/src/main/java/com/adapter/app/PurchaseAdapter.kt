@@ -8,12 +8,14 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import com.suvidha.app.PurchaseItemDetail
 import com.suvidha.app.R
 import kotlinx.android.synthetic.main.msg_popup.*
 import kotlinx.android.synthetic.main.purchase_adapter.view.*
 
-class PurchaseAdapter(var ctx : Context) :  RecyclerView.Adapter<PurchaseAdapter.ViewHolder>(){
+class PurchaseAdapter(var ctx: Context, var listNames: ArrayList<String>, var listData: ArrayList<String>,
+  var  list2: ArrayList<String>,var btnApprove : Button,var btnRefuse :Button) :  RecyclerView.Adapter<PurchaseAdapter.ViewHolder>(){
 
    var expandValue  = -1
     var pos = -1
@@ -24,22 +26,31 @@ class PurchaseAdapter(var ctx : Context) :  RecyclerView.Adapter<PurchaseAdapter
     }
 
     override fun getItemCount(): Int {
-        return 5
+        return listNames.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, p1: Int) {
         //holder.txtOrderNo.paintFlags = holder.txtOrderNo.paintFlags or Paint.UNDERLINE_TEXT_FLAG
-        if(pos == p1){
+        if(list2[p1].equals("1")){
             holder.imgChk.setImageResource(R.drawable.sel)
 
         }
         else{
             holder.imgChk.setImageResource(R.drawable.unslct)
         }
-        if(p1 == 1){
-            holder.txtName.text = "Devi Dayal Welding Works"
-            holder.txtStatus.text = "Cancelled"
+        holder.txtName.text = listNames[p1]
+        holder.txtStatus.text = listData[p1]
+        if(listData[p1].equals("Pending")) {
+            holder.txtStatus.setTextColor(ContextCompat.getColor(ctx, R.color.dark_blue))
+        }
+        else  if(listData[p1].equals("Cancelled")) {
             holder.txtStatus.setTextColor(ContextCompat.getColor(ctx, R.color.red))
+        }
+        else  if(listData[p1].equals("Approved")) {
+            holder.txtStatus.setTextColor(ContextCompat.getColor(ctx, R.color.green))
+        }
+        else  if(listData[p1].equals("Hold")) {
+            holder.txtStatus.setTextColor(ContextCompat.getColor(ctx, R.color.orange))
         }
         if(expandValue == p1){
             holder.line.visibility = View.GONE
@@ -70,11 +81,12 @@ class PurchaseAdapter(var ctx : Context) :  RecyclerView.Adapter<PurchaseAdapter
             ctx.startActivity(Intent(ctx,PurchaseItemDetail::class.java))
         }
         holder.imgChk.setOnClickListener {
-            if(pos  == p1){
-                pos = -1
+            if(list2[p1].equals("0")){
+             list2.set(p1,"1")
             }
             else{
-                pos  = p1
+                list2.set(p1,"0")
+
             }
             notifyDataSetChanged()
         }
@@ -83,7 +95,25 @@ class PurchaseAdapter(var ctx : Context) :  RecyclerView.Adapter<PurchaseAdapter
         }
         holder.txtEmail.setOnClickListener {
             openAlert(ctx,"Email")
+        }
 
+        btnApprove.setOnClickListener {
+           for(i in 0 until list2.size){
+               if(list2[i].equals("1")){
+                   listData.set(i,"Approved")
+                   list2.set(i,"0")
+               }
+           }
+            notifyDataSetChanged()
+        }
+        btnRefuse.setOnClickListener {
+            for(i in 0 until list2.size){
+                if(list2[i].equals("1")){
+                    listData.set(i,"Cancelled")
+                    list2.set(i,"0")
+                }
+            }
+            notifyDataSetChanged()
         }
     }
     private fun openAlert(ctx : Context, type : String) {

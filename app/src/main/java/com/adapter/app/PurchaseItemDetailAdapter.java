@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -27,6 +28,7 @@ public class PurchaseItemDetailAdapter extends ExpandableRecyclerAdapter<Purchas
 
     Context c;
     String value = "";
+    int expandValue  = -1;
 
     public PurchaseItemDetailAdapter(Context context, List<ParentListItem> itemList) {
         super(itemList);
@@ -55,6 +57,8 @@ public class PurchaseItemDetailAdapter extends ExpandableRecyclerAdapter<Purchas
         SimpleParentItem simpleParentItem = (SimpleParentItem) parentListItem;
         //  Common.setSemiBold(c,parentViewHolder.mTvTitle);
         parentViewHolder.txtPrice.setText("@ Rs.85.45");
+
+
        // parentViewHolder.txtItemNo.setPaintFlags(parentViewHolder.txtItemNo.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
 //        parentViewHolder.mTvTitle.setText(simpleParentItem.getTitle());
@@ -76,11 +80,35 @@ public class PurchaseItemDetailAdapter extends ExpandableRecyclerAdapter<Purchas
             //parentViewHolder.mParentDropDownArrow.setVisibility(View.GONE);
 
         }
-        parentViewHolder.layClick.setOnClickListener(new View.OnClickListener() {
+        parentViewHolder.layDrop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                parentViewHolder.layBtns.setVisibility(View.VISIBLE);
-                parentViewHolder.lineBtns.setVisibility(View.VISIBLE);
+               /* parentViewHolder.layBtns.setVisibility(View.VISIBLE);
+                parentViewHolder.lineBtns.setVisibility(View.VISIBLE);*/
+                if(expandValue == position){
+                    expandValue = -1;
+                    parentViewHolder.layBtns.setVisibility(View.GONE);
+                    parentViewHolder.lineBtns.setVisibility(View.GONE);
+                    parentViewHolder.imgDrop.setImageResource(R.drawable.ic_expand_more_black_24dp);
+                    parentViewHolder.imgDrop.setColorFilter(ContextCompat.getColor(c, R.color.dark_blue), android.graphics.PorterDuff.Mode.SRC_IN);
+                    value = "delivery1";
+                    parentViewHolder.layDelivery.setBackgroundColor(Color.parseColor("#ffffff"));
+                    parentViewHolder.layStock.setBackgroundColor(Color.parseColor("#ffffff"));
+                    parentViewHolder.txtDel.setTextColor(Color.parseColor("#000000"));
+                    parentViewHolder.txtStock.setTextColor(Color.parseColor("#000000"));
+
+                    expandParent(position);
+                    collapseParent(position);
+                }
+                else {
+                    expandValue = position;
+                    parentViewHolder.layBtns.setVisibility(View.VISIBLE);
+                    parentViewHolder.lineBtns.setVisibility(View.VISIBLE);
+                    parentViewHolder.imgDrop.setImageResource(R.drawable.ic_expand_less_black_24dp);
+                    parentViewHolder.imgDrop.setColorFilter(ContextCompat.getColor(c, R.color.dark_blue), android.graphics.PorterDuff.Mode.SRC_IN);
+
+                }
+               // notifyDataSetChanged();
             }
         });
         parentViewHolder.layDelivery.setOnClickListener(new View.OnClickListener() {
@@ -239,9 +267,10 @@ openDialog(c);
         public ImageButton mParentDropDownArrow;
         public LinearLayout layBtns, layClick;
         public View lineBtns;
-        RelativeLayout layDelivery;
+        RelativeLayout layDelivery,layDrop;
         RelativeLayout layStock;
         TextView txtPrice, txtItemNo, txtDel, txtStock,txtRateHistory;
+        ImageView imgDrop;
 
         //  public ImageButton mParentDropDownArrow1;
 
@@ -260,10 +289,12 @@ openDialog(c);
             txtItemNo = itemView.findViewById(R.id.txt_item_no);
             layStock = itemView.findViewById(R.id.btn_stock_status);
             txtRateHistory = itemView.findViewById(R.id.txt_rate_history);
+            layDrop = itemView.findViewById(R.id.lay_click_item);
+            imgDrop = itemView.findViewById(R.id.drop_img_item);
             //mParentDropDownArrow = itemView.findViewById(R.id.collapseButton);
             //   mParentDropDownArrow1 = itemView.findViewById(R.id.parent_list_item_expand_arrow1);
 
-            layClick.setClickable(false);
+            layClick.setClickable(true);
         }
 
         @SuppressLint("NewApi")

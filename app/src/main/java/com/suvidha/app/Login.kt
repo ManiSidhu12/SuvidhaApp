@@ -102,7 +102,9 @@ txt_forgot.setOnClickListener {
 
     //============= Login Web Service =====
     private fun loginWebService(email : String,pswd : String){
-        val url = "http://suvidhaapi.suvidhacloud.com/api/Logins/LoginValidation/Login?UserName=admin&password=1233456"
+
+        val url = "http://suvidhaapi.suvidhacloud.com/api/Logins/LoginValidation/Login?UserName=" + email + "&password=" + pswd
+       Log.e("url login",url)
         val pd = ProgressDialog.show(this@Login, "", "Loading", false)
 
         val postRequest = object : StringRequest(
@@ -115,22 +117,35 @@ txt_forgot.setOnClickListener {
           var  rootLogin = gson.fromJson<LoginRoot>(reader, LoginRoot::class.java)
 
             if(rootLogin != null) {
-                Common.showToast(this@Login,"Logged In Successfully...")
-SharedPrefManager.getInstance(this@Login).setLoginResponse(response)
-                SharedPrefManager.getInstance(this@Login).userLogin(rootLogin.table[0].userid.toString(),rootLogin.table[0].firstname,rootLogin.table[0].middlename,rootLogin.table[0].lastname,rootLogin.table[0].emailid,rootLogin.table[0].designation)
+                if(rootLogin.table != null && rootLogin.table[0].userexists == null) {
+                    Common.showToast(this@Login, "Logged In Successfully...")
+                    SharedPrefManager.getInstance(this@Login).setLoginResponse(response)
+                    SharedPrefManager.getInstance(this@Login).userLogin(
+                        rootLogin.table[0].userid.toString(),
+                        rootLogin.table[0].firstname,
+                        rootLogin.table[0].middlename,
+                        rootLogin.table[0].lastname,
+                        rootLogin.table[0].emailid,
+                        rootLogin.table[0].designation
+                    )
 
-if(rootLogin.table1 != null && rootLogin.table1.size > 0){
-    for(i in 0 until rootLogin.table1.size) {
-        listBranch.add(rootLogin.table1[i].unitname)
-    }
-}
-                if(rootLogin.table2 != null && rootLogin.table2.size > 0){
-                    for(j in 0 until rootLogin.table2.size) {
-                        listFy.add(rootLogin.table2[j].fyname)
+                    if (rootLogin.table1 != null && rootLogin.table1.size > 0) {
+                        for (i in 0 until rootLogin.table1.size) {
+                            listBranch.add(rootLogin.table1[i].unitname)
+                        }
+                    }
+                    if (rootLogin.table2 != null && rootLogin.table2.size > 0) {
+                        for (j in 0 until rootLogin.table2.size) {
+                            listFy.add(rootLogin.table2[j].fyname)
+                        }
+                    }
+                    if (listBranch != null && listFy != null) {
+                        openDialog(this@Login)
                     }
                 }
-                if(listBranch != null && listFy != null) {
-                    openDialog(this@Login)
+                else{
+                    Common.showToast(this@Login,"Login Failed")
+
                 }
             } else{
                 Common.showToast(this@Login,"Login Failed")
@@ -165,23 +180,21 @@ if(rootLogin.table1 != null && rootLogin.table1.size > 0){
             }
 
             override fun afterTextChanged(editable: Editable) {
-                //Common.validateEmail(this@Login, edt_email_forget, lay_email_forget)
+               Common.validateEmail(this@Login, dialog.edt_email_forget, dialog.input_layout_emailforget)
             }
         })
 
-/*
-        dialog.btn_submit.setOnClickListener({ v: View ->
-            if (Common.validateEmail(this@Login, edt_email_forget, lay_email_forget)) {
-                if (CommonUtils.getConnectivityStatusString(this@Login).equals("true")) {
+        dialog.btn_ok.setOnClickListener({ v: View ->
+            if (Common.validateEmail(this@Login, dialog.edt_email_forget, dialog.input_layout_emailforget)) {
+                /*if (CommonUtils.getConnectivityStatusString(this@Login).equals("true")) {
                   //  forgotPasswordWebService(dialog)
                 } else {
                     CommonUtils.openInternetDialog(this@Login)
-                }
+                }*/
             }
 
         })
-*/
-        btn_cancel.setOnClickListener { v: View ->
+        dialog.btn_cancel.setOnClickListener { v: View ->
             dialog.dismiss()
             if (v != null) {
                 val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager

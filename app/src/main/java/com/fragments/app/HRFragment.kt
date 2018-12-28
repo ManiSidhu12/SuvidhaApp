@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
 import android.view.LayoutInflater
@@ -37,6 +38,9 @@ import kotlin.collections.ArrayList
         toolBar.title = "List Of Conveyance"
         btnFilter = toolBar.findViewById(R.id.img_filter)
         btnFilter.visibility = View.VISIBLE
+        btnFilter.setImageResource(R.drawable.filter)
+        btnFilter.setColorFilter(ContextCompat.getColor(activity!!,android.R.color.white),
+            android.graphics.PorterDuff.Mode.SRC_IN)
 
         listFilters.add("All")
         listFilters.add("Pending from User")
@@ -61,9 +65,19 @@ import kotlin.collections.ArrayList
         btnFilter.setOnClickListener {
             if(v.lay_filters_hr.visibility == View.VISIBLE){
                 v.lay_filters_hr.visibility = View.GONE
+                btnFilter.setImageResource(R.drawable.filter)
+                btnFilter.setColorFilter(
+                    ContextCompat.getColor(activity!!,android.R.color.white),
+                    android.graphics.PorterDuff.Mode.SRC_IN
+                )
             }
             else{
                 v.lay_filters_hr.visibility = View.VISIBLE
+                btnFilter.setImageResource(R.drawable.filledfilter)
+                btnFilter.setColorFilter(
+                    ContextCompat.getColor(activity!!,android.R.color.white),
+                    android.graphics.PorterDuff.Mode.SRC_IN
+                )
             }
         }
         v.lay_from_date.setOnClickListener {

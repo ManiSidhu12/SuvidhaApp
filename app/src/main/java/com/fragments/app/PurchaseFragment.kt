@@ -1,9 +1,11 @@
 package com.fragments.app
 
+import android.app.Dialog
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
 import android.view.LayoutInflater
@@ -12,13 +14,12 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import com.adapter.app.PurchaseAdapter
 import com.common.app.Common
-import com.common.app.NothingSelectedSpinnerAdapter
 import com.suvidha.app.R
 import kotlinx.android.synthetic.main.purchase_screen.view.*
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.*
-import com.common.app.MyAdapter
+import kotlinx.android.synthetic.main.hold_popup.*
 
 
 class PurchaseFragment : Fragment(){
@@ -32,6 +33,10 @@ class PurchaseFragment : Fragment(){
     var listPrepared = ArrayList<String>()
     var listStatus = ArrayList<String>()
 
+    var listData  = ArrayList<String>()
+    var listNames = ArrayList<String>()
+    var list = ArrayList<String>()
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
        v = inflater.inflate(R.layout.purchase_screen,container,false)
 
@@ -39,8 +44,10 @@ class PurchaseFragment : Fragment(){
         toolBar.title = "POs Pending Approval"
         btnFilter = toolBar.findViewById(R.id.img_filter)
         btnFilter.visibility = View.VISIBLE
-        v.recycler_purchase.layoutManager = LinearLayoutManager(activity!!)
-        v.recycler_purchase.adapter = PurchaseAdapter(activity!!)
+        btnFilter.setImageResource(R.drawable.filter)
+        btnFilter.setColorFilter(ContextCompat.getColor(activity!!,android.R.color.white),
+        android.graphics.PorterDuff.Mode.SRC_IN)
+
 
 
         listBranch.add("Unit-Chandigarh")
@@ -59,16 +66,36 @@ class PurchaseFragment : Fragment(){
         listStatus.add("Confirmed")
         listStatus.add("Sent to Party")
 
+        //====
+        listNames.add("Graphic Dot")
+        listNames.add("Devi Dayal Welding Works")
+        listNames.add("Jain Electric Co.")
+        listNames.add("InFynite Solutions")
+        listNames.add("Amit & Company")
 
+        listData.add("Pending")
+        listData.add("Cancelled")
+        listData.add("Pending")
+        listData.add("Pending")
+        listData.add("Pending")
 
-v.lay_actions.visibility = View.VISIBLE
-//v.lay_reset.visibility = View.VISIBLE
+        list.add("0")
+        list.add("0")
+        list.add("0")
+        list.add("0")
+        list.add("0")
+
+        v.recycler_purchase.layoutManager = LinearLayoutManager(activity!!)
+        v.recycler_purchase.adapter = PurchaseAdapter(activity!!,listNames,listData,list,v.btn_approve,v.btn_refuse)
+
+        v.lay_actions.visibility = View.VISIBLE
+        //v.lay_reset.visibility = View.VISIBLE
         val adapterBranch = ArrayAdapter<String>(activity!!, R.layout.spinner_txt1, listBranch)
         adapterBranch.setDropDownViewResource(R.layout.spinner_txt)
         //v.spin_branch.adapter = MyAdapter(activity!!,android.R.layout.simple_spinner_item,listBranch,v.spin_branch)
 
     //    v.spin_branch.adapter = NothingSelectedSpinnerAdapter(adapterBranch, R.layout.selection, activity!!)
-setSpinnerAdapter(v.spin_branch,listBranch,"branch")
+        setSpinnerAdapter(v.spin_branch,listBranch,"branch")
         val adapterPrepare = ArrayAdapter<String>(activity!!, R.layout.spinner_txt1, listPrepared)
         adapterPrepare.setDropDownViewResource(R.layout.spinner_txt)
       //  v.spin_user.adapter = adapterPrepare
@@ -145,7 +172,7 @@ setSpinnerAdapter(v.spin_branch,listBranch,"branch")
 
             // This method is invoked after user input text in EditText.
             override fun afterTextChanged(editable: Editable) {
-                if(v.edt_srch_purchase.text.toString().length > 0){
+                if(v.edt_srch_purchase.text.toString().isNotEmpty()){
                     v.btn_srch.setBackgroundColor(Color.parseColor("#044A6C"))
                     v.btn_srch.setTextColor(Color.parseColor("#ffffff"))
                 }
@@ -156,14 +183,15 @@ setSpinnerAdapter(v.spin_branch,listBranch,"branch")
             }
         })
 
-        v.btn_approve.setOnClickListener {
-            Common.showToast(activity!!,"Please select POs for approval")
-        }
+        /*v.btn_approve.setOnClickListener {
+          // Common.showToast(activity!!,"work In progress")
+        }*/
         v.btn_refuse.setOnClickListener {
-            Common.showToast(activity!!,"Please select POs for refusal")
+           // Common.showToast(activity!!,"Please select POs for refusal")
         }
         v.btn_hold.setOnClickListener {
-            Common.showToast(activity!!,"Please select POs to hold")
+          //  Common.showToast(activity!!,"Please select POs to hold")
+            openDialogHold()
         }
         v.btn_srch.setOnClickListener{
             v.edt_srch_purchase.text = Editable.Factory.getInstance().newEditable("")
@@ -174,9 +202,21 @@ setSpinnerAdapter(v.spin_branch,listBranch,"branch")
         btnFilter.setOnClickListener {
             if(v.lay_filters.visibility == View.VISIBLE){
                 v.lay_filters.visibility = View.GONE
+                btnFilter.setImageResource(R.drawable.filter)
+                btnFilter.setColorFilter(
+                    ContextCompat.getColor(activity!!,android.R.color.white),
+                    android.graphics.PorterDuff.Mode.SRC_IN
+                )
+
+
             }
             else{
                 v.lay_filters.visibility = View.VISIBLE
+                btnFilter.setImageResource(R.drawable.filledfilter)
+                btnFilter.setColorFilter(
+                    ContextCompat.getColor(activity!!,android.R.color.white),
+                    android.graphics.PorterDuff.Mode.SRC_IN
+                )
             }
         }
     }
@@ -240,4 +280,26 @@ fun setSpinnerAdapter(spin : Spinner,list : ArrayList<String>,type : String){
     }
    spin.adapter = mAdapter
 }
+    fun openDialogHold() {
+        val dialog = Dialog(activity!!, android.R.style.Theme_Translucent_NoTitleBar)
+        dialog.setContentView(R.layout.hold_popup)
+
+        dialog.show()
+        dialog.btn_close_hold.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.btn_sub_hold.setOnClickListener {
+            if(dialog.edt_remark_hold.text.toString().isEmpty()){
+                Common.showToast(activity!!,"Please enter Remark..")
+            }
+            else if(dialog.edt_reason.text.toString().isEmpty()){
+                Common.showToast(activity!!,"Please enter Reason for holding PO..")
+
+            }
+            else{
+dialog.dismiss()
+            }
+        }
+    }
 }

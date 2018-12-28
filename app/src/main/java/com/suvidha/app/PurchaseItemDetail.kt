@@ -69,11 +69,11 @@ class PurchaseItemDetail : Activity(){
 
         val basketball = ArrayList<String>()
         basketball.add("Purchase Order Approval For Confirmation")
-        basketball.add("Plan Approval For Purchase Order")
+      //  basketball.add("Plan Approval For Purchase Order")
 
         val football1 = ArrayList<String>()
         football1.add("User Wise Enquiries Followed-Up")
-        football1.add("Prepare/Modify an Enquiry")
+      //  football1.add("Prepare/Modify an Enquiry")
 
         val football2 = ArrayList<String>()
         football2.add("Sunday working Master")

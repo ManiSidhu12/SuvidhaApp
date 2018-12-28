@@ -28,7 +28,6 @@ android:background="@drawable/transbg">
                       android:text="Rate History"
                       android:textSize="16sp"
                       android:textColor="@android:color/white"
-
                       android:gravity="center"/>
         </RelativeLayout>
         <Button android:layout_width="30dp"

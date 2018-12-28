@@ -2,6 +2,7 @@ package com.fragments.app
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
 import android.view.LayoutInflater
@@ -36,6 +37,11 @@ v.recycler_purchase.layoutManager = LinearLayoutManager(activity!!)
             if(v.lay_filters.visibility == View.VISIBLE){
                 v.lay_filters.visibility = View.GONE
                 v.lay_enquiry.visibility = View.GONE
+                btnFilter.setImageResource(R.drawable.filter)
+                btnFilter.setColorFilter(
+                    ContextCompat.getColor(activity!!,android.R.color.white),
+                    android.graphics.PorterDuff.Mode.SRC_IN
+                )
 
             }
             else{
@@ -47,6 +53,11 @@ v.recycler_purchase.layoutManager = LinearLayoutManager(activity!!)
                 v.po_status.visibility = View.GONE
                 v.lay_status.visibility = View.GONE
                 v.lay_enquiry.visibility = View.VISIBLE
+                btnFilter.setImageResource(R.drawable.filledfilter)
+                btnFilter.setColorFilter(
+                    ContextCompat.getColor(activity!!,android.R.color.white),
+                    android.graphics.PorterDuff.Mode.SRC_IN
+                )
             }
         }
     }

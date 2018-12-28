@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+android:background="@drawable/transbg">
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:layout_centerInParent="true"
+    >
+        <RelativeLayout
+                android:id="@+id/dummylay"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"/>
+
+
+        <RelativeLayout
+                android:id="@+id/laytitle"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_below="@+id/dummylay"
+                android:layout_centerHorizontal="true"
+                android:background="@color/colorPrimary">
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="40dp"
+                      android:layout_centerInParent="true"
+                      android:text="Hold"
+                      android:textSize="16sp"
+                      android:textColor="@android:color/white"
+                      android:gravity="center"/>
+        </RelativeLayout>
+        <Button android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@+id/dummylay"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/btn_close_hold"
+                android:layout_marginBottom="-15dp"
+                android:background="@drawable/close"
+                android:backgroundTint="@color/white"
+        />
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_below="@+id/laytitle"
+                      android:layout_centerHorizontal="true"
+                      android:orientation="vertical"
+                      android:background="@android:color/white"
+        >
+            <TextView
+                    android:id="@+id/remark_prev" android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Remark"
+                    android:textColor="@android:color/black"
+                    android:padding="2dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="start|center"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginStart="3dp"
+                    android:fontFamily="sans-serif"
+                    android:textStyle="bold"
+                    android:textSize="13sp"/>
+
+            <RelativeLayout
+                    android:id="@+id/layy_remark_hold" android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/spin_bg">
+                <EditText
+                        android:id="@+id/edt_remark_hold"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp"
+                        android:gravity="start|center"
+                        android:singleLine="true"
+                        android:background="@android:color/transparent"
+                        android:padding="4dp"
+                />
+
+            </RelativeLayout>
+            <TextView
+                    android:id="@+id/reason" android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Reason"
+                    android:textColor="@android:color/black"
+                    android:padding="2dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="start|center"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginStart="3dp"
+                    android:fontFamily="sans-serif"
+                    android:singleLine="true"
+                    android:textStyle="bold"
+                    android:textSize="13sp"/>
+            <RelativeLayout
+                    android:id="@+id/layy_reason" android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/spin_bg">
+                <EditText
+                        android:id="@+id/edt_reason"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textColor="@android:color/black"
+                        android:textSize="13sp"
+                        android:gravity="start|top"
+                        android:background="@android:color/transparent"
+                        android:padding="3dp"
+                />
+
+            </RelativeLayout>
+            <Button android:layout_width="130dp" android:layout_height="40dp"
+                    android:text="Submit"
+                    android:textSize="16sp"
+                    android:id="@+id/btn_sub_hold"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="20dp"
+                    android:textColor="@android:color/white"
+                    android:gravity="center"
+                    android:background="@drawable/green_bg"
+                    android:textAllCaps="false"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>
