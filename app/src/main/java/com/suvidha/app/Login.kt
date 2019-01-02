@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter
 import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Request
 import com.android.volley.Response
+import com.android.volley.VolleyError
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.common.app.Common
@@ -108,7 +109,7 @@ txt_forgot.setOnClickListener {
         val pd = ProgressDialog.show(this@Login, "", "Loading", false)
 
         val postRequest = object : StringRequest(
-            Request.Method.GET, url, Response.Listener<String> { response ->
+            Request.Method.GET, url, { response ->
             pd.dismiss()
                 Log.e("login Response",response)
             val gson = Gson()
@@ -153,9 +154,14 @@ txt_forgot.setOnClickListener {
             }
         },
 
-            Response.ErrorListener { pd.dismiss() }) {
+            { error: VolleyError ->
+               pd.dismiss()
+                Common.showToast(this@Login, error.message.toString())
 
+            }) {
         }
+
+
         postRequest.retryPolicy = DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
         val requestQueue = Volley.newRequestQueue(this)
         requestQueue.add(postRequest)
@@ -163,7 +169,7 @@ txt_forgot.setOnClickListener {
     }
 
     //================== Forget Password Dialog ==============
-    fun openDialogPassword() {
+    private fun openDialogPassword() {
         val dialog = Dialog(this@Login, android.R.style.Theme_Translucent_NoTitleBar)
         dialog.setContentView(R.layout.forgot_password)
 
@@ -184,16 +190,16 @@ txt_forgot.setOnClickListener {
             }
         })
 
-        dialog.btn_ok.setOnClickListener({ v: View ->
+        dialog.btn_ok.setOnClickListener { v: View ->
             if (Common.validateEmail(this@Login, dialog.edt_email_forget, dialog.input_layout_emailforget)) {
                 /*if (CommonUtils.getConnectivityStatusString(this@Login).equals("true")) {
-                  //  forgotPasswordWebService(dialog)
-                } else {
-                    CommonUtils.openInternetDialog(this@Login)
-                }*/
+                      //  forgotPasswordWebService(dialog)
+                    } else {
+                        CommonUtils.openInternetDialog(this@Login)
+                    }*/
             }
 
-        })
+        }
         dialog.btn_cancel.setOnClickListener { v: View ->
             dialog.dismiss()
             if (v != null) {

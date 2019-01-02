@@ -239,7 +239,7 @@ fun setSpinnerAdapter(spin : Spinner,list : ArrayList<String>,type : String){
             val tv = super.getDropDownView(position, convertView, parent) as TextView
 
             // Set the text color of drop down items
-            tv.setTextColor(Color.RED)
+            //tv.setTextColor(Color.RED)
 
             // If this item is selected item
             if(type.equals("branch")) {
@@ -302,4 +302,5 @@ dialog.dismiss()
             }
         }
     }
-}
+
+  }

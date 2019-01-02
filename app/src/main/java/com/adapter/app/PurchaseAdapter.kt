@@ -33,17 +33,18 @@ class PurchaseAdapter(var ctx: Context, var listNames: ArrayList<String>, var li
         //holder.txtOrderNo.paintFlags = holder.txtOrderNo.paintFlags or Paint.UNDERLINE_TEXT_FLAG
         if(list2[p1].equals("1")){
             holder.imgChk.setImageResource(R.drawable.sel)
-
         }
         else{
             holder.imgChk.setImageResource(R.drawable.unslct)
         }
+
         holder.txtName.text = listNames[p1]
         holder.txtStatus.text = listData[p1]
+
         if(listData[p1].equals("Pending")) {
             holder.txtStatus.setTextColor(ContextCompat.getColor(ctx, R.color.dark_blue))
         }
-        else  if(listData[p1].equals("Cancelled")) {
+        else if(listData[p1].equals("Cancelled")) {
             holder.txtStatus.setTextColor(ContextCompat.getColor(ctx, R.color.red))
         }
         else  if(listData[p1].equals("Approved")) {
