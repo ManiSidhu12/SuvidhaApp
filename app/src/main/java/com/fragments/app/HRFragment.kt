@@ -35,12 +35,11 @@ import kotlin.collections.ArrayList
         v = inflater.inflate(R.layout.hr_screen,container,false)
 
         toolBar = activity!!.findViewById(R.id.toolbar)
-        toolBar.title = "List Of Conveyance"
+        toolBar.title =  "List Of Conveyance"
         btnFilter = toolBar.findViewById(R.id.img_filter)
         btnFilter.visibility = View.VISIBLE
         btnFilter.setImageResource(R.drawable.filter)
-        btnFilter.setColorFilter(ContextCompat.getColor(activity!!,android.R.color.white),
-            android.graphics.PorterDuff.Mode.SRC_IN)
+        btnFilter.setColorFilter(ContextCompat.getColor(activity!!,android.R.color.white),android.graphics.PorterDuff.Mode.SRC_IN)
 
         listFilters.add("All")
         listFilters.add("Pending from User")
@@ -66,19 +65,10 @@ import kotlin.collections.ArrayList
             if(v.lay_filters_hr.visibility == View.VISIBLE){
                 v.lay_filters_hr.visibility = View.GONE
                 btnFilter.setImageResource(R.drawable.filter)
-                btnFilter.setColorFilter(
-                    ContextCompat.getColor(activity!!,android.R.color.white),
-                    android.graphics.PorterDuff.Mode.SRC_IN
+                btnFilter.setColorFilter(ContextCompat.getColor(activity!!,android.R.color.white),android.graphics.PorterDuff.Mode.SRC_IN
                 )
             }
-            else{
-                v.lay_filters_hr.visibility = View.VISIBLE
-                btnFilter.setImageResource(R.drawable.filledfilter)
-                btnFilter.setColorFilter(
-                    ContextCompat.getColor(activity!!,android.R.color.white),
-                    android.graphics.PorterDuff.Mode.SRC_IN
-                )
-            }
+
         }
         v.lay_from_date.setOnClickListener {
             showDatePicker(v.txt_from_date,"from","")
@@ -92,7 +82,7 @@ import kotlin.collections.ArrayList
 
     }
     private fun showDatePicker(txt : TextView,value : String,dateFrom : String) {
-        val c      = Calendar.getInstance()
+        val c = Calendar.getInstance()
         val mYear  = c.get(Calendar.YEAR)
         val mMonth = c.get(Calendar.MONTH)
         val mDay   = c.get(Calendar.DAY_OF_MONTH)
@@ -135,4 +125,4 @@ private fun checkDate(dateFrom : String,dateTo : String) : Boolean{
     }
 return bool
 }
-}
+       }

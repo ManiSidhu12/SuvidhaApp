@@ -175,7 +175,7 @@ private fun setData(){
             dialog1.dismiss()
         }
     }
-fun getResponse(){
+  fun getResponse(){
     val gson = Gson()
     val reader = JsonReader(StringReader(SharedPrefManager.getInstance(this@Home).login_Response))
     reader.isLenient = true

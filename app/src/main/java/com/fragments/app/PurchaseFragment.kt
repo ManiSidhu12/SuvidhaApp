@@ -19,7 +19,13 @@ import kotlinx.android.synthetic.main.purchase_screen.view.*
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.*
+import com.common.app.SharedPrefManager
+import com.google.gson.Gson
+import com.google.gson.stream.JsonReader
+import com.model.login.LoginRoot
 import kotlinx.android.synthetic.main.hold_popup.*
+import kotlinx.android.synthetic.main.user_data_dialog.*
+import java.io.StringReader
 
 
 class PurchaseFragment : Fragment(){
@@ -50,8 +56,7 @@ class PurchaseFragment : Fragment(){
 
 
 
-        listBranch.add("Unit-Chandigarh")
-        listBranch.add("Unit-Ambala")
+     getResponse()
 
 
         listPrepared.add("All")
@@ -95,7 +100,6 @@ class PurchaseFragment : Fragment(){
         //v.spin_branch.adapter = MyAdapter(activity!!,android.R.layout.simple_spinner_item,listBranch,v.spin_branch)
 
     //    v.spin_branch.adapter = NothingSelectedSpinnerAdapter(adapterBranch, R.layout.selection, activity!!)
-        setSpinnerAdapter(v.spin_branch,listBranch,"branch")
         val adapterPrepare = ArrayAdapter<String>(activity!!, R.layout.spinner_txt1, listPrepared)
         adapterPrepare.setDropDownViewResource(R.layout.spinner_txt)
       //  v.spin_user.adapter = adapterPrepare
@@ -301,6 +305,30 @@ fun setSpinnerAdapter(spin : Spinner,list : ArrayList<String>,type : String){
 dialog.dismiss()
             }
         }
+    }
+    fun getResponse(){
+        val gson = Gson()
+        val reader = JsonReader(StringReader(SharedPrefManager.getInstance(activity!!).login_Response))
+        reader.isLenient = true
+        var  rootLogin = gson.fromJson<LoginRoot>(reader, LoginRoot::class.java)
+        if(rootLogin != null){
+            if(rootLogin.table1 != null && rootLogin.table1.size > 0){
+                for(i in 0 until rootLogin.table1.size) {
+                    listBranch.add(rootLogin.table1[i].unitname)
+                }
+            }
+
+
+        }
+        if(listBranch != null && listBranch.size > 0){
+            setSpinnerAdapter(v.spin_branch,listBranch,"branch")
+
+        }
+        else{
+           v.lay_branch.visibility = View.GONE
+           v.select_branch.visibility = View.GONE
+        }
+
     }
 
   }

@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-android:background="@drawable/transbg">
+                android:background="@drawable/transbg">
     <RelativeLayout android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
@@ -47,80 +47,79 @@ android:background="@drawable/transbg">
                       android:orientation="vertical"
                       android:background="@android:color/white"
         >
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="15dp"
-                android:orientation="vertical">
-
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:padding="3dp"
-                    android:text="Upload Picture"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="16sp" />
-
-            <RelativeLayout
-                    android:id="@+id/lay_upload"
+            <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="15dp"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:padding="3dp"
+                        android:text="Upload Picture"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16sp"/>
 
                 <RelativeLayout
-                        android:id="@+id/lay_browse"
-                        android:layout_width="120dp"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentStart="true"
-                        android:layout_centerInParent="true"
-                        android:background="@drawable/spin_bg">
+                        android:id="@+id/lay_upload"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="10dp">
 
-                    <ImageView
-                            android:id="@+id/attach_profile"
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
+                    <RelativeLayout
+                            android:id="@+id/lay_browse"
+                            android:layout_width="120dp"
+                            android:layout_height="match_parent"
                             android:layout_alignParentStart="true"
                             android:layout_centerInParent="true"
-                            android:layout_marginStart="7dp"
-                            android:src="@drawable/clip" />
+                            android:background="@drawable/spin_bg">
+
+                        <ImageView
+                                android:id="@+id/attach_profile"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerInParent="true"
+                                android:layout_marginStart="7dp"
+                                android:src="@drawable/clip"/>
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="5dp"
+                                android:layout_toEndOf="@+id/attach_profile"
+                                android:gravity="center"
+                                android:text="Browse"
+                                android:textColor="@android:color/black"
+                                android:textSize="16sp"/>
+                    </RelativeLayout>
 
                     <TextView
+                            android:id="@+id/no_file"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_centerInParent="true"
-                            android:layout_marginStart="5dp"
-                            android:layout_toEndOf="@+id/attach_profile"
+                            android:layout_marginStart="7dp"
+                            android:layout_toEndOf="@+id/lay_browse"
                             android:gravity="center"
-                            android:text="Browse"
-                            android:textColor="@android:color/black"
-                            android:textSize="16sp" />
+                            android:text="No file chosen"/>
                 </RelativeLayout>
 
-                <TextView
-                        android:id="@+id/no_file"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_centerInParent="true"
-                        android:layout_marginStart="7dp"
-                        android:layout_toEndOf="@+id/lay_browse"
-                        android:gravity="center"
-                        android:text="No file chosen" />
-            </RelativeLayout>
-
-        </LinearLayout>
+            </LinearLayout>
             <android.support.v7.widget.RecyclerView
                     android:id="@+id/recycler_details"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
-            android:orientation="vertical"/>
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:orientation="vertical"/>
         </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>

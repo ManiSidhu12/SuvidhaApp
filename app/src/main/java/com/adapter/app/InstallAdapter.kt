@@ -110,6 +110,7 @@ class InstallAdapter(var ctx : Context) : RecyclerView.Adapter<InstallAdapter.Vi
         dialog2.lay_browse.setOnClickListener {
 
         }
+
     }
 
     private fun showDatePicker(ctx : Context,txt : TextView) {
