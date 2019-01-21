@@ -127,12 +127,14 @@ private fun setData(){
     football1.add("Rejection Analysis")
     val football2 = ArrayList<String>()
     football2.add("Sunday working Master")
+    val foot = ArrayList<String>()
 
     expandableListDetail["HR"] = cricket
     expandableListDetail["Installation & services"] = football
     expandableListDetail["Purchase"] = basketball
     expandableListDetail["Quotes & Enquiries"] = football1
     expandableListDetail["T.A. Bill"] = football2
+    expandableListDetail["Attendence"] = foot
 
 }
     private fun openDialog(ctx : Context) {

@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="45dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@color/colorPrimary">
+        <ImageView
+                android:id="@+id/img_back_detail"
+                android:layout_width="22dp" android:layout_height="22dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="12dp"
+                android:tint="@android:color/white"
+                android:src="@drawable/back_arrow"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="match_parent"
+                  android:layout_centerInParent="true"
+                  android:text="Leave Application"
+                  android:textColor="@android:color/white"
+                  android:textSize="14sp"
+                  android:gravity="center"/>
+    </RelativeLayout>
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+    android:layout_margin="15dp"
+    android:orientation="vertical">
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="45dp"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginTop="10dp">
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:text="Total Days"
+              android:textColor="@android:color/black"
+              android:textSize="14sp"
+              android:layout_alignParentStart="true"
+              android:layout_centerInParent="true"
+              android:textStyle="bold"
+              android:padding="3dp"
+              android:gravity="center"
+              android:id="@+id/total"
+              android:fontFamily="sans-serif"
+    />
+        <RelativeLayout
+         android:layout_width="100dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="5dp"
+         android:layout_toEndOf="@+id/total"
+         android:layout_centerInParent="true"
+         android:layout_marginStart="7dp"
+                android:background="@drawable/spin_bg">
+            <EditText
+                    android:id="@+id/edt_total"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="7dp"
+                    android:textSize="12sp"
+                    android:gravity="start|center"
+                    android:textColor="@android:color/black"
+                    android:background="@android:color/transparent"
+                    android:hint=""/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_gravity="center_horizontal"
+                      android:orientation="horizontal"
+                      android:layout_marginTop="7dp"
+                      android:weightSum="2">
+            <LinearLayout android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:orientation="vertical"
+                          android:layout_weight="1">
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text="From Date"
+                          android:textColor="@android:color/black"
+                          android:padding="2dp"
+                          android:layout_gravity="center_horizontal"
+                          android:gravity="start|center"
+                          android:fontFamily="sans-serif"
+                          android:textStyle="bold"
+                          android:textSize="13sp"/>
+                <RelativeLayout
+                        android:id="@+id/lay_from_date_install"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/spin_bg">
+                    <TextView
+                            android:id="@+id/txt_from_date_install"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="7dp"
+                            android:textSize="14sp"
+                            android:gravity="start|center"
+                            android:textColor="@android:color/black"
+                            android:text="07-12-2018"/>
+
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                          android:orientation="vertical"
+                          android:layout_weight="1">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:text="To Date:"
+                          android:textColor="@android:color/black"
+                          android:padding="2dp"
+                          android:layout_gravity="center_horizontal"
+                          android:gravity="start|center"
+                          android:fontFamily="sans-serif"
+                          android:textStyle="bold"
+                          android:textSize="13sp"/>
+                <RelativeLayout
+                        android:id="@+id/lay_to_date_install" android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/spin_bg">
+                    <TextView
+                            android:id="@+id/txt_to_date_install"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="7dp"
+                            android:textSize="14sp"
+                            android:gravity="start|center"
+                            android:textColor="@android:color/black"
+                            android:text="07-12-2018"/>
+
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="45dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:text="To"
+                  android:textColor="@android:color/black"
+                  android:padding="4dp"
+                  android:id="@+id/to"
+                  android:layout_alignParentStart="true"
+                  android:layout_centerInParent="true"
+                  android:gravity="start|center"
+                  android:textStyle="bold"
+                  android:fontFamily="sans-serif"
+                  android:textSize="14sp"/>
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="40dp"
+                      android:layout_toEndOf="@+id/to"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/spin_bg">
+            <Spinner
+                    android:id="@+id/spin_to"
+                    android:layout_width="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_height="match_parent"/>
+
+        </RelativeLayout>
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="45dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:text="Reason"
+                      android:textColor="@android:color/black"
+                      android:padding="4dp"
+                      android:id="@+id/reason"
+                      android:layout_alignParentStart="true"
+                      android:layout_centerInParent="true"
+                      android:gravity="start|center"
+                      android:textStyle="bold"
+                      android:fontFamily="sans-serif"
+                      android:textSize="14sp"/>
+            <RelativeLayout android:layout_width="match_parent" android:layout_height="40dp"
+                            android:layout_toEndOf="@+id/reason"
+                            android:layout_centerInParent="true"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:background="@drawable/spin_bg">
+                <Spinner
+                        android:id="@+id/spin_reason"
+                        android:layout_width="match_parent"
+                        android:layout_marginStart="5dp"
+                        android:layout_height="match_parent"/>
+
+            </RelativeLayout>
+        </RelativeLayout>
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:text="Leaves Available"
+                  android:textColor="@color/dark_blue"
+                  android:padding="4dp"
+                  android:layout_marginTop="10dp"
+                  android:layout_gravity="center_horizontal"
+                  android:gravity="start|center"
+                  android:textStyle="bold"
+                  android:id="@+id/leaves_available"
+                  android:fontFamily="sans-serif"
+                  android:textSize="14sp"/>
+        <TextView
+                android:id="@+id/remark"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="Remark"
+                android:textColor="@android:color/black"
+                android:textSize="13sp"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                android:padding="2dp"
+                android:layout_marginTop="5dp"
+                android:gravity="start|center"/>
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="50dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginEnd="7dp"
+                        android:background="@drawable/spin_bg">
+            <EditText
+                    android:id="@+id/edt_remark_attendence"
+                    android:layout_width="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:background="@android:color/transparent"
+                    android:hint="Type here.."
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp"
+                    android:gravity="top|start"
+                    android:padding="4dp"
+                    android:layout_height="match_parent"/>
+
+        </RelativeLayout>
+        <Button android:layout_width="match_parent" android:layout_height="40dp"
+                android:text="Submit for Approval"
+                android:textSize="16sp"
+                android:id="@+id/btn_sub_attendence"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="30dp"
+                android:textColor="@android:color/white"
+                android:gravity="center"
+                android:background="@drawable/green_bg"
+                android:textAllCaps="false"/>
+
+    </LinearLayout>
+</LinearLayout>

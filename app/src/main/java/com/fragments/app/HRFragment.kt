@@ -30,12 +30,12 @@ import kotlin.collections.ArrayList
     lateinit var btnFilter : ImageView
     var listFilters = ArrayList<String>()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         v = inflater.inflate(R.layout.hr_screen,container,false)
 
         toolBar = activity!!.findViewById(R.id.toolbar)
-        toolBar.title =  "List Of Conveyance"
+        toolBar.title = "List Of Conveyance"
         btnFilter = toolBar.findViewById(R.id.img_filter)
         btnFilter.visibility = View.VISIBLE
         btnFilter.setImageResource(R.drawable.filter)
@@ -56,6 +56,7 @@ import kotlin.collections.ArrayList
         v.recycler_convo.adapter = HRAdapter(activity!!)
 
         work()
+
 
         return v
     }
@@ -115,7 +116,7 @@ private fun checkDate(dateFrom : String,dateTo : String) : Boolean{
     try {
         convertedDate = dateFormat.parse(dateFrom)
         convertedDate2 = dateFormat.parse(dateTo)
-        if (convertedDate2.after(convertedDate)) {
+        if(convertedDate2.after(convertedDate)){
          bool =  true
         } else {
            bool =  false
@@ -125,4 +126,6 @@ private fun checkDate(dateFrom : String,dateTo : String) : Boolean{
     }
 return bool
 }
-       }
+
+
+}

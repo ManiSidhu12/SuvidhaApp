@@ -60,30 +60,29 @@ public class SimpleExpandableAdapter extends ExpandableRecyclerAdapter<SimpleExp
 
         parentViewHolder.mTvTitle.setText(simpleParentItem.getTitle());
         if(simpleParentItem.getChildItemList() != null){
-            parentViewHolder.mParentDropDownArrow.setVisibility(View.VISIBLE);
+            if(position == 0){
+                parentViewHolder.mParentDropDownArrow.setVisibility(View.GONE);
+
+            }
+            else {
+                parentViewHolder.mParentDropDownArrow.setVisibility(View.VISIBLE);
+            }
         }
         else{
             parentViewHolder.mParentDropDownArrow.setVisibility(View.GONE);
 
         }
 
-/*
-        parentViewHolder.mParentDropDownArrow1.setOnClickListener(new View.OnClickListener() {
+        parentViewHolder.mTvTitle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              */
-/*  Products f = new Products();
-                Bundle b = new Bundle();
-                b.putString("cat_id",simpleParentItem.getId());
-                b.putString("cat_name",simpleParentItem.getTitle());
-                b.putString("type","simple");
-                f.setArguments(b);
-                ((FragmentActivity) v.getContext()).getSupportFragmentManager().beginTransaction().addToBackStack("subcat").replace(R.id.frame, f).commit();
-*//*
-
+                if(position == 0) {
+                    AttendenceFragment f = new AttendenceFragment();
+                    ((FragmentActivity) v.getContext()).getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
+                    drawer.closeDrawer(GravityCompat.START);
+                }
             }
         });
-*/
     }
 
     @Override

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+android:background="@drawable/transbg">
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:layout_centerInParent="true"
+    >
+        <RelativeLayout
+                android:id="@+id/dummylay_follow" android:layout_width="match_parent" android:layout_height="30dp"
+                android:layout_centerHorizontal="true"></RelativeLayout>
+
+
+        <RelativeLayout
+                android:id="@+id/laytitle_follow" android:layout_width="match_parent" android:layout_height="45dp"
+                android:layout_below="@+id/dummylay_follow"
+                android:layout_centerHorizontal="true"
+                android:background="@color/colorPrimary">
+            <TextView
+                    android:id="@+id/txt_title" android:layout_width="wrap_content" android:layout_height="40dp"
+                    android:layout_centerInParent="true"
+                    android:text="Leaves"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/white"
+
+                    android:gravity="center"/>
+        </RelativeLayout>
+        <Button android:layout_width="30dp" android:layout_height="30dp"
+                android:layout_alignBottom="@+id/dummylay_follow"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/btn_close_leave"
+                android:layout_marginBottom="-15dp"
+                android:background="@drawable/close"
+                android:backgroundTint="@color/white"
+        />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:layout_below="@+id/laytitle_follow"
+                      android:layout_centerHorizontal="true"
+                      android:orientation="vertical"
+                      android:background="@android:color/white"
+        >
+            <android.support.v7.widget.RecyclerView android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+            android:id="@+id/recycler_leaves"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="5dp"></android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

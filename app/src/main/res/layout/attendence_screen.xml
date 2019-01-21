@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+android:background="@color/grey">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="15dp">
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:id="@+id/txt_emp_name"
+                  android:text="Manoj Khatana"
+                  android:textColor="@android:color/black"
+                  android:textSize="14sp"
+                  android:textStyle="bold"
+                  android:fontFamily="sans-serif"
+        />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:id="@+id/txt_emp_id"
+                  android:text="Emp Id:- EMP001"
+                  android:textColor="@android:color/black"
+                  android:textSize="14sp"
+                  android:textStyle="bold"
+                  android:fontFamily="sans-serif"
+        />
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="45dp"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginTop="15dp">
+        <TextView android:layout_width="wrap_content" android:layout_height="match_parent"
+        android:text="Daily Attendence"
+        android:layout_alignParentStart="true"
+        android:layout_centerInParent="true"
+        android:padding="3dp"
+                  android:gravity="start|center"
+                  android:textSize="14sp"
+                  android:textColor="@android:color/black"
+                  android:textStyle="bold"
+        android:fontFamily="sans-serif"/>
+        <Switch
+                android:id="@+id/simpleSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:layout_marginEnd="5dp"
+                android:checked="false"
+                android:text="Present"
+                android:textOff="Yes"
+                android:textOn="No"/>
+    </RelativeLayout>
+        <Button android:layout_width="170dp" android:layout_height="40dp"
+                android:text="Leave Application"
+                android:textSize="16sp"
+                android:id="@+id/leave_request"
+                android:layout_gravity="end"
+                android:layout_marginTop="7dp"
+                android:textColor="@android:color/white"
+                android:gravity="center"
+                android:background="@drawable/hold_bg"
+                android:textAllCaps="false"/>
+
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+              android:layout_gravity="center_horizontal"
+              android:layout_marginTop="7dp"
+              android:background="@android:color/darker_gray"/>
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="7dp">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:text="Date"
+                      android:textColor="@android:color/black"
+                      android:textSize="14sp"
+                      android:textStyle="bold"
+                      android:layout_toStartOf="@+id/txt_date_curr"
+
+                      android:layout_centerInParent="true"
+                      android:padding="3dp"
+                      android:gravity="center"
+                      android:fontFamily="sans-serif"
+            />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:id="@+id/txt_date_curr"
+                      android:textSize="13sp"
+                      android:textStyle="bold"
+                      android:layout_centerInParent="true"
+                      android:layout_marginStart="7dp"
+                      android:fontFamily="sans-serif"
+                      android:text="21-01-2019"
+            />
+        </RelativeLayout>
+
+
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:text="Start Time"
+                          android:textColor="@android:color/black"
+                          android:textSize="14sp"
+                       android:layout_gravity="center_horizontal"
+                          android:textStyle="bold"
+                          android:id="@+id/starting"
+                          android:fontFamily="sans-serif"
+                />
+                <RelativeLayout
+                        android:id="@+id/lay_start_time" android:layout_width="150dp"
+                        android:layout_height="35dp"
+                      android:layout_marginTop="5dp"
+                        android:background="@drawable/spin_bg">
+                    <TextView
+                            android:id="@+id/txt_starttime"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="7dp"
+                            android:textSize="14sp"
+                            android:gravity="start|center"
+                            android:textColor="@android:color/black"
+                            android:text="09:00 AM"/>
+
+                </RelativeLayout>
+
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:text="Location"
+                          android:textColor="@android:color/black"
+                          android:textSize="14sp"
+                          android:layout_gravity="center_horizontal"
+                          android:textStyle="bold"
+                          android:layout_marginTop="10dp"
+                          android:id="@+id/location"
+                          android:fontFamily="sans-serif"
+                />
+                <RelativeLayout
+                        android:id="@+id/lay_start_loc" android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/spin_bg">
+                    <TextView
+                            android:id="@+id/txt_loc"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="7dp"
+                            android:textSize="14sp"
+                            android:gravity="start|center"
+                            android:textColor="@android:color/black"
+                            android:text="Mohali"/>
+
+                </RelativeLayout>
+
+
+
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:text="On Duty Time"
+                          android:textColor="@android:color/black"
+                          android:textSize="14sp"
+                          android:textStyle="bold"
+                          android:layout_marginTop="10dp"
+                          android:fontFamily="sans-serif"
+                />
+            <RelativeLayout
+                    android:id="@+id/lay_duty_time" android:layout_width="150dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/spin_bg">
+                <TextView
+                        android:id="@+id/txt_dutytime"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="7dp"
+                        android:textSize="14sp"
+                        android:gravity="start|center"
+                        android:textColor="@android:color/black"
+                        android:text="09:00 AM"/>
+
+            </RelativeLayout>
+
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:text="Location"
+                      android:textColor="@android:color/black"
+                      android:textSize="14sp"
+                      android:layout_gravity="center_horizontal"
+                      android:textStyle="bold"
+                      android:layout_marginTop="10dp"
+                      android:fontFamily="sans-serif"
+            />
+            <RelativeLayout
+                    android:id="@+id/lay_duty_loc" android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/spin_bg">
+                <TextView
+                        android:id="@+id/txt_dutyloc"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="7dp"
+                        android:textSize="14sp"
+                        android:gravity="start|center"
+                        android:textColor="@android:color/black"
+                        android:text="Mohali"/>
+
+            </RelativeLayout>
+
+
+
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:text="Duty Off Time"
+                          android:textColor="@android:color/black"
+                          android:textSize="14sp"
+                          android:textStyle="bold"
+                          android:layout_marginTop="10dp"
+                          android:fontFamily="sans-serif"
+                />
+            <RelativeLayout
+                    android:id="@+id/lay_dutyoff_time" android:layout_width="150dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/spin_bg">
+                <TextView
+                        android:id="@+id/txt_dutyofftime"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="7dp"
+                        android:textSize="14sp"
+                        android:gravity="start|center"
+                        android:textColor="@android:color/black"
+                        android:text="06:00 PM"/>
+
+            </RelativeLayout>
+
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:text="Location"
+                      android:textColor="@android:color/black"
+                      android:textSize="14sp"
+                      android:layout_gravity="center_horizontal"
+                      android:textStyle="bold"
+                      android:layout_marginTop="10dp"
+                      android:fontFamily="sans-serif"
+            />
+            <RelativeLayout
+                    android:id="@+id/lay_dutyoff_loc" android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/spin_bg">
+                <TextView
+                        android:id="@+id/txt_dutyoffloc"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="7dp"
+                        android:textSize="14sp"
+                        android:gravity="start|center"
+                        android:textColor="@android:color/black"
+                        android:text="Mohali"/>
+
+            </RelativeLayout>
+
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+              android:layout_gravity="center_horizontal"
+              android:layout_marginTop="15dp"
+              android:background="@android:color/darker_gray"/>
+
+            <TextView
+                    android:id="@+id/remark"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="Remark"
+                    android:textColor="@android:color/black"
+                    android:textSize="13sp"
+                    android:fontFamily="sans-serif"
+                    android:textStyle="bold"
+                    android:padding="2dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="start|center"/>
+            <RelativeLayout android:layout_width="match_parent" android:layout_height="50dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginEnd="7dp"
+                            android:background="@drawable/spin_bg">
+                <EditText
+                        android:id="@+id/edt_remark_attendence"
+                        android:layout_width="match_parent"
+                        android:layout_marginStart="5dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Type here.."
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp"
+                        android:gravity="top|start"
+                        android:padding="4dp"
+                        android:layout_height="match_parent"/>
+
+            </RelativeLayout>
+
+        <Button android:layout_width="130dp" android:layout_height="40dp"
+                android:text="Submit"
+                android:textSize="16sp"
+                android:id="@+id/btn_sub_attendence"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="20dp"
+                android:textColor="@android:color/white"
+                android:gravity="center"
+                android:background="@drawable/green_bg"
+                android:textAllCaps="false"/>
+
+    </LinearLayout>
+
+    </ScrollView>

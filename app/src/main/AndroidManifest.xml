@@ -34,6 +34,9 @@
                   android:screenOrientation="portrait"/>
         <activity android:name=".FollowUpDetails"
                   android:screenOrientation="portrait"/>
+        <activity android:name=".LeaveApplication"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="adjustPan"/>
     </application>
 
 </manifest>

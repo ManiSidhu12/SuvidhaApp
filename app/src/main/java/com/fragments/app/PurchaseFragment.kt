@@ -24,7 +24,6 @@ import com.google.gson.Gson
 import com.google.gson.stream.JsonReader
 import com.model.login.LoginRoot
 import kotlinx.android.synthetic.main.hold_popup.*
-import kotlinx.android.synthetic.main.user_data_dialog.*
 import java.io.StringReader
 
 
@@ -51,8 +50,7 @@ class PurchaseFragment : Fragment(){
         btnFilter = toolBar.findViewById(R.id.img_filter)
         btnFilter.visibility = View.VISIBLE
         btnFilter.setImageResource(R.drawable.filter)
-        btnFilter.setColorFilter(ContextCompat.getColor(activity!!,android.R.color.white),
-        android.graphics.PorterDuff.Mode.SRC_IN)
+        btnFilter.setColorFilter(ContextCompat.getColor(activity!!,android.R.color.white),android.graphics.PorterDuff.Mode.SRC_IN)
 
 
 
@@ -111,26 +109,26 @@ class PurchaseFragment : Fragment(){
         setSpinnerAdapter(v.spin_postatus,listStatus,"status")
         work()
       /*  val dataAdapter = object : ArrayAdapter<String>(activity!!, android.R.layout.simple_spinner_item, listBranch) {
-
-            override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
-                var v1: View? = null
-                v1 = super.getDropDownView(position,null, parent)
-                // If this is the selected item position
-                if (position == selectedItem) {
-                    v1!!.setBackgroundColor(Color.parseColor("#044A6C"))
-                } else {
-                    // for other views
-                    v1!!.setBackgroundColor(Color.WHITE)
-
-                }
-                return v1
-            }
-        }
-
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        v.spin_branch.setAdapter(dataAdapter)*/
-
-        // Initialize an array adapter
+        //
+        //            override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
+        //                var v1: View? = null
+        //                v1 = super.getDropDownView(position,null, parent)
+        //                // If this is the selected item position
+        //                if (position == selectedItem) {
+        //                    v1!!.setBackgroundColor(Color.parseColor("#044A6C"))
+        //                } else {
+        //                    // for other views
+        //                    v1!!.setBackgroundColor(Color.WHITE)
+        //
+        //                }
+        //                return v1
+        //            }
+        //        }
+        //
+        //        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        //        v.spin_branch.setAdapter(dataAdapter)*/
+        //
+        //        // Initialize an array adapter
 
         return v
     }

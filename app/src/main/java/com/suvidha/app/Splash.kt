@@ -10,7 +10,9 @@ class Splash : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.splash_screen)
 
-        Thread(splashThread).start()
+    Thread(splashThread).start()
+
+
     }
     var splashThread: Runnable = Runnable {
         try {
