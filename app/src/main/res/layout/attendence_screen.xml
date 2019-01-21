@@ -3,9 +3,12 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+
 android:background="@color/grey">
     <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
     android:orientation="vertical"
+                  android:focusableInTouchMode="true"
+                  android:focusable="false"
     android:layout_margin="15dp">
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                   android:id="@+id/txt_emp_name"
