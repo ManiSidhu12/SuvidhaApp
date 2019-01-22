@@ -35,6 +35,8 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     implementation 'com.android.support:design:28.0.0'
+    implementation 'com.google.android.gms:play-services-location:16.0.0'
+
     implementation project(':expand_library')
 
 

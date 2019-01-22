@@ -105,16 +105,21 @@ public class SimpleExpandableAdapter extends ExpandableRecyclerAdapter<SimpleExp
                     if (item instanceof SimpleChild) {
                      //   Log.e("values",((SimpleChild) item).getCat_id()+"Ak"+((SimpleChild)item).getTitle());
                         if(parentPosition == 0){
+                            AttendenceFragment f = new AttendenceFragment();
+                            ((FragmentActivity) v.getContext()).getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
+                            drawer.closeDrawer(GravityCompat.START);
+                        }
+                       else if(parentPosition == 1){
                             HRFragment f = new HRFragment();
                             ((FragmentActivity) v.getContext()).getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
                             drawer.closeDrawer(GravityCompat.START);
                         }
-                        else if(parentPosition == 1){
+                        else if(parentPosition == 2){
                             InstallFragment f = new InstallFragment();
                             ((FragmentActivity) v.getContext()).getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
                             drawer.closeDrawer(GravityCompat.START);
                         }
-                        else if(parentPosition == 3){
+                        else if(parentPosition == 4){
                             Log.e("title",((SimpleChild) item).getTitle());
                             if(((SimpleChild) item).getTitle().equalsIgnoreCase("User-wise enquiries Followed-up")) {
                                 UserEnquiry f = new UserEnquiry();
