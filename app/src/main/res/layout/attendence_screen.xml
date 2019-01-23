@@ -9,66 +9,103 @@ android:background="@color/grey">
     android:orientation="vertical"
                   android:focusableInTouchMode="true"
                   android:focusable="false"
-    android:layout_margin="15dp">
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:layout_marginStart="15dp"
+    android:layout_marginEnd="15dp">
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="7dp"
+        >
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                   android:id="@+id/txt_emp_name"
+                  android:layout_alignParentStart="true"
+                  android:layout_centerInParent="true"
                   android:text="Manoj Khatana"
                   android:textColor="@android:color/black"
                   android:textSize="14sp"
                   android:textStyle="bold"
                   android:fontFamily="sans-serif"
         />
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                   android:id="@+id/txt_emp_id"
                   android:text="Emp Id:- EMP001"
+                  android:layout_alignParentEnd="true"
+                  android:layout_centerInParent="true"
                   android:textColor="@android:color/black"
                   android:textSize="14sp"
                   android:textStyle="bold"
                   android:fontFamily="sans-serif"
         />
-    <RelativeLayout android:layout_width="match_parent" android:layout_height="45dp"
-    android:layout_gravity="center_horizontal"
-    android:layout_marginTop="7dp">
-        <TextView android:layout_width="wrap_content" android:layout_height="match_parent"
-        android:text="Daily Attendence"
-        android:layout_alignParentStart="true"
-        android:layout_centerInParent="true"
-        android:padding="3dp"
-                  android:gravity="start|center"
-                  android:textSize="14sp"
-                  android:textColor="@android:color/black"
-                  android:textStyle="bold"
-        android:fontFamily="sans-serif"/>
-        <Switch
-                android:id="@+id/simpleSwitch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerInParent="true"
-                android:layout_marginEnd="5dp"
-                android:checked="false"
-                android:text="Present"
-                android:textOff="Yes"
-                android:textOn="No"/>
-    </RelativeLayout>
-        <Button android:layout_width="170dp" android:layout_height="40dp"
+
+
+        </RelativeLayout>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:layout_gravity="center_horizontal"
+                      android:layout_marginTop="10dp"
+                      android:orientation="vertical"
+        >
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:text="Daily Attendence"
+                      android:padding="3dp"
+                      android:gravity="start|center"
+                      android:textSize="14sp"
+                      android:textColor="@android:color/black"
+                      android:textStyle="bold"
+                      android:fontFamily="sans-serif"/>
+            <RadioGroup
+                    android:id="@+id/rg" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                <RadioButton
+                        android:id="@+id/radio_present"
+                        android:layout_width="wrap_content"
+                        android:text="Present"
+                        android:layout_height="wrap_content"/>
+                <RadioButton
+                        android:id="@+id/radio_absent"
+                        android:layout_width="wrap_content"
+                        android:text="Absent"
+                        android:checked="true"
+                        android:layout_height="wrap_content"/>
+                <RadioButton
+                        android:id="@+id/radio_leave"
+                        android:layout_width="wrap_content"
+                        android:text="Apply Leave"
+                        android:layout_height="wrap_content"/>
+
+            </RadioGroup>
+            <Switch
+                    android:id="@+id/simpleSwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginEnd="5dp"
+                    android:checked="false"
+                    android:text="Present"
+                    android:visibility="gone"
+                    android:textOff="Yes"
+                    android:textOn="No"/>
+        </LinearLayout>
+
+        <Button android:layout_width="100dp" android:layout_height="35dp"
                 android:text="Leave Application"
-                android:textSize="16sp"
+                android:textSize="11sp"
                 android:id="@+id/leave_request"
                 android:layout_gravity="end"
                 android:layout_marginTop="7dp"
                 android:textColor="@android:color/white"
                 android:gravity="center"
+                android:visibility="gone"
                 android:background="@drawable/hold_bg"
                 android:textAllCaps="false"/>
 
         <View android:layout_width="match_parent" android:layout_height="1dp"
               android:layout_gravity="center_horizontal"
-              android:layout_marginTop="7dp"
+              android:layout_marginTop="12dp"
               android:background="@android:color/darker_gray"/>
         <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="7dp">
+        android:layout_marginTop="12dp">
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                       android:text="Date"
                       android:textColor="@android:color/black"
@@ -91,21 +128,59 @@ android:background="@color/grey">
                       android:text="21-01-2019"
             />
         </RelativeLayout>
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="45dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:text="Select Attendence Timing"
+                      android:textColor="@android:color/black"
+                      android:padding="4dp"
+                      android:id="@+id/selection"
+                      android:layout_alignParentStart="true"
+                      android:layout_centerInParent="true"
+                      android:gravity="start|center"
+                      android:textStyle="bold"
+                      android:fontFamily="sans-serif"
+                      android:textSize="12sp"/>
+            <RelativeLayout android:layout_width="match_parent" android:layout_height="35dp"
+                            android:layout_toEndOf="@+id/selection"
+                            android:layout_centerInParent="true"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:background="@drawable/spin_bg">
+                <Spinner
+                        android:id="@+id/spin_times"
+                        android:layout_width="match_parent"
+                        android:layout_marginStart="5dp"
+                        android:layout_height="match_parent"/>
 
-
-                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                          android:text="Start Time"
+            </RelativeLayout>
+        </RelativeLayout>
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+android:orientation="vertical"
+android:layout_gravity="center_horizontal"
+              android:visibility="gone"
+              android:layout_marginTop="15dp"
+android:id="@+id/lay_start">
+<RelativeLayout android:layout_width="match_parent" android:layout_height="35dp"
+                android:layout_gravity="center_horizontal"
+>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:text="Travel Start Time"
                           android:textColor="@android:color/black"
                           android:textSize="14sp"
-                       android:layout_gravity="center_horizontal"
+                       android:layout_alignParentStart="true"
+                          android:layout_centerInParent="true"
                           android:textStyle="bold"
                           android:id="@+id/starting"
                           android:fontFamily="sans-serif"
                 />
                 <RelativeLayout
-                        android:id="@+id/lay_start_time" android:layout_width="150dp"
-                        android:layout_height="35dp"
-                      android:layout_marginTop="5dp"
+                        android:id="@+id/lay_start_time" android:layout_width="130dp"
+                        android:layout_height="match_parent"
+                        android:layout_toEndOf="@+id/starting"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="15dp"
                         android:background="@drawable/spin_bg">
                     <TextView
                             android:id="@+id/txt_starttime"
@@ -118,7 +193,7 @@ android:background="@color/grey">
                             android:text="09:00 AM"/>
 
                 </RelativeLayout>
-
+</RelativeLayout>
                 <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                           android:text="Location"
                           android:textColor="@android:color/black"
@@ -131,7 +206,7 @@ android:background="@color/grey">
                 />
                 <RelativeLayout
                         android:id="@+id/lay_start_loc" android:layout_width="match_parent"
-                        android:layout_height="35dp"
+                        android:layout_height="55dp"
                         android:layout_gravity="center_horizontal"
                         android:background="@drawable/spin_bg">
                     <TextView
@@ -140,26 +215,40 @@ android:background="@color/grey">
                             android:layout_height="match_parent"
                             android:layout_marginStart="7dp"
                             android:textSize="14sp"
-                            android:gravity="start|center"
+                            android:gravity="start|top"
                             android:textColor="@android:color/black"
                             android:text="Mohali"/>
 
                 </RelativeLayout>
 
+</LinearLayout>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/lay_duty_on"
+                      android:layout_marginTop="10dp"
 
+                      android:visibility="gone">
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="35dp"
+                        android:layout_gravity="center_horizontal"
 
-                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        >
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                           android:text="On Duty Time"
                           android:textColor="@android:color/black"
                           android:textSize="14sp"
                           android:textStyle="bold"
-                          android:layout_marginTop="10dp"
+                          android:id="@+id/dutytime"
+                          android:layout_alignParentStart="true"
+                          android:layout_centerInParent="true"
                           android:fontFamily="sans-serif"
                 />
             <RelativeLayout
-                    android:id="@+id/lay_duty_time" android:layout_width="150dp"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
+                    android:id="@+id/lay_duty_time" android:layout_width="130dp"
+                    android:layout_height="match_parent"
+android:layout_toEndOf="@+id/dutytime"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="15dp"
                     android:background="@drawable/spin_bg">
                 <TextView
                         android:id="@+id/txt_dutytime"
@@ -172,7 +261,7 @@ android:background="@color/grey">
                         android:text="09:00 AM"/>
 
             </RelativeLayout>
-
+        </RelativeLayout>
             <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                       android:text="Location"
                       android:textColor="@android:color/black"
@@ -184,7 +273,7 @@ android:background="@color/grey">
             />
             <RelativeLayout
                     android:id="@+id/lay_duty_loc" android:layout_width="match_parent"
-                    android:layout_height="35dp"
+                    android:layout_height="55dp"
                     android:layout_gravity="center_horizontal"
                     android:background="@drawable/spin_bg">
                 <TextView
@@ -193,27 +282,40 @@ android:background="@color/grey">
                         android:layout_height="match_parent"
                         android:layout_marginStart="7dp"
                         android:textSize="14sp"
-                        android:gravity="start|center"
+                        android:gravity="start|top"
                         android:textColor="@android:color/black"
                         android:text="Mohali"/>
 
             </RelativeLayout>
 
+        </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:orientation="vertical"
+                  android:layout_gravity="center_horizontal"
+                  android:id="@+id/lay_duty_off"
+                  android:layout_marginTop="10dp"
 
+                  android:visibility="gone">
+<RelativeLayout android:layout_width="match_parent" android:layout_height="35dp"
+android:layout_gravity="center_horizontal"
+>
 
-                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                           android:text="Duty Off Time"
                           android:textColor="@android:color/black"
                           android:textSize="14sp"
+                          android:id="@+id/offduty"
+                          android:layout_alignParentStart="true"
+                          android:layout_centerInParent="true"
                           android:textStyle="bold"
-                          android:layout_marginTop="10dp"
                           android:fontFamily="sans-serif"
                 />
             <RelativeLayout
                     android:id="@+id/lay_dutyoff_time" android:layout_width="150dp"
                     android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/spin_bg">
+android:layout_toEndOf="@+id/offduty"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="15dp" android:background="@drawable/spin_bg">
                 <TextView
                         android:id="@+id/txt_dutyofftime"
                         android:layout_width="match_parent"
@@ -225,7 +327,7 @@ android:background="@color/grey">
                         android:text="06:00 PM"/>
 
             </RelativeLayout>
-
+</RelativeLayout>
             <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                       android:text="Location"
                       android:textColor="@android:color/black"
@@ -237,7 +339,7 @@ android:background="@color/grey">
             />
             <RelativeLayout
                     android:id="@+id/lay_dutyoff_loc" android:layout_width="match_parent"
-                    android:layout_height="35dp"
+                    android:layout_height="55dp"
                     android:layout_gravity="center_horizontal"
                     android:background="@drawable/spin_bg">
                 <TextView
@@ -246,15 +348,16 @@ android:background="@color/grey">
                         android:layout_height="match_parent"
                         android:layout_marginStart="7dp"
                         android:textSize="14sp"
-                        android:gravity="start|center"
+                        android:gravity="start|top"
                         android:textColor="@android:color/black"
                         android:text="Mohali"/>
 
             </RelativeLayout>
-
+    </LinearLayout>
         <View android:layout_width="match_parent" android:layout_height="1dp"
               android:layout_gravity="center_horizontal"
               android:layout_marginTop="15dp"
+              android:visibility="gone"
               android:background="@android:color/darker_gray"/>
 
             <TextView
@@ -268,7 +371,16 @@ android:background="@color/grey">
                     android:padding="2dp"
                     android:layout_marginTop="5dp"
                     android:gravity="start|center"/>
-            <RelativeLayout android:layout_width="match_parent" android:layout_height="50dp"
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="3dp">
+        <Button android:layout_width="20dp" android:layout_height="20dp"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/btn_close_keyboard"
+                android:layout_marginBottom="-15dp"
+                android:background="@drawable/close"
+        />
+
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="70dp"
                             android:layout_marginTop="3dp"
                             android:layout_marginEnd="7dp"
                             android:background="@drawable/spin_bg">
@@ -285,8 +397,8 @@ android:background="@color/grey">
                         android:layout_height="match_parent"/>
 
             </RelativeLayout>
-
-        <Button android:layout_width="130dp" android:layout_height="40dp"
+        </RelativeLayout>
+        <Button android:layout_width="130dp" android:layout_height="35dp"
                 android:text="Submit"
                 android:textSize="16sp"
                 android:id="@+id/btn_sub_attendence"

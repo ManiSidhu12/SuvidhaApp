@@ -11,11 +11,15 @@ import kotlinx.android.synthetic.main.leave_alert.*
 import kotlinx.android.synthetic.main.leave_application.*
 import android.graphics.Paint.UNDERLINE_TEXT_FLAG
 import android.widget.ArrayAdapter
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.TextView
 import com.common.app.Common
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
+import android.support.v4.content.ContextCompat.getSystemService
+import android.view.inputmethod.InputMethodManager
 
 
 class LeaveApplication : Activity(){
@@ -45,6 +49,10 @@ work()
     }
 
     fun work(){
+btn_close_key.setOnClickListener {
+    val imm = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+    imm.hideSoftInputFromWindow(edt_remark_attendence.getWindowToken(), 0)
+}
         leaves_available.setOnClickListener {
             openAlert()
         }

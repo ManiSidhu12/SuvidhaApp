@@ -3,6 +3,9 @@ package com.suvidha.app
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.location.Address
+import android.location.Geocoder
+import android.location.Location
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.FragmentActivity
@@ -10,15 +13,22 @@ import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.text.TextUtils
+import android.util.Log
 import android.widget.ArrayAdapter
+import com.LocationUtil.PermissionUtils
 import com.adapter.app.SimpleChild
 import com.adapter.app.SimpleExpandableAdapter
 import com.adapter.app.SimpleParentItem
 import com.bignerdranch.expandablerecyclerview.Model.ParentListItem
 import com.common.app.Common
 import com.common.app.SharedPrefManager
+import com.fragments.app.AttendenceFragment
 import com.fragments.app.HRFragment
 import com.fragments.app.PurchaseFragment
+import com.google.android.gms.common.ConnectionResult
+import com.google.android.gms.common.api.GoogleApiClient
+import com.google.android.gms.location.LocationServices
 import com.google.gson.Gson
 import com.google.gson.stream.JsonReader
 import com.model.login.LoginRoot
@@ -28,15 +38,46 @@ import kotlinx.android.synthetic.main.home_screen.view.*
 import kotlinx.android.synthetic.main.nav_header_home.*
 import kotlinx.android.synthetic.main.nav_header_home.view.*
 import kotlinx.android.synthetic.main.user_data_dialog.*
+import java.io.IOException
 import java.io.StringReader
 import java.util.*
 import kotlin.math.exp
 
-class Home : AppCompatActivity() {
+class Home : AppCompatActivity(),PermissionUtils.PermissionResultCallback{
+
+
+
+    override fun PermissionGranted(request_code: Int) {
+        Log.i("PERMISSION ii", "GRANTED")
+
+
+    }
+
+    override fun PartialPermissionGranted(request_code: Int, granted_permissions: ArrayList<String>?) {
+    }
+
+    override fun PermissionDenied(request_code: Int) {
+    }
+
+    override fun NeverAskAgain(request_code: Int) {
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+       var fragments = supportFragmentManager.fragments
+    if (fragments != null) {
+        var frag :  AttendenceFragment
+        for ( frag in   fragments) {
+            frag.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        }
+    }
+    }
+
 
     val expandableListDetail = HashMap<String, List<String>>()
     var listFy = ArrayList<String>()
     var listBranch = ArrayList<String>()
+    lateinit var permissionUtils: PermissionUtils
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +85,7 @@ class Home : AppCompatActivity() {
         setContentView(R.layout.home_screen)
 
      //   setSupportActionBar(toolbar)
+        permissionUtils = PermissionUtils(this@Home)
 
          setData()
 
@@ -195,4 +237,5 @@ private fun setData(){
         }
     }
 }
+
 }
