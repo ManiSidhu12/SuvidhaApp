@@ -9,16 +9,12 @@ import android.support.v7.widget.LinearLayoutManager
 import com.adapter.app.LeavesAdapter
 import kotlinx.android.synthetic.main.leave_alert.*
 import kotlinx.android.synthetic.main.leave_application.*
-import android.graphics.Paint.UNDERLINE_TEXT_FLAG
 import android.widget.ArrayAdapter
-import android.widget.RadioButton
-import android.widget.RadioGroup
 import android.widget.TextView
 import com.common.app.Common
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
-import android.support.v4.content.ContextCompat.getSystemService
 import android.view.inputmethod.InputMethodManager
 
 
@@ -39,7 +35,7 @@ class LeaveApplication : Activity(){
 
         val adapterTo = ArrayAdapter<String>(this, R.layout.spinner_txt1, listTo)
         adapterTo.setDropDownViewResource(R.layout.spinner_txt)
-       spin_to.adapter = adapterTo
+        spin_to.adapter = adapterTo
 
         val adapterReason = ArrayAdapter<String>(this, R.layout.spinner_txt1, listReasons)
         adapterReason.setDropDownViewResource(R.layout.spinner_txt)
@@ -70,10 +66,10 @@ btn_close_key.setOnClickListener {
         val dialog = Dialog(this, android.R.style.Theme_Translucent_NoTitleBar)
         dialog.setContentView(R.layout.leave_alert)
         dialog.show()
-dialog.recycler_leaves.layoutManager = LinearLayoutManager(this)
+        dialog.recycler_leaves.layoutManager = LinearLayoutManager(this)
         dialog.recycler_leaves.adapter = LeavesAdapter(this)
         dialog.btn_close_leave.setOnClickListener {
-            dialog.dismiss()
+        dialog.dismiss()
         }
     }
 
@@ -108,16 +104,11 @@ dialog.recycler_leaves.layoutManager = LinearLayoutManager(this)
         val dateFormat = SimpleDateFormat("MM/dd/yyyy")
         var convertedDate = Date()
         var convertedDate2 = Date()
-        try {
+        try  {
             convertedDate = dateFormat.parse(dateFrom)
             convertedDate2 = dateFormat.parse(dateTo)
-            if(convertedDate2.after(convertedDate)){
+            if(convertedDate2.after(convertedDate) || convertedDate2.equals(convertedDate)){
                 bool =  true
-            }
-            else if(convertedDate2.equals(convertedDate)){
-                bool =  true
-            }else {
-                bool =  false
             }
         } catch (e: ParseException) {
             e.printStackTrace()
