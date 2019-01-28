@@ -40,7 +40,8 @@ class LeaveApplication : Activity(){
         val adapterReason = ArrayAdapter<String>(this, R.layout.spinner_txt1, listReasons)
         adapterReason.setDropDownViewResource(R.layout.spinner_txt)
         spin_reason.adapter = adapterReason
-work()
+
+        work()
 
     }
 

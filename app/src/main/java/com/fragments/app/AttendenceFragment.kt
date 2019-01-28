@@ -36,11 +36,10 @@ import com.suvidha.app.R
 import kotlinx.android.synthetic.main.attendence_screen.view.*
 import java.io.IOException
 import java.text.DateFormat
+import java.text.SimpleDateFormat
 import java.util.*
 
-class AttendenceFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
-    GoogleApiClient.OnConnectionFailedListener, ActivityCompat.OnRequestPermissionsResultCallback,
-    PermissionUtils.PermissionResultCallback {
+class AttendenceFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener, ActivityCompat.OnRequestPermissionsResultCallback, PermissionUtils.PermissionResultCallback {
 
     var listTimes = ArrayList<String>()
 
@@ -108,7 +107,7 @@ class AttendenceFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
         v = inflater.inflate(R.layout.attendence_screen,container,false)
         toolBar = activity!!.findViewById(R.id.toolbar)
         toolBar.title = "Attendence"
-        btnFilter = toolBar.findViewById(R.id.img_filter)
+        btnFilter = toolBar!!.findViewById(R.id.img_filter)
         btnFilter.visibility = View.GONE
 
         permissionUtils = PermissionUtils(activity!!)
@@ -125,6 +124,8 @@ class AttendenceFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
             .addOnConnectionFailedListener(this)
             .addApi(LocationServices.API).build()
         getLocation()
+
+        getCurrentDate()
        /* if (mLastLocation != null) {
             latitude = mLastLocation!!.latitude
             longitude = mLastLocation!!.longitude
@@ -166,7 +167,7 @@ class AttendenceFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
                     v.lay_duty_off.visibility = View.GONE
                 }
                 else if(position == 1){
-                    v.lay_start.visibility = View.GONE
+                    v.lay_start.visibility = View.VISIBLE
                     v.lay_duty_on.visibility = View.VISIBLE
                     v.lay_duty_off.visibility = View.GONE
                 }
@@ -193,7 +194,9 @@ class AttendenceFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
         }
 
         v.lay_start_time.setOnClickListener {
-            openTimePicker(v.txt_starttime)
+            if(v.spin_times.selectedItem != null && v.spin_times.selectedItem.toString().equals("Travel Start Time")) {
+                openTimePicker(v.txt_starttime)
+            }
         }
         v.lay_duty_time.setOnClickListener {
             openTimePicker(v.txt_dutytime)
@@ -207,7 +210,7 @@ class AttendenceFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
         val timePickerDialog = TimePickerDialog(activity, TimePickerDialog.OnTimeSetListener { timePicker, hourOfDay, minute ->
             c.set(Calendar.HOUR_OF_DAY, hourOfDay)
             c.set(Calendar.MINUTE, minute)
-            val time = DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime())
+            val time = DateFormat.getTimeInstance(DateFormat.SHORT).format(c.time)
             Log.d("MainActivity", "Selected time is $time")
             txt.text = time
         }, c.get(Calendar.HOUR_OF_DAY), c.get(Calendar.MINUTE), true)
@@ -220,8 +223,7 @@ class AttendenceFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
        // if (isPermissionGranted) {
 
             try {
-                mLastLocation = LocationServices.FusedLocationApi
-                    .getLastLocation(mGoogleApiClient)
+                mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient)
                 Log.e("mlast",mLastLocation.toString())
                 if (mLastLocation != null) {
                     latitude = mLastLocation!!.latitude
@@ -395,5 +397,13 @@ Log.e("status",status.statusCode.toString())
         checkPlayServices()
          getLocation()
     }
+fun getCurrentDate(){
+    var c = Calendar.getInstance().getTime()
+System.out.println("Current time => " + c)
 
+var df =  SimpleDateFormat("dd-MMM-yyyy")
+var formattedDate = df.format(c)
+
+    v.txt_date_curr.text = formattedDate
+}
 }
