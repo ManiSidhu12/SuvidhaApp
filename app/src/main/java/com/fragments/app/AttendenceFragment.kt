@@ -2,12 +2,9 @@ package com.fragments.app
 
 import android.Manifest
 import android.app.Activity
-import android.app.AlertDialog
 import android.app.TimePickerDialog
-import android.content.DialogInterface
 import android.content.Intent
 import android.content.IntentSender
-import android.content.pm.PackageManager
 import android.location.Address
 import android.location.Geocoder
 import android.location.Location
@@ -42,17 +39,13 @@ import java.util.*
 class AttendenceFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener, ActivityCompat.OnRequestPermissionsResultCallback, PermissionUtils.PermissionResultCallback {
 
     var listTimes = ArrayList<String>()
-
-
     private val PLAY_SERVICES_REQUEST = 1000
     private val REQUEST_CHECK_SETTINGS = 2000
 
     private var mLastLocation: Location? = null
-
     // Google client to interact with Google API
 
     lateinit var mGoogleApiClient: GoogleApiClient
-
     internal var latitude: Double = 0.toDouble()
     internal var longitude: Double = 0.toDouble()
 
@@ -75,7 +68,7 @@ class AttendenceFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,Googl
     }
 
     override fun PermissionGranted(request_code: Int) {
-        Log.i("PERMISSION Attendence", "GRANTED")
+       // Log.i("PERMISSION Attendence", "GRANTED")
         isPermissionGranted = true
         mGoogleApiClient = GoogleApiClient.Builder(activity!!)
             .addConnectionCallbacks(this)
@@ -117,7 +110,7 @@ class AttendenceFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,Googl
 
 
         permissionUtils.check_permission(permissions, "Need GPS permission for getting your location", 1)
-     Log.e("res",checkPlayServices().toString())
+        Log.e("res",checkPlayServices().toString())
 
         mGoogleApiClient = GoogleApiClient.Builder(activity!!)
             .addConnectionCallbacks(this)
@@ -181,7 +174,7 @@ class AttendenceFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,Googl
         }
         v.btn_close_keyboard.setOnClickListener {
             val imm = activity!!.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.hideSoftInputFromWindow(v.edt_remark_attendence.getWindowToken(), 0)
+            imm.hideSoftInputFromWindow(v.edt_remark_attendence.windowToken, 0)
         }
         v.rg.setOnCheckedChangeListener { group, checkedId ->
             if(checkedId == R.id.radio_leave){
@@ -329,9 +322,8 @@ class AttendenceFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,Googl
 
         result.setResultCallback { locationSettingsResult ->
             val status = locationSettingsResult.status
-Log.e("status",status.statusCode.toString())
-            when (status.statusCode) {
-                LocationSettingsStatusCodes.SUCCESS ->
+             Log.e("status",status.statusCode.toString())
+              when (status.statusCode) {   LocationSettingsStatusCodes.SUCCESS ->
                     // All location settings are satisfied. The client can initialize location requests here
                     getLocation()
                 LocationSettingsStatusCodes.RESOLUTION_REQUIRED -> try {
@@ -364,11 +356,7 @@ Log.e("status",status.statusCode.toString())
                     PLAY_SERVICES_REQUEST
                 ).show()
             } else {
-                Toast.makeText(
-                   activity!!,
-                    "This device is not supported.", Toast.LENGTH_LONG
-                )
-                    .show()
+                //Toast.makeText(activity!!,"This device is not supported.", Toast.LENGTH_LONG).show()
               //  finish()
             }
             return false
@@ -395,14 +383,14 @@ Log.e("status",status.statusCode.toString())
      override fun onResume() {
         super.onResume()
         checkPlayServices()
-         getLocation()
+         this.getLocation()
     }
-fun getCurrentDate(){
-    var c = Calendar.getInstance().getTime()
+private fun getCurrentDate(){
+    val c = Calendar.getInstance().time
 System.out.println("Current time => " + c)
 
-var df =  SimpleDateFormat("dd-MMM-yyyy")
-var formattedDate = df.format(c)
+val df =  SimpleDateFormat("dd-MMM-yyyy")
+val formattedDate = df.format(c)
 
     v.txt_date_curr.text = formattedDate
 }

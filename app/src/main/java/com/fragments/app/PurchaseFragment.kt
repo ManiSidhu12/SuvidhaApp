@@ -1,6 +1,7 @@
 package com.fragments.app
 
 import android.app.Dialog
+import android.app.ProgressDialog
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.graphics.Color
 import android.os.Bundle
@@ -18,11 +19,19 @@ import com.suvidha.app.R
 import kotlinx.android.synthetic.main.purchase_screen.view.*
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.widget.*
+import com.android.volley.DefaultRetryPolicy
+import com.android.volley.Request
+import com.android.volley.VolleyError
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+import com.common.app.CommonUtils
 import com.common.app.SharedPrefManager
 import com.google.gson.Gson
 import com.google.gson.stream.JsonReader
 import com.model.login.LoginRoot
+import com.model.login.purchase.PORoot
 import kotlinx.android.synthetic.main.hold_popup.*
 import java.io.StringReader
 
@@ -38,9 +47,6 @@ class PurchaseFragment : Fragment(){
     var listPrepared = ArrayList<String>()
     var listStatus = ArrayList<String>()
 
-    var listData  = ArrayList<String>()
-    var listNames = ArrayList<String>()
-    var list = ArrayList<String>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
        v = inflater.inflate(R.layout.purchase_screen,container,false)
@@ -69,27 +75,10 @@ class PurchaseFragment : Fragment(){
         listStatus.add("Confirmed")
         listStatus.add("Sent to Party")
 
-        //====
-        listNames.add("Graphic Dot")
-        listNames.add("Devi Dayal Welding Works")
-        listNames.add("Jain Electric Co.")
-        listNames.add("InFynite Solutions")
-        listNames.add("Amit & Company")
 
-        listData.add("Pending")
-        listData.add("Cancelled")
-        listData.add("Pending")
-        listData.add("Pending")
-        listData.add("Pending")
-
-        list.add("0")
-        list.add("0")
-        list.add("0")
-        list.add("0")
-        list.add("0")
 
         v.recycler_purchase.layoutManager = LinearLayoutManager(activity!!)
-        v.recycler_purchase.adapter = PurchaseAdapter(activity!!,listNames,listData,list,v.btn_approve,v.btn_refuse)
+      //  v.recycler_purchase.adapter = PurchaseAdapter(activity!!,listNames,listData,list,v.btn_approve,v.btn_refuse)
 
         v.lay_actions.visibility = View.VISIBLE
         //v.lay_reset.visibility = View.VISIBLE
@@ -129,6 +118,13 @@ class PurchaseFragment : Fragment(){
         //        v.spin_branch.setAdapter(dataAdapter)*/
         //
         //        // Initialize an array adapter
+
+        if(CommonUtils.getConnectivityStatusString(activity!!).equals("true")){
+            getPO("1","10","","","","","")
+        }
+        else{
+            CommonUtils.openInternetDialog(activity!!)
+        }
 
         return v
     }
@@ -329,4 +325,45 @@ dialog.dismiss()
 
     }
 
-  }
+
+    //============= PO Web Service =====
+    private fun getPO(page :  String,size : String, sort : String,coid : String,boid : String,order : String,srch : String) {
+        val url = "http://suvidhaapi.suvidhacloud.com/api/PO/getPODetails?PageNumber=" + page + "&PageSize=" + size + "&sort=" + sort + "&coid=" + coid + "&boid=" + boid + "&sortorder=" + order + "&search=" + srch
+        Log.e("url login", url)
+        val pd = ProgressDialog.show(activity, "", "Loading", false)
+
+        val postRequest = object : StringRequest(
+            Request.Method.GET, url, { response ->
+                pd.dismiss()
+                Log.e("purchase Response", response)
+                val gson = Gson()
+                val reader = JsonReader(StringReader(response))
+                reader.isLenient = true
+                var rootPurchase = gson.fromJson<PORoot>(reader, PORoot::class.java)
+
+                if (rootPurchase != null) {
+                    if(rootPurchase.table != null && rootPurchase.table.size >0){
+                      //v.recycler_purchase.adapter = PurchaseAdapter(activity!!,listNames,listData,list,v.btn_approve,v.btn_refuse)
+                      v.recycler_purchase.adapter = PurchaseAdapter(activity!!,rootPurchase.table,v.btn_approve,v.btn_refuse)
+
+                    }
+                } else {
+                    Common.showToast(activity!!, "Purchase Orders not found...")
+
+                }
+            },
+
+            { error: VolleyError ->
+                pd.dismiss()
+                Common.showToast(activity!!, error.message.toString())
+
+            }) {
+        }
+
+        postRequest.retryPolicy = DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
+        val requestQueue = Volley.newRequestQueue(activity)
+        requestQueue.add(postRequest)
+
+    }
+
+}

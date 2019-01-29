@@ -57,6 +57,7 @@ btn_close_key.setOnClickListener {
             onBackPressed()
         }
         lay_from_date_leave.setOnClickListener {
+            txt_to_date_leave.text = ""
             showDatePicker(txt_from_date_leave,"from","")
         }
         lay_to_date_leave.setOnClickListener {

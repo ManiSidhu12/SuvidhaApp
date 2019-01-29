@@ -9,13 +9,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
+import com.model.login.purchase.Table
 import com.suvidha.app.PurchaseItemDetail
 import com.suvidha.app.R
 import kotlinx.android.synthetic.main.msg_popup.*
 import kotlinx.android.synthetic.main.purchase_adapter.view.*
+import java.lang.Exception
+import java.text.SimpleDateFormat
 
-class PurchaseAdapter(var ctx: Context, var listNames: ArrayList<String>, var listData: ArrayList<String>,
-  var  list2: ArrayList<String>,var btnApprove : Button,var btnRefuse :Button) :  RecyclerView.Adapter<PurchaseAdapter.ViewHolder>(){
+class PurchaseAdapter(
+    var ctx: Context, var listPO: MutableList<Table>, var btnApprove: Button, var btnRefuse:Button) :  RecyclerView.Adapter<PurchaseAdapter.ViewHolder>(){
 
    var expandValue  = -1
     var pos = -1
@@ -26,31 +30,34 @@ class PurchaseAdapter(var ctx: Context, var listNames: ArrayList<String>, var li
     }
 
     override fun getItemCount(): Int {
-        return listNames.size
+        return listPO.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, p1: Int) {
         //holder.txtOrderNo.paintFlags = holder.txtOrderNo.paintFlags or Paint.UNDERLINE_TEXT_FLAG
-        if(list2[p1].equals("1")){
+        if(listPO[p1].chkStatus.equals("1")){
             holder.imgChk.setImageResource(R.drawable.sel)
         }
         else{
             holder.imgChk.setImageResource(R.drawable.unslct)
         }
+holder.txtName.text = listPO[p1].name
+holder.txtOrderNo.text = listPO[p1].orderno.toString()
+        if(!listPO[p1].orderdate.toString().isEmpty()) {
+            convertDate(listPO[p1].orderdate.toString(), holder.txtOrderDate)
 
-        holder.txtName.text = listNames[p1]
-        holder.txtStatus.text = listData[p1]
-
-        if(listData[p1].equals("Pending")) {
+        }
+        holder.txtDept.text = listPO[p1].deptname.toString() +" (Dept.)"
+        if(listPO[p1].status.equals("Pending")) {
             holder.txtStatus.setTextColor(ContextCompat.getColor(ctx, R.color.dark_blue))
         }
-        else if(listData[p1].equals("Cancelled")) {
+        else if(listPO[p1].status.equals("Cancelled")) {
             holder.txtStatus.setTextColor(ContextCompat.getColor(ctx, R.color.red))
         }
-        else  if(listData[p1].equals("Approved")) {
+        else  if(listPO[p1].status.equals("C")) {
             holder.txtStatus.setTextColor(ContextCompat.getColor(ctx, R.color.green))
         }
-        else  if(listData[p1].equals("Hold")) {
+        else  if(listPO[p1].status.equals("Hold")) {
             holder.txtStatus.setTextColor(ContextCompat.getColor(ctx, R.color.orange))
         }
         if(expandValue == p1){
@@ -82,11 +89,11 @@ class PurchaseAdapter(var ctx: Context, var listNames: ArrayList<String>, var li
             ctx.startActivity(Intent(ctx,PurchaseItemDetail::class.java))
         }
         holder.imgChk.setOnClickListener {
-            if(list2[p1].equals("0")){
-             list2.set(p1,"1")
+            if(listPO[p1].chkStatus.equals("0")){
+             listPO[p1].chkStatus = "1"
             }
             else{
-                list2.set(p1,"0")
+                listPO[p1].chkStatus = "0"
 
             }
             notifyDataSetChanged()
@@ -99,21 +106,21 @@ class PurchaseAdapter(var ctx: Context, var listNames: ArrayList<String>, var li
         }
 
         btnApprove.setOnClickListener {
-           for(i in 0 until list2.size){
+          /* for(i in 0 until list2.size){
                if(list2[i].equals("1")){
                    listData.set(i,"Approved")
                    list2.set(i,"0")
                }
-           }
+           }*/
             notifyDataSetChanged()
         }
         btnRefuse.setOnClickListener {
-            for(i in 0 until list2.size){
+           /* for(i in 0 until list2.size){
                 if(list2[i].equals("1")){
                     listData.set(i,"Cancelled")
                     list2.set(i,"0")
                 }
-            }
+            }*/
             notifyDataSetChanged()
         }
     }
@@ -133,13 +140,30 @@ class PurchaseAdapter(var ctx: Context, var listNames: ArrayList<String>, var li
             dialog1.dismiss()
         }
     }
+    fun convertDate(dd: String, txtOrderDate: TextView){
+        var df =  SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss")
+
+        try {
+           var result = df.parse(dd)
+            System.out.println("date:"+result); //prints date in current locale
+            var sdf =  SimpleDateFormat("yyyy-MM-dd")
+           // sdf.setTimeZone(TimeZone.getTimeZone("GMT"))
+            System.out.println(sdf.format(result)) //prints date in the format sdf
+            txtOrderDate.text = sdf.format(result)
+        }
+        catch (ex : Exception){
+
+        }
+    }
     class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
         var layDetails = itemView.lay_details
         var line = itemView.line
         var line1 = itemView.line1
         var txtDetails = itemView.txt_detail
         var txtOrderNo = itemView.txt_orderno
+        var txtOrderDate = itemView.txt_orderdate
         var imgChk = itemView.img_chk
+        var txtDept = itemView.txt_postatus
         var txtStatus = itemView.txt_confirmation_status
         var txtName = itemView.txt_suppliername
         var layClick = itemView.lay_click
