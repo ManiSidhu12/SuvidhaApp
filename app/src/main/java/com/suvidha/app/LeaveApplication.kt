@@ -16,6 +16,7 @@ import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 import android.view.inputmethod.InputMethodManager
+import com.common.app.GlobalConstants
 
 
 class LeaveApplication : Activity(){
@@ -54,7 +55,11 @@ btn_close_key.setOnClickListener {
             openAlert()
         }
         img_back_detail.setOnClickListener {
+         // GlobalConstants.backValue="yes"
+
             onBackPressed()
+            //finish()
+
         }
         lay_from_date_leave.setOnClickListener {
             txt_to_date_leave.text = ""
@@ -117,4 +122,6 @@ btn_close_key.setOnClickListener {
         }
         return bool
     }
+
+
 }

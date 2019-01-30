@@ -23,6 +23,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import com.LocationUtil.PermissionUtils
 import com.common.app.Common
+import com.common.app.GlobalConstants
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
 import com.google.android.gms.common.api.GoogleApiClient
@@ -179,11 +180,14 @@ class AttendenceFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,Googl
         v.rg.setOnCheckedChangeListener { group, checkedId ->
             if(checkedId == R.id.radio_leave){
                 startActivity(Intent(activity!!,LeaveApplication::class.java))
+                v.rg.check(R.id.radio_absent)
+
 
             }
         }
         v.leave_request.setOnClickListener {
             startActivity(Intent(activity!!,LeaveApplication::class.java))
+
         }
 
         v.lay_start_time.setOnClickListener {
@@ -384,6 +388,7 @@ class AttendenceFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,Googl
         super.onResume()
         checkPlayServices()
          this.getLocation()
+
     }
 private fun getCurrentDate(){
     val c = Calendar.getInstance().time

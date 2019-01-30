@@ -54,13 +54,10 @@ class PurchaseFragment : Fragment(){
         toolBar = activity!!.findViewById(R.id.toolbar)
         toolBar.title = "POs Pending Approval"
         btnFilter = toolBar.findViewById(R.id.img_filter)
-        btnFilter.visibility = View.VISIBLE
-        btnFilter.setImageResource(R.drawable.filter)
-        btnFilter.setColorFilter(ContextCompat.getColor(activity!!,android.R.color.white),android.graphics.PorterDuff.Mode.SRC_IN)
 
 
 
-     getResponse()
+        getResponse()
 
 
         listPrepared.add("All")
@@ -78,18 +75,16 @@ class PurchaseFragment : Fragment(){
 
 
         v.recycler_purchase.layoutManager = LinearLayoutManager(activity!!)
-      //  v.recycler_purchase.adapter = PurchaseAdapter(activity!!,listNames,listData,list,v.btn_approve,v.btn_refuse)
+        //v.recycler_purchase.adapter = PurchaseAdapter(activity!!,listNames,listData,list,v.btn_approve,v.btn_refuse)
 
-        v.lay_actions.visibility = View.VISIBLE
         //v.lay_reset.visibility = View.VISIBLE
         val adapterBranch = ArrayAdapter<String>(activity!!, R.layout.spinner_txt1, listBranch)
         adapterBranch.setDropDownViewResource(R.layout.spinner_txt)
-        //v.spin_branch.adapter = MyAdapter(activity!!,android.R.layout.simple_spinner_item,listBranch,v.spin_branch)
 
-    //    v.spin_branch.adapter = NothingSelectedSpinnerAdapter(adapterBranch, R.layout.selection, activity!!)
+        //v.spin_branch.adapter = NothingSelectedSpinnerAdapter(adapterBranch, R.layout.selection, activity!!)
         val adapterPrepare = ArrayAdapter<String>(activity!!, R.layout.spinner_txt1, listPrepared)
         adapterPrepare.setDropDownViewResource(R.layout.spinner_txt)
-      //  v.spin_user.adapter = adapterPrepare
+        //v.spin_user.adapter = adapterPrepare
         setSpinnerAdapter(v.spin_user,listPrepared,"user")
 
         val adapterStatus = ArrayAdapter<String>(activity!!, R.layout.spinner_txt1, listStatus)
@@ -201,10 +196,7 @@ class PurchaseFragment : Fragment(){
             if(v.lay_filters.visibility == View.VISIBLE){
                 v.lay_filters.visibility = View.GONE
                 btnFilter.setImageResource(R.drawable.filter)
-                btnFilter.setColorFilter(
-                    ContextCompat.getColor(activity!!,android.R.color.white),
-                    android.graphics.PorterDuff.Mode.SRC_IN
-                )
+                btnFilter.setColorFilter(ContextCompat.getColor(activity!!,android.R.color.white),android.graphics.PorterDuff.Mode.SRC_IN)
 
 
             }
@@ -343,12 +335,22 @@ dialog.dismiss()
 
                 if (rootPurchase != null) {
                     if(rootPurchase.table != null && rootPurchase.table.size >0){
+                        v.recycler_purchase.visibility = View.VISIBLE
+                        v.txt_nodata.visibility = View.GONE
                       //v.recycler_purchase.adapter = PurchaseAdapter(activity!!,listNames,listData,list,v.btn_approve,v.btn_refuse)
                       v.recycler_purchase.adapter = PurchaseAdapter(activity!!,rootPurchase.table,v.btn_approve,v.btn_refuse)
+                        btnFilter.visibility = View.VISIBLE
+                        btnFilter.setImageResource(R.drawable.filter)
+                        btnFilter.setColorFilter(ContextCompat.getColor(activity!!,android.R.color.white),android.graphics.PorterDuff.Mode.SRC_IN)
+                        v.lay_actions.visibility = View.VISIBLE
 
                     }
                 } else {
-                    Common.showToast(activity!!, "Purchase Orders not found...")
+                    btnFilter.visibility = View.GONE
+                    v.lay_actions.visibility = View.GONE
+v.recycler_purchase.visibility = View.GONE
+v.txt_nodata.visibility = View.VISIBLE
+                  //  Common.showToast(activity!!, "Purchase Orders not found...")
 
                 }
             },

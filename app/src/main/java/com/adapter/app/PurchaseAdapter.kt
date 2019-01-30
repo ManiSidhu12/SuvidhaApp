@@ -1,8 +1,10 @@
 package com.adapter.app
 
+import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -18,8 +20,7 @@ import kotlinx.android.synthetic.main.purchase_adapter.view.*
 import java.lang.Exception
 import java.text.SimpleDateFormat
 
-class PurchaseAdapter(
-    var ctx: Context, var listPO: MutableList<Table>, var btnApprove: Button, var btnRefuse:Button) :  RecyclerView.Adapter<PurchaseAdapter.ViewHolder>(){
+class PurchaseAdapter(var ctx: Context, var listPO: MutableList<Table>, var btnApprove: Button, var btnRefuse:Button) :  RecyclerView.Adapter<PurchaseAdapter.ViewHolder>(){
 
    var expandValue  = -1
     var pos = -1
@@ -35,7 +36,7 @@ class PurchaseAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, p1: Int) {
         //holder.txtOrderNo.paintFlags = holder.txtOrderNo.paintFlags or Paint.UNDERLINE_TEXT_FLAG
-        if(listPO[p1].chkStatus.equals("1")){
+        if(listPO[p1].chkStatus != null && listPO[p1].chkStatus.equals("1")){
             holder.imgChk.setImageResource(R.drawable.sel)
         }
         else{
@@ -89,7 +90,7 @@ holder.txtOrderNo.text = listPO[p1].orderno.toString()
             ctx.startActivity(Intent(ctx,PurchaseItemDetail::class.java))
         }
         holder.imgChk.setOnClickListener {
-            if(listPO[p1].chkStatus.equals("0")){
+            if(listPO[p1].chkStatus == null || listPO[p1].chkStatus.equals("0")){
              listPO[p1].chkStatus = "1"
             }
             else{
@@ -102,7 +103,8 @@ holder.txtOrderNo.text = listPO[p1].orderno.toString()
          openAlert(ctx,"Download")
         }
         holder.txtEmail.setOnClickListener {
-            openAlert(ctx,"Email")
+            //openAlert(ctx,"Email")
+            sendEmail(listPO[p1].email)
         }
 
         btnApprove.setOnClickListener {
@@ -155,6 +157,25 @@ holder.txtOrderNo.text = listPO[p1].orderno.toString()
 
         }
     }
+    fun  sendEmail(emailId : String) {
+var ids = arrayOf(emailId)
+        var emailIntent =  Intent(Intent.ACTION_SEND)
+
+        emailIntent.data = Uri.parse("mailto:")
+        emailIntent.type = "text/plain"
+        emailIntent.putExtra(Intent.EXTRA_EMAIL,ids)
+       // emailIntent.putExtra(Intent.EXTRA_CC, "aman")
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "PO Details");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message goes here")
+
+        try {
+            ctx.startActivity(Intent.createChooser(emailIntent, "Send mail..."))
+           // (ctx as Activity).finish()
+        } catch (ex : android.content.ActivityNotFoundException ) {
+         //   Toast.makeText(MainActivity.this, "There is no email client installed.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
         var layDetails = itemView.lay_details
         var line = itemView.line

@@ -159,8 +159,7 @@ class Login : Activity() {
             }) {
         }
 
-        postRequest.retryPolicy =
-                DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
+        postRequest.retryPolicy = DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
         val requestQueue = Volley.newRequestQueue(this)
         requestQueue.add(postRequest)
 
