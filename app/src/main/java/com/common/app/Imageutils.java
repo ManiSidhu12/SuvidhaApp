@@ -484,8 +484,7 @@ public class Imageutils
     public void permission_check_fragment(final int code)
     {
         Log.d(TAG, "permission_check_fragment: "+code);
-        int hasWriteContactsPermission = ContextCompat.checkSelfPermission(current_activity,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        int hasWriteContactsPermission = ContextCompat.checkSelfPermission(current_activity,Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
         if (hasWriteContactsPermission != PackageManager.PERMISSION_GRANTED)
 

@@ -211,8 +211,8 @@ class PurchaseFragment : Fragment(){
         }
     }
 
-fun setSpinnerAdapter(spin : Spinner,list : ArrayList<String>,type : String){
-    var  mAdapter = object : ArrayAdapter<String>(activity!!, R.layout.support_simple_spinner_dropdown_item, list) {
+   fun setSpinnerAdapter(spin : Spinner,list : ArrayList<String>,type : String){
+    val  mAdapter = object : ArrayAdapter<String>(activity!!, R.layout.support_simple_spinner_dropdown_item, list) {
         override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
             // Cast the spinner collapsed item (non-popup item) as a text view
             val tv = super.getView(position, convertView, parent) as TextView

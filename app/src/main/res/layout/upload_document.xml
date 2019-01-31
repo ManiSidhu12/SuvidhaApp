@@ -59,7 +59,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:padding="3dp"
-                        android:text="Upload Picture"
+                        android:text="Upload Document"
                         android:textColor="@color/colorPrimary"
                         android:textSize="16sp"/>
 
@@ -107,7 +107,9 @@
                             android:layout_centerInParent="true"
                             android:layout_marginStart="7dp"
                             android:layout_toEndOf="@+id/lay_browse"
-                            android:gravity="center"
+                            android:gravity="start|center"
+                            android:padding="3dp"
+                            android:textColor="@android:color/black"
                             android:text="No file chosen"/>
                 </RelativeLayout>
 
