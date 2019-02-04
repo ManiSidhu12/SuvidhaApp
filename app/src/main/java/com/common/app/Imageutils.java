@@ -351,10 +351,16 @@ public class Imageutils
 
         if (Build.VERSION.SDK_INT >= 23)
         {
-            if(isFragment)
+            Log.e("1","1");
+            if(isFragment) {
+                Log.e("2", "1");
                 permission_check_fragment(1);
-            else
+            }
+            else {
+                Log.e("3", "1");
+
                 permission_check(1);
+            }
         }
         else
         {
@@ -483,14 +489,17 @@ public class Imageutils
 
     public void permission_check_fragment(final int code)
     {
-        Log.d(TAG, "permission_check_fragment: "+code);
+        Log.e("permission",""+code);
         int hasWriteContactsPermission = ContextCompat.checkSelfPermission(current_activity,Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
         if (hasWriteContactsPermission != PackageManager.PERMISSION_GRANTED)
 
         {
+            Log.e("4", "1");
+
             if (!ActivityCompat.shouldShowRequestPermissionRationale(current_activity,
                     Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                Log.e("5", "1");
 
                 showMessageOKCancel("For adding images , You need to provide permission to access your files",
                         new DialogInterface.OnClickListener() {
@@ -500,8 +509,11 @@ public class Imageutils
                                 current_fragment.requestPermissions(
                                         new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE},
                                         code);
+                                Log.e("6", "1");
+
                             }
                         });
+
                 return;
             }
 
@@ -545,7 +557,7 @@ public class Imageutils
         Log.e("imageuri",imageUri+","+intent1.toString());
 
         if(isFragment) {
-            Log.e("values", "in");
+            Log.e("values", "infff");
             current_fragment.startActivityForResult(intent1, 0);
         }
         else {

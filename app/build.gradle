@@ -36,8 +36,10 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     implementation 'com.android.support:design:28.0.0'
     implementation 'com.google.android.gms:play-services-location:16.0.0'
+    implementation "com.github.xinyuez:easypermissions:2.0.1"
 
     implementation project(':expand_library')
+    implementation project(':filepicker')
 
 
 }

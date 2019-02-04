@@ -1,5 +1,6 @@
 package com.fragments.app
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.Dialog
@@ -20,25 +21,43 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.adapter.app.DocumentDetailsAdapter
 import com.adapter.app.InstallAdapter
 import com.common.app.Imageutils
 import com.common.app.NothingSelectedSpinnerAdapter
 import com.common.app.RecyclerItemClickListener
 import com.suvidha.app.R
+import droidninja.filepicker.FilePickerBuilder
+import droidninja.filepicker.FilePickerConst
 import kotlinx.android.synthetic.main.complaint_dialog.*
 import kotlinx.android.synthetic.main.followupdetails_dialog.*
 import kotlinx.android.synthetic.main.installation_screen.view.*
 import kotlinx.android.synthetic.main.upload_document.*
+import pub.devrel.easypermissions.AfterPermissionGranted
+import pub.devrel.easypermissions.AppSettingsDialog
+import pub.devrel.easypermissions.EasyPermissions
 import java.util.*
 
-class InstallFragment : Fragment(), Imageutils.ImageAttachmentListener{
+class InstallFragment : Fragment(), Imageutils.ImageAttachmentListener, EasyPermissions.PermissionCallbacks{
+    override fun onPermissionsDenied(requestCode: Int, perms: MutableList<String>) {
+        if (EasyPermissions.somePermissionPermanentlyDenied(activity!!, perms)) {
+            AppSettingsDialog.Builder(activity!!).build().show()
+        }
+    }
+
+    override fun onPermissionsGranted(requestCode: Int, perms: MutableList<String>) {
+    }
+
     override fun image_attachment(from: Int, filename: String, file: Bitmap, uri: Uri?) {
         file_path = filename
         dialog2.no_file.text = file.toString()
     }
     var file_path: String = ""
+    private val MAX_ATTACHMENT_COUNT = 10
+    val RC_FILE_PICKER_PERM = 321
 
+    private var docPaths = ArrayList<String>()
     lateinit var v : View
     lateinit var toolBar : Toolbar
     lateinit var btnFilter : ImageView
@@ -231,7 +250,7 @@ openPickerAlert(activity!!)
 
             }
             else if(items[item].equals("Choose File")){
-
+pickDoc()
             }
             else if (items[item] == "Cancel") {
                 dialog.dismiss()
@@ -243,6 +262,15 @@ openPickerAlert(activity!!)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         imageUtils.onActivityResult(requestCode, resultCode, data)
+        when(requestCode) {
+            FilePickerConst.REQUEST_CODE_DOC ->
+                if (resultCode == Activity.RESULT_OK && data != null) {
+                    docPaths = ArrayList()
+                    docPaths.addAll(data.getStringArrayListExtra(FilePickerConst.KEY_SELECTED_DOCS))
+                }
+            }
+
+
 
     }
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
@@ -250,5 +278,41 @@ openPickerAlert(activity!!)
 
         Log.e("Fragment", "onRequestPermissionsResult: $requestCode")
         imageUtils.request_permission_result(requestCode, permissions, grantResults)
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this)
+
     }
+
+
+    @AfterPermissionGranted(321)
+    fun pickDoc() {
+        if (EasyPermissions.hasPermissions(context!!, FilePickerConst.PERMISSIONS_FILE_PICKER)) {
+            onPickDoc()
+        } else {
+            // Ask for one permission
+            EasyPermissions.requestPermissions(
+                activity!!,
+                "We need this pemission to read documents from device.",
+                RC_FILE_PICKER_PERM,
+                FilePickerConst.PERMISSIONS_FILE_PICKER
+            )
+        }
+    }
+
+    fun onPickDoc() {
+        val maxCount = MAX_ATTACHMENT_COUNT
+        if (docPaths.size == MAX_ATTACHMENT_COUNT) {
+            Toast.makeText(
+                activity, "Cannot select more than $MAX_ATTACHMENT_COUNT items",
+                Toast.LENGTH_SHORT
+            ).show()
+        } else {
+            FilePickerBuilder.instance
+                .setMaxCount(maxCount)
+                .setSelectedFiles(docPaths)
+                .enableDocSupport(true)
+                .setActivityTheme(R.style.FilePickerTheme)
+                .pickFile(activity!!)
+        }
+    }
+
 }
