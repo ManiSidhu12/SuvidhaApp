@@ -86,7 +86,7 @@ class MediaDetailPickerFragment : BaseFragment(), FileAdapterListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(PickerManager.hasSelectAll())
-        mGlideRequestManager = Glide.with(this)
+        mGlideRequestManager = Glide.with(activity!!)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

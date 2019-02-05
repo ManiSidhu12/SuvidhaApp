@@ -65,7 +65,7 @@ class MediaFolderPickerFragment : BaseFragment(), FolderGridAdapter.FolderGridAd
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mGlideRequestManager = Glide.with(this)
+        mGlideRequestManager = Glide.with(activity!!)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

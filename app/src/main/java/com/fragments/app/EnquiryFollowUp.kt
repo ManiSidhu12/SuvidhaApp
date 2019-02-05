@@ -23,7 +23,7 @@ class EnquiryFollowUp : Fragment(){
 
         toolBar = activity!!.findViewById(R.id.toolbar)
         toolBar.title = "Enquiry Follow Up"
-        btnFilter = toolBar!!.findViewById(R.id.img_filter)
+        btnFilter = toolBar.findViewById(R.id.img_filter)
         btnFilter.visibility = View.VISIBLE
 v.recycler_purchase.layoutManager = LinearLayoutManager(activity!!)
         v.recycler_purchase.adapter = EnquiryFollowUpAdapter(activity!!)

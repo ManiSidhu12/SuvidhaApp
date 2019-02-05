@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import com.adapter.app.EnquiriesAdapter
 import com.suvidha.app.R
-import kotlinx.android.synthetic.main.user_enquiries.*
 import kotlinx.android.synthetic.main.user_enquiries.view.*
 
 class UserEnquiry : Fragment(){
@@ -48,7 +47,7 @@ work()
         btnFilter.setOnClickListener {
 if(v.lay_dates.visibility == View.GONE){
     v.lay_dates.visibility = View.VISIBLE
-    btn_apply.visibility = View.VISIBLE
+    v.btn_apply.visibility = View.VISIBLE
     btnFilter.setImageResource(R.drawable.filledfilter)
     btnFilter.setColorFilter(
         ContextCompat.getColor(activity!!,android.R.color.white),
@@ -57,7 +56,7 @@ if(v.lay_dates.visibility == View.GONE){
 }
             else{
     v.lay_dates.visibility = View.GONE
-    btn_apply.visibility = View.GONE
+    v.btn_apply.visibility = View.GONE
     btnFilter.setImageResource(R.drawable.filter)
     btnFilter.setColorFilter(
         ContextCompat.getColor(activity!!,android.R.color.white),

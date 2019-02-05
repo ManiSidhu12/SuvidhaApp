@@ -22,7 +22,7 @@ class Common{
               return true
             }
 
-            return true
+          //  return true
         }
         fun validatePassword(c: Context, edt_pswd: EditText): Boolean {
             if (edt_pswd.text.toString().trim().isEmpty()) {

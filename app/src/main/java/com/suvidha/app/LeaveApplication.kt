@@ -16,7 +16,6 @@ import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 import android.view.inputmethod.InputMethodManager
-import com.common.app.GlobalConstants
 
 
 class LeaveApplication : Activity(){

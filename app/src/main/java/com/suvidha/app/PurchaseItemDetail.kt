@@ -2,7 +2,6 @@ package com.suvidha.app
 
 import android.app.Activity
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import com.adapter.app.PurchaseItemDetailAdapter
 import com.adapter.app.SimpleChild

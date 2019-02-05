@@ -2,18 +2,11 @@ package com.suvidha.app
 
 import android.app.Dialog
 import android.content.Context
-import android.content.Intent
-import android.location.Address
-import android.location.Geocoder
-import android.location.Location
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
-import android.support.v4.app.FragmentActivity
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import android.text.TextUtils
 import android.util.Log
 import android.widget.ArrayAdapter
 import com.LocationUtil.PermissionUtils
@@ -24,24 +17,17 @@ import com.bignerdranch.expandablerecyclerview.Model.ParentListItem
 import com.common.app.Common
 import com.common.app.SharedPrefManager
 import com.fragments.app.AttendenceFragment
-import com.fragments.app.HRFragment
 import com.fragments.app.PurchaseFragment
-import com.google.android.gms.common.ConnectionResult
-import com.google.android.gms.common.api.GoogleApiClient
-import com.google.android.gms.location.LocationServices
 import com.google.gson.Gson
 import com.google.gson.stream.JsonReader
 import com.model.login.LoginRoot
 import kotlinx.android.synthetic.main.home_screen.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.home_screen.view.*
-import kotlinx.android.synthetic.main.nav_header_home.*
 import kotlinx.android.synthetic.main.nav_header_home.view.*
 import kotlinx.android.synthetic.main.user_data_dialog.*
-import java.io.IOException
 import java.io.StringReader
 import java.util.*
-import kotlin.math.exp
 
 class Home : AppCompatActivity(),PermissionUtils.PermissionResultCallback{
 

@@ -8,11 +8,9 @@ import android.content.IntentSender
 import android.location.Address
 import android.location.Geocoder
 import android.location.Location
-import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v4.app.Fragment
-import android.support.v4.content.ContextCompat
 import android.support.v7.widget.Toolbar
 import android.text.TextUtils
 import android.util.Log
@@ -22,12 +20,9 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import com.LocationUtil.PermissionUtils
-import com.common.app.Common
-import com.common.app.GlobalConstants
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
 import com.google.android.gms.common.api.GoogleApiClient
-import com.google.android.gms.common.api.ResultCallback
 import com.google.android.gms.location.*
 import com.suvidha.app.LeaveApplication
 import com.suvidha.app.R
@@ -101,7 +96,7 @@ class AttendenceFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,Googl
         v = inflater.inflate(R.layout.attendence_screen,container,false)
         toolBar = activity!!.findViewById(R.id.toolbar)
         toolBar.title = "Attendence"
-        btnFilter = toolBar!!.findViewById(R.id.img_filter)
+        btnFilter = toolBar.findViewById(R.id.img_filter)
         btnFilter.visibility = View.GONE
 
         permissionUtils = PermissionUtils(activity!!)

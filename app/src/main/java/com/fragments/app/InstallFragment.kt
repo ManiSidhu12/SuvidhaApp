@@ -217,7 +217,7 @@ class InstallFragment : Fragment(), Imageutils.ImageAttachmentListener, EasyPerm
             dialog2.dismiss()
         }
         dialog2.lay_browse.setOnClickListener {
-openPickerAlert(activity!!)
+openPickerAlert()
         }
 
     }
@@ -235,7 +235,7 @@ openPickerAlert(activity!!)
         datePickerDialog.show()
     }
     //=========== Open Alert==============
-     fun openPickerAlert(c: Context) {
+     fun openPickerAlert() {
 
         val items = arrayOf<CharSequence>("Take Photo", "Choose Photo from Gallery","Choose File", "Cancel")
         builder = AlertDialog.Builder(activity)
