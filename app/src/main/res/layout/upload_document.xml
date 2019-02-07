@@ -3,6 +3,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/transbg">
+    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent"
+    android:id="@+id/frame1"></FrameLayout>
     <RelativeLayout android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
@@ -74,7 +76,7 @@
 
                     <RelativeLayout
                             android:id="@+id/lay_browse"
-                            android:layout_width="120dp"
+                            android:layout_width="100dp"
                             android:layout_height="match_parent"
                             android:layout_alignParentStart="true"
                             android:layout_centerInParent="true"
@@ -112,7 +114,15 @@
                             android:textColor="@android:color/black"
                             android:text="No file chosen"/>
                 </RelativeLayout>
-
+<Button android:layout_width="120dp" android:layout_height="35dp"
+android:text="Upload"
+android:textAllCaps="false"
+android:textSize="13sp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/blue_bg"
+        android:layout_marginTop="5dp"
+android:gravity="center"
+android:textColor="@android:color/white"/>
             </LinearLayout>
             <android.support.v7.widget.RecyclerView
                     android:id="@+id/recycler_details"

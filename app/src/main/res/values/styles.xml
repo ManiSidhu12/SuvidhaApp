@@ -26,11 +26,11 @@
     <style name="AppTheme.GrayStatusBar" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimaryDark">@color/colorPrimary</item>
     </style>
-    <style name="FilePickerTheme" parent="LibAppTheme">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
+    <!--<style name="FilePickerTheme" parent="LibAppTheme">-->
+        <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+        <!--<item name="colorPrimary">@color/colorPrimary</item>-->
+        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+        <!--<item name="colorAccent">@color/colorAccent</item>-->
+    <!--</style>-->
 
 </resources>

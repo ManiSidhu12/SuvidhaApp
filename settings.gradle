@@ -1,1 +1,1 @@
-include ':app', ':expand_library', ':filepicker'
+include ':app', ':expand_library', ':android-file-chooser'
