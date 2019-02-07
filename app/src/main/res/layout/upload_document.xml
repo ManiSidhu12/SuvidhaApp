@@ -111,7 +111,7 @@
                             android:layout_toEndOf="@+id/lay_browse"
                             android:gravity="start|center"
                             android:padding="3dp"
-                            android:textColor="@android:color/black"
+                             android:textColor="@android:color/black"
                             android:text="No file chosen"/>
                 </RelativeLayout>
 <Button android:layout_width="120dp" android:layout_height="35dp"

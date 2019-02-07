@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 import com.suvidha.app.Login;
 
 public class SharedPrefManager {
@@ -27,6 +28,8 @@ public class SharedPrefManager {
     private static final String GENDER = "gender";
     private static final String UNIT = "unit";
     private static final String FY = "fy";
+    private static final String CO_ID = "coid";
+    private static final String BO_ID = "boid";
     private static final String Login_Response = "response";
     private static SharedPrefManager mInstance;
 
@@ -48,7 +51,7 @@ public class SharedPrefManager {
  
     //method to let the user login
     //this method will store the user data in shared preferences
-    public void userLogin(String id, String fname,String mname,String lnm,String email,String des) {
+    public void userLogin(String id, String fname,String mname,String lnm,String email,String des,String coid) {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(USER_ID, id);
@@ -58,6 +61,7 @@ public class SharedPrefManager {
         editor.putString(USERNAME, fname+" "+lnm);
         editor.putString(EMAIL, email);
         editor.putString(Designation, des);
+        editor.putString(CO_ID, coid);
         editor.apply();
     }
 public void setContactInfo(String phn, String skype, String contry, String city, String adrs, String adrs1, String zip){
@@ -110,6 +114,13 @@ public void setContactInfo(String phn, String skype, String contry, String city,
         editor.putString(FY, fy);
         editor.apply();
     }
+    public void setBoId(String id){
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(BO_ID, id);
+        editor.apply();
+    }
+
     public void setGender(String gender){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -126,6 +137,16 @@ public void setContactInfo(String phn, String skype, String contry, String city,
 
         return sharedPreferences.getString(FY, null);
     }
+    public String getCoId(){
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+
+        return sharedPreferences.getString(CO_ID, null);
+    }
+    public String getBoId(){
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+
+        return sharedPreferences.getString(BO_ID, null);
+    }
     public String getGender() {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getString(GENDER, null);
@@ -136,7 +157,15 @@ public void setContactInfo(String phn, String skype, String contry, String city,
     //this method will checker whether user is already logged in or not
     public boolean isLoggedIn() {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        return sharedPreferences.getString(USER_ID, null) != null;
+        if(sharedPreferences.getString(USER_ID, null) != null){
+
+            return true;
+        }
+        else{
+
+            return false;
+        }
+
     }
 
     public String getAboutMe() {

@@ -63,6 +63,7 @@ class Home : AppCompatActivity(),PermissionUtils.PermissionResultCallback{
     val expandableListDetail = HashMap<String, List<String>>()
     var listFy = ArrayList<String>()
     var listBranch = ArrayList<String>()
+    var listBO = ArrayList<String>()
     lateinit var permissionUtils: PermissionUtils
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -76,6 +77,8 @@ class Home : AppCompatActivity(),PermissionUtils.PermissionResultCallback{
          setData()
 
        getResponse()
+
+
         val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
         )
         drawer_layout.addDrawerListener(toggle)
@@ -193,6 +196,7 @@ private fun setData(){
             else {
                 SharedPrefManager.getInstance(ctx).fy = dialog1.spin_fy.selectedItem.toString()
                 SharedPrefManager.getInstance(ctx).unit = dialog1.spin_unit.selectedItem.toString()
+                SharedPrefManager.getInstance(ctx).boId = listBO[dialog1.spin_unit.selectedItemPosition]
                 dialog1.dismiss()
                 var navigationView = nav_view
                 var header = navigationView.getHeaderView(0)
@@ -214,6 +218,7 @@ private fun setData(){
         if(rootLogin.table1 != null && rootLogin.table1.size > 0){
             for(i in 0 until rootLogin.table1.size) {
                 listBranch.add(rootLogin.table1[i].unitname)
+                listBO.add(rootLogin.table1[i].boid.toString())
             }
         }
         if(rootLogin.table2 != null && rootLogin.table2.size > 0){

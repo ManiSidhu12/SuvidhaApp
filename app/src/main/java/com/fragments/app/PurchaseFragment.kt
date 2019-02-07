@@ -31,6 +31,7 @@ import com.common.app.SharedPrefManager
 import com.google.gson.Gson
 import com.google.gson.stream.JsonReader
 import com.model.login.LoginRoot
+import com.model.login.postatus.POStatusRoot
 import com.model.login.purchase.PORoot
 import kotlinx.android.synthetic.main.hold_popup.*
 import java.io.StringReader
@@ -45,7 +46,10 @@ class PurchaseFragment : Fragment(){
     var selectedItem2 = 0
     var listBranch = ArrayList<String>()
     var listPrepared = ArrayList<String>()
-    var listStatus = ArrayList<String>()
+ var listStatus = ArrayList<String>()
+ var listStatusCode = ArrayList<String>()
+    var coid : String = ""
+    var boid : String = ""
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -54,26 +58,31 @@ class PurchaseFragment : Fragment(){
         toolBar = activity!!.findViewById(R.id.toolbar)
         toolBar.title = "POs Pending Approval"
         btnFilter = toolBar.findViewById(R.id.img_filter)
-
+btnFilter.visibility = View.VISIBLE
 
 
         getResponse()
-
+coid = SharedPrefManager.getInstance(activity!!).coId
+boid = SharedPrefManager.getInstance(activity!!).boId
 
         listPrepared.add("All")
         listPrepared.add("Purchase")
         listPrepared.add("MPP")
 
-        listStatus.add("Not yet Confirmed")
-        listStatus.add("Pending for Approval")
-        listStatus.add("Held Back")
-        listStatus.add("Refused")
-        listStatus.add("Approved")
-        listStatus.add("Confirmed")
-        listStatus.add("Sent to Party")
+        if(CommonUtils.getConnectivityStatusString(activity!!).equals("true")){
+            getPOStatus()
+        }
+        else{
+            CommonUtils.openInternetDialog(activity!!)
+        }
 
 
-
+        if(CommonUtils.getConnectivityStatusString(activity!!).equals("true")){
+            getPO("1","10","",coid,boid,"",v.edt_srch_purchase.text.toString(),"","")
+        }
+        else{
+            CommonUtils.openInternetDialog(activity!!)
+        }
         v.recycler_purchase.layoutManager = LinearLayoutManager(activity!!)
         //v.recycler_purchase.adapter = PurchaseAdapter(activity!!,listNames,listData,list,v.btn_approve,v.btn_refuse)
 
@@ -87,39 +96,10 @@ class PurchaseFragment : Fragment(){
         //v.spin_user.adapter = adapterPrepare
         setSpinnerAdapter(v.spin_user,listPrepared,"user")
 
-        val adapterStatus = ArrayAdapter<String>(activity!!, R.layout.spinner_txt1, listStatus)
-        adapterStatus.setDropDownViewResource(R.layout.spinner_txt)
-            //  v.spin_postatus.adapter = adapterStatus
-        setSpinnerAdapter(v.spin_postatus,listStatus,"status")
-        work()
-      /*  val dataAdapter = object : ArrayAdapter<String>(activity!!, android.R.layout.simple_spinner_item, listBranch) {
-        //
-        //            override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
-        //                var v1: View? = null
-        //                v1 = super.getDropDownView(position,null, parent)
-        //                // If this is the selected item position
-        //                if (position == selectedItem) {
-        //                    v1!!.setBackgroundColor(Color.parseColor("#044A6C"))
-        //                } else {
-        //                    // for other views
-        //                    v1!!.setBackgroundColor(Color.WHITE)
-        //
-        //                }
-        //                return v1
-        //            }
-        //        }
-        //
-        //        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        //        v.spin_branch.setAdapter(dataAdapter)*/
-        //
-        //        // Initialize an array adapter
 
-        if(CommonUtils.getConnectivityStatusString(activity!!).equals("true")){
-            getPO("1","10","","","","","")
-        }
-        else{
-            CommonUtils.openInternetDialog(activity!!)
-        }
+        work()
+
+
 
         return v
     }
@@ -137,7 +117,12 @@ class PurchaseFragment : Fragment(){
         v.spin_user.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 selectedItem1 = position
-
+                if(CommonUtils.getConnectivityStatusString(activity!!).equals("true")){
+                    //getPO("1","10","",coid,boid,"",v.edt_srch_purchase.text.toString(),listStatusCode[v.spin_postatus.selectedItemPosition],"")
+                }
+                else{
+                    CommonUtils.openInternetDialog(activity!!)
+                }
 
             }
 
@@ -147,7 +132,12 @@ class PurchaseFragment : Fragment(){
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 selectedItem2 = position
 
-
+                if(CommonUtils.getConnectivityStatusString(activity!!).equals("true")){
+                    //getPO("1","10","",coid,boid,"",v.edt_srch_purchase.text.toString(),listStatusCode[v.spin_postatus.selectedItemPosition],"")
+                }
+                else{
+                    CommonUtils.openInternetDialog(activity!!)
+                }
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {}
@@ -189,6 +179,12 @@ class PurchaseFragment : Fragment(){
         v.btn_srch.setOnClickListener{
             v.edt_srch_purchase.text = Editable.Factory.getInstance().newEditable("")
 
+            if(CommonUtils.getConnectivityStatusString(activity!!).equals("true")){
+               // getPO("1","10","",coid,boid,"",v.edt_srch_purchase.text.toString(),listStatusCode[v.spin_postatus.selectedItemPosition],"")
+            }
+            else{
+                CommonUtils.openInternetDialog(activity!!)
+            }
             val imm = activity!!.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(v.edt_srch_purchase.windowToken, 0)
         }
@@ -319,8 +315,8 @@ dialog.dismiss()
 
 
     //============= PO Web Service =====
-    private fun getPO(page :  String,size : String, sort : String,coid : String,boid : String,order : String,srch : String) {
-        val url = "http://suvidhaapi.suvidhacloud.com/api/PO/getPODetails?PageNumber=" + page + "&PageSize=" + size + "&sort=" + sort + "&coid=" + coid + "&boid=" + boid + "&sortorder=" + order + "&search=" + srch
+    private fun getPO(page :  String,size : String, sort : String,coid : String,boid : String,order : String,srch : String,status : String,user :String) {
+        val url = "http://suvidhaapi.suvidhacloud.com/api/PO/getPODetails?PageNumber=" + page + "&PageSize=" + size + "&sort=" + sort + "&coid=" + coid + "&boid=" + boid + "&sortorder=" + order + "&search=" + srch + "&postatus=" + status + "&preparedby=" + user
         Log.e("url login", url)
         val pd = ProgressDialog.show(activity, "", "Loading", false)
 
@@ -351,6 +347,54 @@ dialog.dismiss()
 v.recycler_purchase.visibility = View.GONE
 v.txt_nodata.visibility = View.VISIBLE
                   //  Common.showToast(activity!!, "Purchase Orders not found...")
+
+                }
+            },
+
+            { error: VolleyError ->
+                pd.dismiss()
+                Common.showToast(activity!!, error.message.toString())
+
+            }) {
+        }
+
+        postRequest.retryPolicy = DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
+        val requestQueue = Volley.newRequestQueue(activity)
+        requestQueue.add(postRequest)
+
+    }
+
+    //============ GET POStatus =================
+    private fun getPOStatus() {
+
+        val pd = ProgressDialog.show(activity!!, "", "Loading", false)
+
+        val postRequest = object : StringRequest(
+            Request.Method.GET, "http://suvidhaapi.suvidhacloud.com/api/PO/PoStatus", { response ->
+                pd.dismiss()
+                Log.e("POStatus Response", response)
+                val gson = Gson()
+                val reader = JsonReader(StringReader(response))
+                reader.isLenient = true
+                var rootPostatus = gson.fromJson<POStatusRoot>(reader, POStatusRoot::class.java)
+
+                if (rootPostatus != null) {
+                    if (rootPostatus.table != null && rootPostatus.table.size > 0) {
+                        for (i in 0 until rootPostatus.table.size) {
+listStatus.add(rootPostatus.table[i].description)
+listStatusCode.add(rootPostatus.table[i].code)
+                        }
+                        val adapterStatus = ArrayAdapter<String>(activity!!, R.layout.spinner_txt1, listStatus)
+                        adapterStatus.setDropDownViewResource(R.layout.spinner_txt)
+                        //  v.spin_postatus.adapter = adapterStatus
+                        setSpinnerAdapter(v.spin_postatus,listStatus,"status")
+
+
+                        } else {
+
+                    }
+                } else {
+                    Common.showToast(activity!!, "Failure")
 
                 }
             },

@@ -32,12 +32,13 @@ import java.io.StringReader
 class Login : Activity() {
     var listFy = ArrayList<String>()
     var listBranch = ArrayList<String>()
+    var listBo = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.signin_screen)
-
+Log.e("val",""+SharedPrefManager.getInstance(this@Login).isLoggedIn)
         if (SharedPrefManager.getInstance(this@Login).isLoggedIn) {
             val intent = Intent(this@Login, Home::class.java)
             startActivity(intent)
@@ -80,7 +81,10 @@ class Login : Activity() {
         val adapPriority1 = ArrayAdapter(ctx, R.layout.spinner_txt1, listFy)
         adapPriority1.setDropDownViewResource(R.layout.spinner_txt)
         dialog1.spin_fy.adapter = adapPriority1
-
+        SharedPrefManager.getInstance(ctx).fy = dialog1.spin_fy.selectedItem.toString()
+        SharedPrefManager.getInstance(ctx).unit = dialog1.spin_unit.selectedItem.toString()
+        Log.e("value",listBo[dialog1.spin_unit.selectedItemPosition])
+        SharedPrefManager.getInstance(ctx).boId = listBo[0]
         dialog1.show()
         dialog1.btn_close_follow.visibility = View.GONE
         dialog1.btn_sub_data.setOnClickListener {
@@ -91,6 +95,8 @@ class Login : Activity() {
             } else {
                 SharedPrefManager.getInstance(ctx).fy = dialog1.spin_fy.selectedItem.toString()
                 SharedPrefManager.getInstance(ctx).unit = dialog1.spin_unit.selectedItem.toString()
+                Log.e("value",listBo[dialog1.spin_unit.selectedItemPosition])
+                SharedPrefManager.getInstance(ctx).boId = listBo[dialog1.spin_unit.selectedItemPosition]
                 dialog1.dismiss()
                 val intent = Intent(this@Login, Home::class.java)
                 startActivity(intent)
@@ -126,12 +132,13 @@ class Login : Activity() {
                             rootLogin.table[0].middlename,
                             rootLogin.table[0].lastname,
                             rootLogin.table[0].emailid,
-                            rootLogin.table[0].designation
+                            rootLogin.table[0].designation,rootLogin.table[0].coid.toString()
                         )
 
                         if (rootLogin.table1 != null && rootLogin.table1.size > 0) {
                             for (i in 0 until rootLogin.table1.size) {
                                 listBranch.add(rootLogin.table1[i].unitname)
+                                listBo.add(rootLogin.table1[i].boid.toString())
                             }
                         }
                         if (rootLogin.table2 != null && rootLogin.table2.size > 0) {
