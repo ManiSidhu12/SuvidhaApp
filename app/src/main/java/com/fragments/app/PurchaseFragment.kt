@@ -32,6 +32,7 @@ import com.google.gson.Gson
 import com.google.gson.stream.JsonReader
 import com.model.login.LoginRoot
 import com.model.login.postatus.POStatusRoot
+import com.model.login.postatus.POUserRoot
 import com.model.login.purchase.PORoot
 import kotlinx.android.synthetic.main.hold_popup.*
 import java.io.StringReader
@@ -46,10 +47,13 @@ class PurchaseFragment : Fragment(){
     var selectedItem2 = 0
     var listBranch = ArrayList<String>()
     var listPrepared = ArrayList<String>()
- var listStatus = ArrayList<String>()
- var listStatusCode = ArrayList<String>()
+    var listStatus = ArrayList<String>()
+    var listPrepareId= ArrayList<String>()
+    var listStatusCode = ArrayList<String>()
     var coid : String = ""
     var boid : String = ""
+    var prepareId : String = ""
+    var statusCode : String = ""
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -58,31 +62,23 @@ class PurchaseFragment : Fragment(){
         toolBar = activity!!.findViewById(R.id.toolbar)
         toolBar.title = "POs Pending Approval"
         btnFilter = toolBar.findViewById(R.id.img_filter)
-btnFilter.visibility = View.VISIBLE
+        btnFilter.visibility = View.VISIBLE
 
 
         getResponse()
-coid = SharedPrefManager.getInstance(activity!!).coId
-boid = SharedPrefManager.getInstance(activity!!).boId
+      coid = SharedPrefManager.getInstance(activity!!).coId
+      boid = SharedPrefManager.getInstance(activity!!).boId
 
-        listPrepared.add("All")
-        listPrepared.add("Purchase")
-        listPrepared.add("MPP")
 
         if(CommonUtils.getConnectivityStatusString(activity!!).equals("true")){
             getPOStatus()
+            getPOUsers()
         }
         else{
             CommonUtils.openInternetDialog(activity!!)
         }
 
 
-        if(CommonUtils.getConnectivityStatusString(activity!!).equals("true")){
-            getPO("1","10","",coid,boid,"",v.edt_srch_purchase.text.toString(),"","")
-        }
-        else{
-            CommonUtils.openInternetDialog(activity!!)
-        }
         v.recycler_purchase.layoutManager = LinearLayoutManager(activity!!)
         //v.recycler_purchase.adapter = PurchaseAdapter(activity!!,listNames,listData,list,v.btn_approve,v.btn_refuse)
 
@@ -91,15 +87,8 @@ boid = SharedPrefManager.getInstance(activity!!).boId
         adapterBranch.setDropDownViewResource(R.layout.spinner_txt)
 
         //v.spin_branch.adapter = NothingSelectedSpinnerAdapter(adapterBranch, R.layout.selection, activity!!)
-        val adapterPrepare = ArrayAdapter<String>(activity!!, R.layout.spinner_txt1, listPrepared)
-        adapterPrepare.setDropDownViewResource(R.layout.spinner_txt)
-        //v.spin_user.adapter = adapterPrepare
-        setSpinnerAdapter(v.spin_user,listPrepared,"user")
-
 
         work()
-
-
 
         return v
     }
@@ -109,7 +98,6 @@ boid = SharedPrefManager.getInstance(activity!!).boId
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 selectedItem = position
 
-
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {}
@@ -117,8 +105,20 @@ boid = SharedPrefManager.getInstance(activity!!).boId
         v.spin_user.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 selectedItem1 = position
+                if(v.spin_postatus.selectedItem != null){
+                    statusCode = listStatusCode[v.spin_postatus.selectedItemPosition]
+                }
+                else{
+                    statusCode = listStatusCode[0]
+                }
+                if(v.spin_user.selectedItem != null){
+                    prepareId = listPrepareId[v.spin_user.selectedItemPosition]
+                }
+                else{
+                    prepareId = listPrepareId[0]
+                }
                 if(CommonUtils.getConnectivityStatusString(activity!!).equals("true")){
-                    //getPO("1","10","",coid,boid,"",v.edt_srch_purchase.text.toString(),listStatusCode[v.spin_postatus.selectedItemPosition],"")
+                    getPO("1","10","",coid,boid,"",v.edt_srch_purchase.text.toString(),statusCode,prepareId)
                 }
                 else{
                     CommonUtils.openInternetDialog(activity!!)
@@ -131,9 +131,20 @@ boid = SharedPrefManager.getInstance(activity!!).boId
         v.spin_postatus.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 selectedItem2 = position
-
+                if(v.spin_postatus.selectedItem != null){
+                    statusCode = listStatusCode[v.spin_postatus.selectedItemPosition]
+                }
+                else{
+                    statusCode = listStatusCode[0]
+                }
+                if(v.spin_user.selectedItem != null){
+                    prepareId = listPrepareId[v.spin_user.selectedItemPosition]
+                }
+                else{
+                    prepareId = listPrepareId[0]
+                }
                 if(CommonUtils.getConnectivityStatusString(activity!!).equals("true")){
-                    //getPO("1","10","",coid,boid,"",v.edt_srch_purchase.text.toString(),listStatusCode[v.spin_postatus.selectedItemPosition],"")
+                   getPO("1","10","",coid,boid,"",v.edt_srch_purchase.text.toString(),statusCode,prepareId)
                 }
                 else{
                     CommonUtils.openInternetDialog(activity!!)
@@ -177,14 +188,27 @@ boid = SharedPrefManager.getInstance(activity!!).boId
             openDialogHold()
         }
         v.btn_srch.setOnClickListener{
-            v.edt_srch_purchase.text = Editable.Factory.getInstance().newEditable("")
 
+            if(v.spin_postatus.selectedItem != null){
+                statusCode = listStatusCode[v.spin_postatus.selectedItemPosition]
+            }
+            else{
+                statusCode = listStatusCode[0]
+            }
+            if(v.spin_user.selectedItem != null){
+                prepareId = listPrepareId[v.spin_user.selectedItemPosition]
+            }
+            else{
+               prepareId = listPrepareId[0]
+            }
             if(CommonUtils.getConnectivityStatusString(activity!!).equals("true")){
-               // getPO("1","10","",coid,boid,"",v.edt_srch_purchase.text.toString(),listStatusCode[v.spin_postatus.selectedItemPosition],"")
+               getPO("1","10","",coid,boid,"",v.edt_srch_purchase.text.toString(),statusCode,prepareId)
             }
             else{
                 CommonUtils.openInternetDialog(activity!!)
             }
+            v.edt_srch_purchase.text = Editable.Factory.getInstance().newEditable("")
+
             val imm = activity!!.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(v.edt_srch_purchase.windowToken, 0)
         }
@@ -317,7 +341,7 @@ dialog.dismiss()
     //============= PO Web Service =====
     private fun getPO(page :  String,size : String, sort : String,coid : String,boid : String,order : String,srch : String,status : String,user :String) {
         val url = "http://suvidhaapi.suvidhacloud.com/api/PO/getPODetails?PageNumber=" + page + "&PageSize=" + size + "&sort=" + sort + "&coid=" + coid + "&boid=" + boid + "&sortorder=" + order + "&search=" + srch + "&postatus=" + status + "&preparedby=" + user
-        Log.e("url login", url)
+        Log.e("url po details", url)
         val pd = ProgressDialog.show(activity, "", "Loading", false)
 
         val postRequest = object : StringRequest(
@@ -342,8 +366,8 @@ dialog.dismiss()
 
                     }
                 } else {
-                    btnFilter.visibility = View.GONE
-                    v.lay_actions.visibility = View.GONE
+                 //   btnFilter.visibility = View.GONE
+                //    v.lay_actions.visibility = View.GONE
 v.recycler_purchase.visibility = View.GONE
 v.txt_nodata.visibility = View.VISIBLE
                   //  Common.showToast(activity!!, "Purchase Orders not found...")
@@ -353,7 +377,11 @@ v.txt_nodata.visibility = View.VISIBLE
 
             { error: VolleyError ->
                 pd.dismiss()
-                Common.showToast(activity!!, error.message.toString())
+               // btnFilter.visibility = View.GONE
+               // v.lay_actions.visibility = View.GONE
+                v.recycler_purchase.visibility = View.GONE
+                v.txt_nodata.visibility = View.VISIBLE
+              //  Common.showToast(activity!!, error.message.toString())
 
             }) {
         }
@@ -388,9 +416,92 @@ listStatusCode.add(rootPostatus.table[i].code)
                         adapterStatus.setDropDownViewResource(R.layout.spinner_txt)
                         //  v.spin_postatus.adapter = adapterStatus
                         setSpinnerAdapter(v.spin_postatus,listStatus,"status")
+                        if(listPrepareId != null && listPrepareId.size > 0){
+                            prepareId = listPrepareId[0]
+                        }
+                        else{
+                            prepareId = ""
+                        }
+                        if(listStatusCode != null && listStatusCode.size > 0){
+                            statusCode = listStatusCode[0]
+                        }
+                        else{
+                            statusCode = ""
+                        }
 
+                        if(CommonUtils.getConnectivityStatusString(activity!!).equals("true")){
+                            getPO("1","10","",coid,boid,"",v.edt_srch_purchase.text.toString(),statusCode,prepareId)
+                        }
+                        else{
+                            CommonUtils.openInternetDialog(activity!!)
+                        }
 
                         } else {
+
+                    }
+                } else {
+                    Common.showToast(activity!!, "Failure")
+
+                }
+            },
+
+            { error: VolleyError ->
+                pd.dismiss()
+                Common.showToast(activity!!, error.message.toString())
+
+            }) {
+        }
+
+        postRequest.retryPolicy = DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
+        val requestQueue = Volley.newRequestQueue(activity)
+        requestQueue.add(postRequest)
+
+    }
+    //============ GET PO Users =================
+    private fun getPOUsers() {
+
+        val pd = ProgressDialog.show(activity!!, "", "Loading", false)
+
+        val postRequest = object : StringRequest(
+            Request.Method.GET, "http://suvidhaapi.suvidhacloud.com/api/PO/POPreparedByUsers", { response ->
+                pd.dismiss()
+                Log.e("POUser Response", response)
+                val gson = Gson()
+                val reader = JsonReader(StringReader(response))
+                reader.isLenient = true
+                var rootPoUser = gson.fromJson<POUserRoot>(reader, POUserRoot::class.java)
+
+                if (rootPoUser != null) {
+                    if (rootPoUser.table != null && rootPoUser.table.size > 0) {
+                        for (i in 0 until rootPoUser.table.size) {
+                            listPrepared.add(rootPoUser.table[i].username)
+                            listPrepareId.add(rootPoUser.table[i].userid.toString())
+                        }
+                        val adapterPrepare = ArrayAdapter<String>(activity!!, R.layout.spinner_txt1, listPrepared)
+                        adapterPrepare.setDropDownViewResource(R.layout.spinner_txt)
+                        //v.spin_user.adapter = adapterPrepare
+                        setSpinnerAdapter(v.spin_user,listPrepared,"user")
+                        if(listStatusCode != null && listStatusCode.size > 0){
+                            statusCode = listStatusCode[0]
+                        }
+                        else{
+                            statusCode = ""
+                        }
+                        if(listPrepareId != null && listPrepareId.size > 0){
+                            prepareId = listPrepareId[0]
+                        }
+                        else{
+                            prepareId = ""
+                        }
+
+                        if(CommonUtils.getConnectivityStatusString(activity!!).equals("true")){
+                            getPO("1","10","",coid,boid,"",v.edt_srch_purchase.text.toString(),statusCode,prepareId)
+                        }
+                        else{
+                            CommonUtils.openInternetDialog(activity!!)
+                        }
+
+                    } else {
 
                     }
                 } else {
