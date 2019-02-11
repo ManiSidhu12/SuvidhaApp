@@ -66,17 +66,17 @@ class PurchaseFragment : Fragment(){
 
 
         getResponse()
-      coid = SharedPrefManager.getInstance(activity!!).coId
-      boid = SharedPrefManager.getInstance(activity!!).boId
-
+        coid = SharedPrefManager.getInstance(activity!!).coId
+        boid = SharedPrefManager.getInstance(activity!!).boId
 
         if(CommonUtils.getConnectivityStatusString(activity!!).equals("true")){
-            getPOStatus()
-            getPOUsers()
+            getPO("1","10","",coid,boid,"",v.edt_srch_purchase.text.toString(),"","")
         }
         else{
             CommonUtils.openInternetDialog(activity!!)
         }
+
+
 
 
         v.recycler_purchase.layoutManager = LinearLayoutManager(activity!!)
@@ -92,6 +92,7 @@ class PurchaseFragment : Fragment(){
 
         return v
     }
+
     fun work(){
 
         v.spin_branch.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -128,6 +129,7 @@ class PurchaseFragment : Fragment(){
 
             override fun onNothingSelected(parent: AdapterView<*>) {}
         }
+
         v.spin_postatus.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 selectedItem2 = position
@@ -227,6 +229,13 @@ class PurchaseFragment : Fragment(){
                     ContextCompat.getColor(activity!!,android.R.color.white),
                     android.graphics.PorterDuff.Mode.SRC_IN
                 )
+                if(CommonUtils.getConnectivityStatusString(activity!!).equals("true")){
+                    getPOStatus()
+                    getPOUsers()
+                }
+                else{
+                    CommonUtils.openInternetDialog(activity!!)
+                }
             }
         }
     }
@@ -308,7 +317,7 @@ class PurchaseFragment : Fragment(){
 
             }
             else{
-dialog.dismiss()
+                dialog.dismiss()
             }
         }
     }
@@ -395,11 +404,11 @@ v.txt_nodata.visibility = View.VISIBLE
     //============ GET POStatus =================
     private fun getPOStatus() {
 
-        val pd = ProgressDialog.show(activity!!, "", "Loading", false)
+       // val pd = ProgressDialog.show(activity!!, "", "Loading", false)
 
         val postRequest = object : StringRequest(
             Request.Method.GET, "http://suvidhaapi.suvidhacloud.com/api/PO/PoStatus", { response ->
-                pd.dismiss()
+              //  pd.dismiss()
                 Log.e("POStatus Response", response)
                 val gson = Gson()
                 val reader = JsonReader(StringReader(response))
@@ -446,7 +455,7 @@ listStatusCode.add(rootPostatus.table[i].code)
             },
 
             { error: VolleyError ->
-                pd.dismiss()
+             //   pd.dismiss()
                 Common.showToast(activity!!, error.message.toString())
 
             }) {
@@ -460,11 +469,11 @@ listStatusCode.add(rootPostatus.table[i].code)
     //============ GET PO Users =================
     private fun getPOUsers() {
 
-        val pd = ProgressDialog.show(activity!!, "", "Loading", false)
+       // val pd = ProgressDialog.show(activity!!, "", "Loading", false)
 
         val postRequest = object : StringRequest(
             Request.Method.GET, "http://suvidhaapi.suvidhacloud.com/api/PO/POPreparedByUsers", { response ->
-                pd.dismiss()
+            //    pd.dismiss()
                 Log.e("POUser Response", response)
                 val gson = Gson()
                 val reader = JsonReader(StringReader(response))
@@ -511,7 +520,7 @@ listStatusCode.add(rootPostatus.table[i].code)
             },
 
             { error: VolleyError ->
-                pd.dismiss()
+                //pd.dismiss()
                 Common.showToast(activity!!, error.message.toString())
 
             }) {

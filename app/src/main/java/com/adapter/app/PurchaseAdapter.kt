@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.purchase_adapter.view.*
 import java.lang.Exception
 import java.text.SimpleDateFormat
 
-class PurchaseAdapter(var ctx: Context, var listPO: MutableList<Table>, var btnApprove: Button, var btnRefuse:Button) :  RecyclerView.Adapter<PurchaseAdapter.ViewHolder>(){
+class PurchaseAdapter(var ctx: Context, var listPO : MutableList<Table>, var btnApprove : Button, var btnRefuse:Button) :  RecyclerView.Adapter<PurchaseAdapter.ViewHolder>(){
 
    var expandValue  = -1
     var pos = -1
@@ -47,7 +47,7 @@ holder.txtOrderNo.text = listPO[p1].orderno.toString()
             convertDate(listPO[p1].orderdate.toString(), holder.txtOrderDate)
 
         }
-        holder.txtDept.text = listPO[p1].deptname.toString() +" (Dept.)"
+//        holder.txtDept.text = listPO[p1].deptname.toString() +" (Dept.)"
         if(listPO[p1].status.equals("Pending")) {
             holder.txtStatus.setTextColor(ContextCompat.getColor(ctx, R.color.dark_blue))
         }
