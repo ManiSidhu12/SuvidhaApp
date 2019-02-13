@@ -10,9 +10,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.widget.ArrayAdapter
 import com.LocationUtil.PermissionUtils
-import com.adapter.app.SimpleChild
 import com.adapter.app.SimpleExpandableAdapter
-import com.adapter.app.SimpleParentItem
 import com.bignerdranch.expandablerecyclerview.Model.ParentListItem
 import com.common.app.Common
 import com.common.app.SharedPrefManager
@@ -21,6 +19,8 @@ import com.fragments.app.PurchaseFragment
 import com.google.gson.Gson
 import com.google.gson.stream.JsonReader
 import com.model.login.LoginRoot
+import com.model.login.SimpleChild
+import com.model.login.SimpleParentItem
 import kotlinx.android.synthetic.main.home_screen.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.home_screen.view.*

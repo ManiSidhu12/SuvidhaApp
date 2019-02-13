@@ -6,9 +6,61 @@ import java.util.List;
 
 public class SimpleParentItem implements ParentListItem {
 
-    private String mTitle;
-    private String mContent;
-    private String id;
+    private String itemName;
+    private String itemId;
+    private String orderId;
+    private String itemCode;
+    private String itemQuantity;
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
+    }
+
+    public String getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(String itemId) {
+        this.itemId = itemId;
+    }
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
+
+    public String getItemCode() {
+        return itemCode;
+    }
+
+    public void setItemCode(String itemCode) {
+        this.itemCode = itemCode;
+    }
+
+    public String getItemQuantity() {
+        return itemQuantity;
+    }
+
+    public void setItemQuantity(String itemQuantity) {
+        this.itemQuantity = itemQuantity;
+    }
+
+    public String getItemRate() {
+        return itemRate;
+    }
+
+    public void setItemRate(String itemRate) {
+        this.itemRate = itemRate;
+    }
+
+    private String itemRate;
     private boolean mSolved;
     private List<SimpleChild> mChildItemList;
 
@@ -16,21 +68,7 @@ public class SimpleParentItem implements ParentListItem {
     }
 
 
-    public String getTitle() {
-        return mTitle;
-    }
 
-    public void setTitle(String title) {
-        mTitle = title;
-    }
-
-    public String getContent() {
-        return mContent;
-    }
-
-    public void setContent(String mContent) {
-        this.mContent = mContent;
-    }
 
     public boolean isSolved() {
         return mSolved;
@@ -54,11 +92,5 @@ public class SimpleParentItem implements ParentListItem {
         return false;
     }
 
-    public String getId() {
-        return id;
-    }
 
-    public void setId(String id) {
-        this.id = id;
-    }
 }

@@ -6,6 +6,7 @@ import android.content.Intent
 import android.net.Uri
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,23 +42,29 @@ class PurchaseAdapter(var ctx: Context, var listPO : MutableList<Table>, var btn
         else{
             holder.imgChk.setImageResource(R.drawable.unslct)
         }
-holder.txtName.text = listPO[p1].name
-holder.txtOrderNo.text = listPO[p1].orderno.toString()
+        holder.txtName.text = listPO[p1].name
+        holder.txtOrderNo.text = listPO[p1].orderno.toString()
         if(!listPO[p1].orderdate.toString().isEmpty()) {
             convertDate(listPO[p1].orderdate.toString(), holder.txtOrderDate)
 
         }
 //        holder.txtDept.text = listPO[p1].deptname.toString() +" (Dept.)"
-        if(listPO[p1].status.equals("Pending")) {
+        if(listPO[p1].status.equals("A")) {
+            holder.txtStatus.text = "Approved"
+
             holder.txtStatus.setTextColor(ContextCompat.getColor(ctx, R.color.dark_blue))
         }
-        else if(listPO[p1].status.equals("Cancelled")) {
+        else if(listPO[p1].status.equals("R")) {
+            holder.txtStatus.text = "Refused"
             holder.txtStatus.setTextColor(ContextCompat.getColor(ctx, R.color.red))
         }
         else  if(listPO[p1].status.equals("C")) {
+            holder.txtStatus.text = "Confirmed"
             holder.txtStatus.setTextColor(ContextCompat.getColor(ctx, R.color.green))
         }
-        else  if(listPO[p1].status.equals("Hold")) {
+        else  if(listPO[p1].status.equals("H")) {
+            holder.txtStatus.text = "Held Back"
+
             holder.txtStatus.setTextColor(ContextCompat.getColor(ctx, R.color.orange))
         }
         if(expandValue == p1){
@@ -86,7 +93,8 @@ holder.txtOrderNo.text = listPO[p1].orderno.toString()
             notifyDataSetChanged()
         }
         holder.txtDetails.setOnClickListener {
-            ctx.startActivity(Intent(ctx,PurchaseItemDetail::class.java))
+            Log.e("values",listPO[p1].orderno.toString()+","+listPO[p1].orderid)
+            ctx.startActivity(Intent(ctx,PurchaseItemDetail::class.java).putExtra("order_id",listPO[p1].orderid.toString()).putExtra("order_no",listPO[p1].orderno.toString()))
         }
         holder.imgChk.setOnClickListener {
             if(listPO[p1].chkStatus == null || listPO[p1].chkStatus.equals("0")){
@@ -157,14 +165,14 @@ holder.txtOrderNo.text = listPO[p1].orderno.toString()
         }
     }
     fun  sendEmail(emailId : String) {
-var ids = arrayOf(emailId)
+        var ids = arrayOf(emailId)
         var emailIntent =  Intent(Intent.ACTION_SEND)
 
         emailIntent.data = Uri.parse("mailto:")
         emailIntent.type = "text/plain"
         emailIntent.putExtra(Intent.EXTRA_EMAIL,ids)
        // emailIntent.putExtra(Intent.EXTRA_CC, "aman")
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "PO Details");
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "PO Details")
         emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message goes here")
 
         try {

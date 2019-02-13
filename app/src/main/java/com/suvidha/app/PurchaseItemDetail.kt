@@ -1,55 +1,84 @@
 package com.suvidha.app
 
 import android.app.Activity
+import android.app.ProgressDialog
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import com.adapter.app.PurchaseItemDetailAdapter
 import com.adapter.app.SimpleChild
 import com.adapter.app.SimpleParentItem
+import com.android.volley.DefaultRetryPolicy
+import com.android.volley.Request
+import com.android.volley.VolleyError
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.bignerdranch.expandablerecyclerview.Model.ParentListItem
+import com.common.app.Common
+import com.common.app.CommonUtils
+import com.google.gson.Gson
+import com.google.gson.stream.JsonReader
+import com.model.login.purchase.item.POItemsRoot
 import kotlinx.android.synthetic.main.purchase_detail_screen.*
+import java.io.StringReader
 import java.util.*
 
 class PurchaseItemDetail : Activity(){
 
-    val expandableListDetail = HashMap<String, List<String>>()
-
+   // val expandableListDetail = HashMap<String, List<String>>()
+    var order_id = ""
+    var order_no =""
+var rootItem : POItemsRoot ? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
 
         setContentView(R.layout.purchase_detail_screen)
 
-        setData()
+       // setData()
 
         recycler_purchase_detail.layoutManager = LinearLayoutManager(this@PurchaseItemDetail)
 
-        recycler_purchase_detail.adapter = PurchaseItemDetailAdapter(this@PurchaseItemDetail, generateMockData())
+       // recycler_purchase_detail.adapter = PurchaseItemDetailAdapter(this@PurchaseItemDetail, generateMockData())
 
         img_back_detail.setOnClickListener {
             onBackPressed()
         }
+if(intent != null && intent.extras != null){
+    order_id = intent.extras.getString("order_id")
+    order_no = intent.extras.getString("order_no")
+}
 
+        if(CommonUtils.getConnectivityStatusString(this).equals("true")){
+            getPOItems(order_id,order_no)
+        }
+        else{
+            CommonUtils.openInternetDialog(this)
+        }
         }
 
 
 
     private fun generateMockData(): List<ParentListItem> {
         val parentListItems = ArrayList<ParentListItem>()
-        for (entry in expandableListDetail.entries) {
-            val key = entry.key
+        for (i in 0 until rootItem!!.table.size) {
+            //val key = entry.key
             val simpleParentItem = SimpleParentItem()
-            simpleParentItem.title = key
-            simpleParentItem.id = key
+            simpleParentItem.itemName = rootItem!!.table[i].itemname
+            simpleParentItem.itemId = rootItem!!.table[i].id.toString()
+            simpleParentItem.itemCode = rootItem!!.table[i].itemcode
+            simpleParentItem.itemQuantity= rootItem!!.table[i].orderedquantity.toString()
+            simpleParentItem.itemRate= rootItem!!.table[i].itemrate.toString()
+            simpleParentItem.orderId = rootItem!!.table[i].orderid.toString()
             val childItemList = ArrayList<SimpleChild>()
 
-            val values = entry.value
-            for(i in 0 until values.size) {
-                childItemList.add(SimpleChild(values[i],""))
+           // val values = entry.value
+            for(i in 0 until rootItem!!.table1.size) {
+                childItemList.add(SimpleChild(rootItem!!.table1[i].id.toString(),rootItem!!.table1[i].orderid.toString(),rootItem!!.table1[i].itemid.toString(),rootItem!!.table1[i].remarks,rootItem!!.table1[i].deliverydate,rootItem!!.table1[i].requiredqty.toString(),rootItem!!.table1[i].receivedqty.toString(),rootItem!!.table1[i].receivedon))
             }
             simpleParentItem.childItemList = childItemList
-            println("Keyss = ${simpleParentItem.title}")
-            println("Values = " + simpleParentItem.childItemList + "n")
+         //   println("Keyss = ${simpleParentItem.title}")
+           // println("Values = " + simpleParentItem.childItemList + "n")
             parentListItems.add(simpleParentItem)
 
         }
@@ -58,6 +87,7 @@ class PurchaseItemDetail : Activity(){
 
     }
 
+/*
    private fun setData(){
 
         val cricket = ArrayList<String>()
@@ -83,4 +113,46 @@ class PurchaseItemDetail : Activity(){
         expandableListDetail["Quotes & Enquiries"] = football1
         expandableListDetail["T.A. Bill"] = football2
     }
+*/
+
+
+    private fun getPOItems(order_id : String,order_no : String) {
+
+        val pd = ProgressDialog.show(this, "", "Loading", false)
+val url = "http://suvidhaapi.suvidhacloud.com/api/PO/getPOItemsDetail?orderid=" + order_id + "&orderno=" + order_no
+        Log.e("path",url)
+        val postRequest = object : StringRequest(
+            Request.Method.GET, url, { response ->
+                pd.dismiss()
+                Log.e("item details Response", response)
+                val gson = Gson()
+                val reader = JsonReader(StringReader(response))
+                reader.isLenient = true
+                 rootItem  = gson.fromJson<POItemsRoot>(reader, POItemsRoot::class.java)
+
+                if (rootItem != null) {
+                    if (rootItem!!.table != null && rootItem!!.table.size > 0) {
+                        recycler_purchase_detail.adapter = PurchaseItemDetailAdapter(this@PurchaseItemDetail, generateMockData())
+
+                    }
+                } else {
+                    Common.showToast(this, "Failure")
+
+                }
+            },
+
+            { error: VolleyError ->
+                  pd.dismiss()
+                Common.showToast(this, error.message.toString())
+
+            }) {
+        }
+
+        postRequest.retryPolicy =
+            DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
+        val requestQueue = Volley.newRequestQueue(this)
+        requestQueue.add(postRequest)
+
+    }
+
 }

@@ -8,6 +8,18 @@ public class Table {
 @SerializedName("id")
 @Expose
 private Integer id;
+
+    public Integer getOrderid() {
+        return orderid;
+    }
+
+    public void setOrderid(Integer orderid) {
+        this.orderid = orderid;
+    }
+
+    @SerializedName("orderid")
+    @Expose
+    private Integer orderid;
 @SerializedName("orderdate")
 @Expose
 private String orderdate;
@@ -191,5 +203,8 @@ return mailsentdate;
 public void setMailsentdate(Object mailsentdate) {
 this.mailsentdate = mailsentdate;
 }
+
+
+
 
 }
