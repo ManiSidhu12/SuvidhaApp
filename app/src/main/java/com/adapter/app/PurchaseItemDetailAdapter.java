@@ -8,6 +8,7 @@ import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +19,13 @@ import com.bignerdranch.expandablerecyclerview.Model.ParentListItem;
 import com.bignerdranch.expandablerecyclerview.ViewHolder.ChildViewHolder;
 import com.bignerdranch.expandablerecyclerview.ViewHolder.ParentViewHolder;
 import com.github.captain_miao.recyclerviewutils.listener.OnRecyclerItemClickListener;
+import com.model.login.purchase.item.Table2;
 import com.suvidha.app.R;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class PurchaseItemDetailAdapter extends ExpandableRecyclerAdapter<PurchaseItemDetailAdapter.SimpleParentViewHolder, PurchaseItemDetailAdapter.SimpleChildViewHolder> implements OnRecyclerItemClickListener {
@@ -29,11 +35,13 @@ public class PurchaseItemDetailAdapter extends ExpandableRecyclerAdapter<Purchas
     Context c;
     String value = "";
     int expandValue  = -1;
+    List<Table2> listRate;
 
-    public PurchaseItemDetailAdapter(Context context, List<ParentListItem> itemList) {
+    public PurchaseItemDetailAdapter(Context context, List<ParentListItem> itemList, List<Table2> listRate) {
         super(itemList);
         mInflater = LayoutInflater.from(context);
         c = context;
+        this.listRate = listRate;
     }
 
     @Override
@@ -54,10 +62,12 @@ public class PurchaseItemDetailAdapter extends ExpandableRecyclerAdapter<Purchas
 
     @Override
     public void onBindParentViewHolder(final SimpleParentViewHolder parentViewHolder, final int position, ParentListItem parentListItem) {
-        SimpleParentItem simpleParentItem = (SimpleParentItem) parentListItem;
+        final SimpleParentItem simpleParentItem = (SimpleParentItem) parentListItem;
         //  Common.setSemiBold(c,parentViewHolder.mTvTitle);
         parentViewHolder.txtItemNo.setText(simpleParentItem.getItemCode());
-        parentViewHolder.txtPrice.setText("@ Rs.85.45");
+        parentViewHolder.txtItemName.setText(simpleParentItem.getItemName());
+        parentViewHolder.txtItemQty.setText(String.valueOf(simpleParentItem.getItemQuantity()));
+        parentViewHolder.txtItemPrice.setText(String.valueOf(simpleParentItem.getItemRate()));
 
 
        // parentViewHolder.txtItemNo.setPaintFlags(parentViewHolder.txtItemNo.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
@@ -166,7 +176,19 @@ public class PurchaseItemDetailAdapter extends ExpandableRecyclerAdapter<Purchas
         parentViewHolder.txtRateHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-openDialog(c);
+                List<Table2> list = new ArrayList<>();
+                Log.e("list",listRate.toString());
+                if(listRate != null && listRate.size() > 0){
+                    for(int i =0; i<listRate.size();i++){
+                     if(listRate.get(i).getItemid().toString().equals(simpleParentItem.getItemId())){
+                         list.add(listRate.get(i));
+                     }
+                    }
+                    if(list != null && list.size() > 0) {
+                        openDialog(c, list);
+                    }
+                }
+
             }
         });
      /*
@@ -201,6 +223,19 @@ openDialog(c);
         if (value.equalsIgnoreCase("delivery")) {
             simpleChildViewHolder.layStockData.setVisibility(View.GONE);
             simpleChildViewHolder.layDeliveryData.setVisibility(View.VISIBLE);
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+            SimpleDateFormat output = new SimpleDateFormat("yyyy-MM-dd");
+            Date d = null;
+            if(simpleChild.getDeliverydate() != null && !simpleChild.getDeliverydate().equals("")) {
+                try {
+                    d = sdf.parse(simpleChild.getDeliverydate());
+                    String formattedTime = output.format(d);
+                    simpleChildViewHolder.txtDelDate.setText("Scheduled Dly. : " + formattedTime);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+            simpleChildViewHolder.txtDelQty.setText(simpleChild.getRequiredqty());
         }
     }
 
@@ -229,19 +264,20 @@ openDialog(c);
 
     public class SimpleChildViewHolder extends ChildViewHolder {
 
-        public TextView mTvContent;
+        public TextView txtDelDate,txtDelQty;
         LinearLayout layStockData;
         RelativeLayout layDeliveryData;
 
         public SimpleChildViewHolder(View itemView) {
             super(itemView);
 
-            mTvContent = itemView.findViewById(R.id.txt_deliverydate);
+            txtDelDate = itemView.findViewById(R.id.txt_date_scheduled);
+            txtDelQty = itemView.findViewById(R.id.txt_quantity);
             layStockData = itemView.findViewById(R.id.lay_stock_data);
             layDeliveryData = itemView.findViewById(R.id.lay_delivery_data);
         }
     }
-    private void openDialog(Context ctx) {
+    private void openDialog(Context ctx, List<Table2> list) {
 
         final Dialog dialog1 = new  Dialog(ctx, android.R.style.Theme_Translucent_NoTitleBar);
         dialog1.setContentView(R.layout.history_dialog);
@@ -249,7 +285,7 @@ openDialog(c);
 
         RecyclerView recycler_history  =dialog1.findViewById(R.id.recycler_history);
         recycler_history.setLayoutManager(new LinearLayoutManager(ctx));
-        recycler_history.setAdapter(new HistoryAdapter(ctx));
+        recycler_history.setAdapter(new HistoryAdapter(ctx,list));
         dialog1.show();
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -264,13 +300,13 @@ openDialog(c);
         private static final float ROTATED_POSITION = 180f;
         private final boolean HONEYCOMB_AND_ABOVE = Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB;
 
-        public TextView mTvTitle;
+        public TextView txtItemName,txtItemQty;
         public ImageButton mParentDropDownArrow;
         public LinearLayout layBtns, layClick;
         public View lineBtns;
         RelativeLayout layDelivery,layDrop;
         RelativeLayout layStock;
-        TextView txtPrice, txtItemNo, txtDel, txtStock,txtRateHistory;
+        TextView txtItemPrice, txtItemNo, txtDel, txtStock,txtRateHistory;
         ImageView imgDrop;
 
         //  public ImageButton mParentDropDownArrow1;
@@ -279,15 +315,19 @@ openDialog(c);
         public SimpleParentViewHolder(View itemView) {
             super(itemView);
 
-            mTvTitle = itemView.findViewById(R.id.txt_item_code);
+            txtItemName = itemView.findViewById(R.id.txt_item_name);
+            txtItemNo = itemView.findViewById(R.id.txt_item_no);
+            txtItemQty = itemView.findViewById(R.id.txt_item_qty);
+            txtItemPrice = itemView.findViewById(R.id.txt_item_price);
+
             txtDel = itemView.findViewById(R.id.txt_del);
             txtStock = itemView.findViewById(R.id.txt_stock);
             layBtns = itemView.findViewById(R.id.lay_btns);
             lineBtns = itemView.findViewById(R.id.line_btns);
             layClick = itemView.findViewById(R.id.layClick);
             layDelivery = itemView.findViewById(R.id.btn_delivery_status);
-            txtPrice = itemView.findViewById(R.id.txt_item_price);
-            txtItemNo = itemView.findViewById(R.id.txt_item_no);
+
+
             layStock = itemView.findViewById(R.id.btn_stock_status);
             txtRateHistory = itemView.findViewById(R.id.txt_rate_history);
             layDrop = itemView.findViewById(R.id.lay_click_item);

@@ -10,7 +10,7 @@ public class SimpleParentItem implements ParentListItem {
     private String itemId;
     private String orderId;
     private String itemCode;
-    private String itemQuantity;
+    private double itemQuantity;
 
     public String getItemName() {
         return itemName;
@@ -44,23 +44,23 @@ public class SimpleParentItem implements ParentListItem {
         this.itemCode = itemCode;
     }
 
-    public String getItemQuantity() {
+    public double getItemQuantity() {
         return itemQuantity;
     }
 
-    public void setItemQuantity(String itemQuantity) {
+    public void setItemQuantity(double itemQuantity) {
         this.itemQuantity = itemQuantity;
     }
 
-    public String getItemRate() {
+    public double getItemRate() {
         return itemRate;
     }
 
-    public void setItemRate(String itemRate) {
+    public void setItemRate(double itemRate) {
         this.itemRate = itemRate;
     }
 
-    private String itemRate;
+    private double itemRate;
     private boolean mSolved;
     private List<SimpleChild> mChildItemList;
 

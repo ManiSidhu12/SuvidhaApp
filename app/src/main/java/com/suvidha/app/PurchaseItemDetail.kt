@@ -67,14 +67,14 @@ if(intent != null && intent.extras != null){
             simpleParentItem.itemName = rootItem!!.table[i].itemname
             simpleParentItem.itemId = rootItem!!.table[i].id.toString()
             simpleParentItem.itemCode = rootItem!!.table[i].itemcode
-            simpleParentItem.itemQuantity= rootItem!!.table[i].orderedquantity.toString()
-            simpleParentItem.itemRate= rootItem!!.table[i].itemrate.toString()
+            simpleParentItem.itemQuantity = rootItem!!.table[i].orderedquantity.toDouble()
+            simpleParentItem.itemRate = rootItem!!.table[i].itemrate.toDouble()
             simpleParentItem.orderId = rootItem!!.table[i].orderid.toString()
             val childItemList = ArrayList<SimpleChild>()
 
            // val values = entry.value
-            for(i in 0 until rootItem!!.table1.size) {
-                childItemList.add(SimpleChild(rootItem!!.table1[i].id.toString(),rootItem!!.table1[i].orderid.toString(),rootItem!!.table1[i].itemid.toString(),rootItem!!.table1[i].remarks,rootItem!!.table1[i].deliverydate,rootItem!!.table1[i].requiredqty.toString(),rootItem!!.table1[i].receivedqty.toString(),rootItem!!.table1[i].receivedon))
+            for(j in 0 until rootItem!!.table1.size) {
+                childItemList.add(SimpleChild(rootItem!!.table1[j].id.toString(),rootItem!!.table1[j].orderid.toString(),rootItem!!.table1[j].itemid.toString(),rootItem!!.table1[j].remarks,rootItem!!.table1[j].deliverydate,rootItem!!.table1[j].requiredqty.toString(),rootItem!!.table1[j].receivedqty.toString(),rootItem!!.table1[j].receivedon))
             }
             simpleParentItem.childItemList = childItemList
          //   println("Keyss = ${simpleParentItem.title}")
@@ -82,7 +82,6 @@ if(intent != null && intent.extras != null){
             parentListItems.add(simpleParentItem)
 
         }
-        parentListItems.reverse()
         return parentListItems
 
     }
@@ -132,7 +131,7 @@ val url = "http://suvidhaapi.suvidhacloud.com/api/PO/getPOItemsDetail?orderid=" 
 
                 if (rootItem != null) {
                     if (rootItem!!.table != null && rootItem!!.table.size > 0) {
-                        recycler_purchase_detail.adapter = PurchaseItemDetailAdapter(this@PurchaseItemDetail, generateMockData())
+                        recycler_purchase_detail.adapter = PurchaseItemDetailAdapter(this@PurchaseItemDetail, generateMockData(),rootItem!!.table2)
 
                     }
                 } else {

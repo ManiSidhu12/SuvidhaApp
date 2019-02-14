@@ -378,7 +378,7 @@ class PurchaseFragment : Fragment() {
         val postRequest = object : StringRequest(
             Request.Method.GET, url, { response ->
                 pd.dismiss()
-                Log.e("purchase Response", response)
+                Log.e("purchase Respconse", response)
                 val gson = Gson()
                 val reader = JsonReader(StringReader(response))
                 reader.isLenient = true
@@ -392,11 +392,24 @@ class PurchaseFragment : Fragment() {
                         v.recycler_purchase.adapter =
                             PurchaseAdapter(activity!!, rootPurchase.table, v.btn_approve, v.btn_refuse)
                         btnFilter.visibility = View.VISIBLE
-                        btnFilter.setImageResource(R.drawable.filter)
-                        btnFilter.setColorFilter(
-                            ContextCompat.getColor(activity!!, android.R.color.white),
-                            android.graphics.PorterDuff.Mode.SRC_IN
-                        )
+
+                        if(v.lay_filters.visibility == View.VISIBLE){
+                            btnFilter.setImageResource(R.drawable.filledfilter)
+
+                            btnFilter.setColorFilter(
+                                ContextCompat.getColor(activity!!, android.R.color.white),
+                                android.graphics.PorterDuff.Mode.SRC_IN
+                            )
+                        }
+                        else{
+                            btnFilter.setImageResource(R.drawable.filter)
+
+                            btnFilter.setColorFilter(
+                                ContextCompat.getColor(activity!!, android.R.color.white),
+                                android.graphics.PorterDuff.Mode.SRC_IN
+                            )
+                        }
+
                         v.lay_actions.visibility = View.VISIBLE
 
                     } else {
