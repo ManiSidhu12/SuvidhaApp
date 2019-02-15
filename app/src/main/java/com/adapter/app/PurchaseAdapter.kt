@@ -48,7 +48,7 @@ class PurchaseAdapter(var ctx: Context, var listPO : MutableList<Table>, var btn
             convertDate(listPO[p1].orderdate.toString(), holder.txtOrderDate)
 
         }
-//        holder.txtDept.text = listPO[p1].deptname.toString() +" (Dept.)"
+      holder.txtDept.text = listPO[p1].deptname.toString() +" (Dept.)"
         if(listPO[p1].status.equals("A")) {
             holder.txtStatus.text = "Approved"
 

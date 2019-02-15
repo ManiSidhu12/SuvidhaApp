@@ -180,7 +180,7 @@ class PurchaseFragment : Fragment() {
 
             }
 
-            // This method is invoked after user input text in EditText.
+            // This method is invoked after user input textin  EditText.
             override fun afterTextChanged(editable: Editable) {
                 if (v.edt_srch_purchase.text.toString().isNotEmpty()) {
                     v.btn_srch.setBackgroundColor(Color.parseColor("#044A6C"))
@@ -205,13 +205,13 @@ class PurchaseFragment : Fragment() {
         v.btn_srch.setOnClickListener {
 
             if (v.spin_postatus.selectedItem != null) {
-                statusCode = listStatusCode[v.spin_postatus.selectedItemPosition]
+                statusCode = listStatusCode[v.spin_postatus.selectedItemPosition-1]
             }
 //            else{
 //                statusCode = listStatusCode[0]
 //            }
             if (v.spin_user.selectedItem != null) {
-                prepareId = listPrepareId[v.spin_user.selectedItemPosition]
+                prepareId = listPrepareId[v.spin_user.selectedItemPosition-1]
             }
             /* else{
                 prepareId = listPrepareId[0]
