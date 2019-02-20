@@ -95,6 +95,27 @@ class PurchaseFragment : Fragment() {
 
     fun work() {
 
+        v.btn_empty.setOnClickListener {
+            prepareId = ""
+            v.btn_empty.visibility = View.GONE
+            setSpinnerAdapter(v.spin_user,listPrepared,"user")
+            if (CommonUtils.getConnectivityStatusString(activity!!).equals("true")) {
+                getPO("1", "10", "", coid, boid, "", v.edt_srch_purchase.text.toString(), statusCode, prepareId)
+            } else {
+                CommonUtils.openInternetDialog(activity!!)
+            }
+        }
+
+        v.btn_empty1.setOnClickListener {
+           statusCode = ""
+            v.btn_empty1.visibility = View.GONE
+            setSpinnerAdapter(v.spin_postatus,listStatus,"status")
+            if (CommonUtils.getConnectivityStatusString(activity!!).equals("true")) {
+                getPO("1", "10", "", coid, boid, "", v.edt_srch_purchase.text.toString(), statusCode, prepareId)
+            } else {
+                CommonUtils.openInternetDialog(activity!!)
+            }
+        }
         v.spin_branch.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 selectedItem = position
@@ -106,8 +127,10 @@ class PurchaseFragment : Fragment() {
         v.spin_user.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 selectedItem1 = position - 1
-                if (v.spin_postatus.selectedItem != null) {
-                    statusCode = listStatusCode[v.spin_postatus.selectedItemPosition - 1]
+                if (v.spin_user.selectedItem != null) {
+                    prepareId = listPrepareId[v.spin_user.selectedItemPosition - 1]
+                    v.btn_empty.visibility = View.VISIBLE
+
                 }
                 /* else{
                      if(listStatusCode != null && listStatusCode.size > 0) {
@@ -139,6 +162,7 @@ class PurchaseFragment : Fragment() {
                 selectedItem2 = position - 1
                 if (v.spin_postatus.selectedItem != null) {
                     statusCode = listStatusCode[v.spin_postatus.selectedItemPosition - 1]
+                    v.btn_empty1.visibility = View.VISIBLE
                 }
                 /* else{
                      if(listStatusCode != null && listStatusCode.size > 0){

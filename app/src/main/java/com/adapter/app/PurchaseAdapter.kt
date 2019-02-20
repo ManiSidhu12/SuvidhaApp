@@ -1,4 +1,4 @@
-package com.adapter.app
+ package com.adapter.app
 
 import android.app.Dialog
 import android.content.Context
@@ -72,7 +72,7 @@ class PurchaseAdapter(var ctx: Context, var listPO : MutableList<Table>, var btn
             holder.layDetails.visibility = View.VISIBLE
             holder.line1.visibility = View.VISIBLE
             holder.imgDrop.setImageResource(R.drawable.ic_expand_less_black_24dp)
-            holder.imgDrop.setColorFilter(ContextCompat.getColor(ctx, R.color.dark_blue), android.graphics.PorterDuff.Mode.SRC_IN)
+            holder.imgDrop.setColorFilter(ContextCompat.getColor(ctx, R.color.dark_blue),android.graphics.PorterDuff.Mode.SRC_IN)
 
         }
         else{

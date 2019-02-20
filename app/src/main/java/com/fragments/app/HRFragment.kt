@@ -37,7 +37,7 @@ import kotlin.collections.ArrayList
         toolBar = activity!!.findViewById(R.id.toolbar)
         toolBar.title = "List Of Conveyance"
         btnFilter = toolBar.findViewById(R.id.img_filter)
-        btnFilter.visibility = View.VISIBLE
+        btnFilter.visibility = View.GONE
         btnFilter.setImageResource(R.drawable.filter)
         btnFilter.setColorFilter(ContextCompat.getColor(activity!!,android.R.color.white),android.graphics.PorterDuff.Mode.SRC_IN)
 
@@ -111,11 +111,9 @@ import kotlin.collections.ArrayList
 private fun checkDate(dateFrom : String,dateTo : String) : Boolean{
     var bool =  false
     val dateFormat = SimpleDateFormat("MM/dd/yyyy")
-    var convertedDate = Date()
-    var convertedDate2 = Date()
     try {
-        convertedDate = dateFormat.parse(dateFrom)
-        convertedDate2 = dateFormat.parse(dateTo)
+      val  convertedDate = dateFormat.parse(dateFrom)
+      val  convertedDate2 = dateFormat.parse(dateTo)
         if(convertedDate2.after(convertedDate)){
          bool =  true
         } else {
