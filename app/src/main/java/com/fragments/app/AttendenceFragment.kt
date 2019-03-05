@@ -138,7 +138,7 @@ class AttendenceFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,Googl
         work()
         return v
     }
-    fun work(){
+    private fun work(){
         val adapterTime = ArrayAdapter<String>(activity!!, R.layout.spinner_txt1, listTimes)
         adapterTime.setDropDownViewResource(R.layout.spinner_txt)
         v.spin_times.adapter = adapterTime

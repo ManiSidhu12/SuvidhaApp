@@ -62,6 +62,7 @@ class Home : AppCompatActivity(),PermissionUtils.PermissionResultCallback{
 
     val expandableListDetail = HashMap<String, List<String>>()
     var listFy = ArrayList<String>()
+    var listFyId = ArrayList<String>()
     var listBranch = ArrayList<String>()
     var listBO = ArrayList<String>()
     lateinit var permissionUtils: PermissionUtils
@@ -195,6 +196,7 @@ private fun setData(){
             }
             else {
                 SharedPrefManager.getInstance(ctx).fy = dialog1.spin_fy.selectedItem.toString()
+                SharedPrefManager.getInstance(ctx).fyid = listFyId[dialog1.spin_fy.selectedItemPosition]
                 SharedPrefManager.getInstance(ctx).unit = dialog1.spin_unit.selectedItem.toString()
                 SharedPrefManager.getInstance(ctx).boId = listBO[dialog1.spin_unit.selectedItemPosition]
                 dialog1.dismiss()
@@ -224,6 +226,7 @@ private fun setData(){
         if(rootLogin.table2 != null && rootLogin.table2.size > 0){
             for(j in 0 until rootLogin.table2.size) {
                 listFy.add(rootLogin.table2[j].fyname)
+                listFyId.add(rootLogin.table2[j].fyid.toString())
             }
         }
     }

@@ -2,6 +2,7 @@ package com.adapter.app;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
@@ -14,14 +15,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 
+import com.android.volley.*;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.bignerdranch.expandablerecyclerview.Adapter.ExpandableRecyclerAdapter;
 import com.bignerdranch.expandablerecyclerview.Model.ParentListItem;
 import com.bignerdranch.expandablerecyclerview.ViewHolder.ChildViewHolder;
 import com.bignerdranch.expandablerecyclerview.ViewHolder.ParentViewHolder;
+import com.common.app.Common;
+import com.common.app.CommonUtils;
+import com.common.app.SharedPrefManager;
 import com.github.captain_miao.recyclerviewutils.listener.OnRecyclerItemClickListener;
+import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
 import com.model.login.purchase.item.Table2;
+import com.model.login.purchase.stock.StockRoot;
 import com.suvidha.app.R;
 
+import java.io.StringReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -36,6 +47,8 @@ public class PurchaseItemDetailAdapter extends ExpandableRecyclerAdapter<Purchas
     String value = "";
     int expandValue  = -1;
     List<Table2> listRate;
+    StockRoot root = null;
+    int p;
 
     public PurchaseItemDetailAdapter(Context context, List<ParentListItem> itemList, List<Table2> listRate) {
         super(itemList);
@@ -164,8 +177,15 @@ public class PurchaseItemDetailAdapter extends ExpandableRecyclerAdapter<Purchas
                     parentViewHolder.txtStock.setTextColor(Color.parseColor("#FFFFFF"));
                     parentViewHolder.txtDel.setTextColor(Color.parseColor("#000000"));
                     value = "stock";
-                    collapseParent(position);
-                    expandParent(position);
+                   // collapseParent(position);
+                    //expandParent(position);
+                    if(CommonUtils.getConnectivityStatusString(c).equalsIgnoreCase("true")){
+                        p = position;
+                        getStockStatus(c, SharedPrefManager.getInstance(c).getCoId(),SharedPrefManager.getInstance(c).getBoId(),SharedPrefManager.getInstance(c).getFYID(),simpleParentItem.getItemId(),position);
+                    }
+                    else{
+                        CommonUtils.openInternetDialog(c);
+                    }
                 }
                // value = "stock";
 
@@ -217,8 +237,21 @@ public class PurchaseItemDetailAdapter extends ExpandableRecyclerAdapter<Purchas
         // simpleChildViewHolder.mTvContent.setText(simpleChild.getTitle());
         // //  simpleChildViewHolder.mCheckBox.setChecked(simpleChild.isSolved());
         if (value.equalsIgnoreCase("stock")) {
-            simpleChildViewHolder.layStockData.setVisibility(View.VISIBLE);
-            simpleChildViewHolder.layDeliveryData.setVisibility(View.GONE);
+            //simpleChildViewHolder.layStockData.setVisibility(View.VISIBLE);
+  simpleChildViewHolder.layDeliveryData.setVisibility(View.GONE);
+            if(root != null){
+                if(root.getTable() != null && root.getTable().size() > 0 && position ==0 ){
+                    simpleChildViewHolder.layStockData.setVisibility(View.VISIBLE);
+                    simpleChildViewHolder.layDeliveryData.setVisibility(View.GONE);
+                }
+
+                simpleChildViewHolder.txtBranch.setText(SharedPrefManager.getInstance(c).getUnit());
+                simpleChildViewHolder.txtConsumed.setText(root.getTable().get(p).getIssueqty().toString());
+                float onplan = root.getTable().get(p).getReservedstock()+root.getTable().get(p).getTotalindentqty();
+                simpleChildViewHolder.txtOnPlan.setText("On Plan:"+ onplan);
+                simpleChildViewHolder.txtStock.setText("Stk:"+root.getTable().get(p).getStockinhand().toString());
+                simpleChildViewHolder.txtOnOrder.setText("On Ord.:"+root.getTable().get(p).getPendingpoqty().toString());
+            }
         }
         if (value.equalsIgnoreCase("delivery")) {
             simpleChildViewHolder.layStockData.setVisibility(View.GONE);
@@ -267,6 +300,7 @@ public class PurchaseItemDetailAdapter extends ExpandableRecyclerAdapter<Purchas
         public TextView txtDelDate,txtDelQty;
         LinearLayout layStockData;
         RelativeLayout layDeliveryData;
+        TextView txtBranch,txtConsumed,txtOnPlan,txtStock,txtOnOrder;
 
         public SimpleChildViewHolder(View itemView) {
             super(itemView);
@@ -275,6 +309,11 @@ public class PurchaseItemDetailAdapter extends ExpandableRecyclerAdapter<Purchas
             txtDelQty = itemView.findViewById(R.id.txt_quantity);
             layStockData = itemView.findViewById(R.id.lay_stock_data);
             layDeliveryData = itemView.findViewById(R.id.lay_delivery_data);
+            txtBranch = itemView.findViewById(R.id.txt_branch_name);
+            txtConsumed = itemView.findViewById(R.id.txt_consumed);
+            txtOnPlan = itemView.findViewById(R.id.on_plan);
+            txtStock = itemView.findViewById(R.id.in_stock);
+            txtOnOrder = itemView.findViewById(R.id.on_order);
         }
     }
     private void openDialog(Context ctx, List<Table2> list) {
@@ -353,4 +392,50 @@ public class PurchaseItemDetailAdapter extends ExpandableRecyclerAdapter<Purchas
             }
         }
     }
+    private void getStockStatus(final Context ctx , String coid, String boid, String fyid, String itemid, final int pos) {
+
+        final ProgressDialog pd = ProgressDialog.show(ctx, "", "Loading", false);
+        String url = "http://suvidhaapi.suvidhacloud.com/api/Masters/CommonMasters/getitemenquiry?coid=" + coid + "&boid=" + boid + "&fyid=" + fyid + "&itemid=" + itemid;
+        Log.e("path", url);
+        StringRequest postRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                pd.dismiss();
+                Log.e("item stock Response", response);
+                Gson gson = new Gson();
+                JsonReader reader = new JsonReader(new StringReader(response));
+                reader.setLenient(true);
+                 root = gson.fromJson(reader, StockRoot.class);
+
+                if (root != null) {
+                    if (root.getTable() != null && root.getTable().size() > 0){
+                        collapseParent(pos);
+                        expandParent(pos);
+                    }
+                } else {
+                  //  Common.showToast(ctx, "Failure");
+
+                }
+            }
+        },
+
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        pd.dismiss();
+                        collapseParent(pos);
+                        expandParent(pos);
+                        //  Common.showToast(SignUp.this,error.getMessage());
+
+                    }
+                }) {
+        };
+
+
+        postRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestQueue requestQueue = Volley.newRequestQueue(ctx);
+        requestQueue.add(postRequest);
+
+    }
+
 }

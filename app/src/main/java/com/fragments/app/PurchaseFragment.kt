@@ -38,7 +38,6 @@ import com.model.login.purchase.PORoot
 import kotlinx.android.synthetic.main.hold_popup.*
 import java.io.StringReader
 
-
 class PurchaseFragment : Fragment() {
     lateinit var v: View
     lateinit var toolBar: Toolbar
@@ -93,7 +92,7 @@ class PurchaseFragment : Fragment() {
         return v
     }
 
-    fun work() {
+    private fun work() {
 
         v.btn_empty.setOnClickListener {
             prepareId = ""

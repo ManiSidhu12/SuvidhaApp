@@ -31,6 +31,7 @@ import java.io.StringReader
 
 class Login : Activity() {
     var listFy = ArrayList<String>()
+    var listFyId = ArrayList<String>()
     var listBranch = ArrayList<String>()
     var listBo = ArrayList<String>()
 
@@ -82,6 +83,7 @@ Log.e("val",""+SharedPrefManager.getInstance(this@Login).isLoggedIn)
         adapPriority1.setDropDownViewResource(R.layout.spinner_txt)
         dialog1.spin_fy.adapter = adapPriority1
         SharedPrefManager.getInstance(ctx).fy = dialog1.spin_fy.selectedItem.toString()
+        SharedPrefManager.getInstance(ctx).fyid = listFyId[0]
         SharedPrefManager.getInstance(ctx).unit = dialog1.spin_unit.selectedItem.toString()
         Log.e("value",listBo[dialog1.spin_unit.selectedItemPosition])
         SharedPrefManager.getInstance(ctx).boId = listBo[0]
@@ -94,6 +96,7 @@ Log.e("val",""+SharedPrefManager.getInstance(this@Login).isLoggedIn)
                 Common.showToast(this@Login, "Please Select Financial Year..")
             } else {
                 SharedPrefManager.getInstance(ctx).fy = dialog1.spin_fy.selectedItem.toString()
+                SharedPrefManager.getInstance(ctx).fyid = listFyId[dialog1.spin_fy.selectedItemPosition]
                 SharedPrefManager.getInstance(ctx).unit = dialog1.spin_unit.selectedItem.toString()
                 Log.e("value",listBo[dialog1.spin_unit.selectedItemPosition])
                 SharedPrefManager.getInstance(ctx).boId = listBo[dialog1.spin_unit.selectedItemPosition]
@@ -144,6 +147,7 @@ Log.e("val",""+SharedPrefManager.getInstance(this@Login).isLoggedIn)
                         if (rootLogin.table2 != null && rootLogin.table2.size > 0) {
                             for (j in 0 until rootLogin.table2.size) {
                                 listFy.add(rootLogin.table2[j].fyname)
+                                listFyId.add(rootLogin.table2[j].fyid.toString())
                             }
                         }
                         if (listBranch != null && listFy != null) {

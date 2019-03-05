@@ -35,7 +35,7 @@ class Common{
             }*/ else {
 return true            }
 
-            return true
+            //return true
         }
         fun requestFocus(c: Context, view: View) {
             if (view.requestFocus()) {
@@ -43,7 +43,7 @@ return true            }
             }
         }
 fun showToast(c : Context,msg: String){
-    var toast = Toast.makeText(c,msg,Toast.LENGTH_SHORT)
+    val toast = Toast.makeText(c,msg,Toast.LENGTH_SHORT)
     toast.setGravity(Gravity.CENTER, 0, 0)
     toast.show()
 }

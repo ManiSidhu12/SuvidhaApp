@@ -28,6 +28,7 @@ public class SharedPrefManager {
     private static final String GENDER = "gender";
     private static final String UNIT = "unit";
     private static final String FY = "fy";
+    private static final String FYId = "fyid";
     private static final String CO_ID = "coid";
     private static final String BO_ID = "boid";
     private static final String Login_Response = "response";
@@ -114,6 +115,12 @@ public void setContactInfo(String phn, String skype, String contry, String city,
         editor.putString(FY, fy);
         editor.apply();
     }
+    public void setFYID(String fy){
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(FYId, fy);
+        editor.apply();
+    }
     public void setBoId(String id){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -136,6 +143,11 @@ public void setContactInfo(String phn, String skype, String contry, String city,
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
 
         return sharedPreferences.getString(FY, null);
+    }
+    public String getFYID(){
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+
+        return sharedPreferences.getString(FYId, null);
     }
     public String getCoId(){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
